@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<title>Thank You — Drooid.ai</title>
+<meta name="description" content="Thank you for contacting Drooid.ai. We'll be in touch within 24 hours.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fafbfc;--white:#fff;--card:#fff;
+  --border:#e2e4ea;--border-h:#c8cbd4;
+  --ink:#0f1117;--text:#4b5060;--muted:#888e9e;
+  --accent:#6366f1;--accent-l:rgba(99,102,241,.08);--accent-d:#4338ca;
+  --teal:#0d9488;--teal-l:rgba(13,148,136,.08);
+  --grad:linear-gradient(135deg,#4338ca 0%,#0d9488 100%);
+  --radius:14px;--nav-h:72px;
+}
+[data-theme="dark"]{
+  --bg:#0a0a12;--white:#13131f;--card:#13131f;
+  --border:#1e1e2e;--border-h:#2a2a3e;
+  --ink:#e2e4ea;--text:#a0a4b8;--muted:#666a7e;
+  --accent:#818cf8;--accent-l:rgba(99,102,241,.15);--accent-d:#c7d2fe;
+  --teal:#2dd4bf;--teal-l:rgba(45,212,191,.12);
+}
+body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;transition:background .3s,color .3s}
+.thank-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:60px 48px;max-width:560px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.droid-mark{width:64px;height:64px;border-radius:16px;border:2px solid var(--teal);display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;overflow:visible}
+.droid-mark .eye{width:10px;height:10px;border-radius:50%;background:var(--teal)}
+.droid-mark .droid-face{display:flex;gap:12px;align-items:center;position:relative;top:-1px}
+.droid-mark .mouth{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);width:20px;height:2px;border-radius:1px;background:var(--teal);opacity:.4}
+.droid-mark .antenna{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:2px;height:12px;background:var(--teal);opacity:.5}
+.droid-mark .antenna-tip{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--teal);opacity:.7}
+.check-icon{display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;border-radius:50%;background:var(--teal-l);margin-bottom:28px}
+.check-icon svg{width:40px;height:40px;color:var(--teal)}
+h1{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:800;color:var(--ink);margin-bottom:16px;letter-spacing:-.5px}
+.sub{font-size:17px;line-height:1.7;color:var(--text);margin-bottom:32px}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;color:#fff;background:var(--grad);padding:14px 32px;border-radius:10px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.back-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(67,56,202,.25)}
+.theme-toggle{position:fixed;top:20px;right:20px;width:42px;height:24px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;padding:2px;transition:background .3s,border-color .3s}
+.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:transform .3s}
+[data-theme="dark"] .theme-toggle .knob{transform:translateX(18px)}
+@media(max-width:600px){.thank-card{padding:40px 24px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="thank-card">
+  <div class="check-icon">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+  </div>
+  <h1>Message received!</h1>
+  <p class="sub">Thanks for reaching out. Our team will review your inquiry and get back to you within 24 hours. We're excited to explore how AI can transform your business.</p>
+  <a href="index.html" class="back-link">
+    <svg width="17" height="17" fill="none" viewBox="0 0 24 24"><path d="M19 12H5m6-6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</div>
+<button class="theme-toggle" aria-label="Toggle theme" onclick="let t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('drooid-theme',t)">
+  <span class="knob"></span>
+</button>
+<script>
+(function(){var t=localStorage.getItem('drooid-theme');if(t)document.documentElement.dataset.theme=t;else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark'})();
+</script>
+</body>
+</html>

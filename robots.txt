@@ -1,0 +1,36 @@
+# Drooid.ai — robots.txt
+# https://drooid.ai
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://drooid.ai/sitemap.xml
+
+# Allow all major search engines and AI crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /

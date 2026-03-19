@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<title>Drooid.ai Solutions — Legacy Modernization, Cloud Migration, AI Automation</title>
+<meta name="description" content="Drooid.ai offers 6 enterprise AI solutions: Capital Markets Lift & Shift, Legacy Code Modernization (COBOL, VB6, Fortran to modern), Cloud Migration (AWS/Azure/GCP), Intelligent Automation, Data & Analytics Modernization, and Compliance & Governance. Prove it with a POC first.">
+<meta name="keywords" content="legacy modernization, COBOL to Java, cloud migration, AI automation, data analytics modernization, compliance governance AI, capital markets migration, VB6 to C#, Fortran modernization">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://drooid.ai/solutions">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://drooid.ai/solutions">
+<meta property="og:title" content="Drooid.ai Solutions — Enterprise AI Transformation">
+<meta property="og:description" content="Legacy modernization. Cloud migration. Intelligent automation. Data analytics. Compliance. All proven with a POC first.">
+<meta property="og:image" content="https://drooid.ai/og-solutions.png">
+<meta property="og:site_name" content="Drooid.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Drooid.ai Solutions — AI Enterprise Transformation">
+<meta name="twitter:description" content="COBOL to Java. VB6 to C#. On-prem to cloud. All AI-powered. Prove it with a POC first.">
+<meta name="twitter:image" content="https://drooid.ai/og-solutions.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Drooid.ai Enterprise Solutions",
+  "description": "6 AI-powered enterprise transformation solutions",
+  "url": "https://drooid.ai/solutions",
+  "numberOfItems": 6,
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Capital Markets Lift & Shift", "url": "https://drooid.ai/solutions#cm-lift", "description": "AI migrates trading platforms, risk engines, settlement systems from legacy to cloud-native."},
+    {"@type": "ListItem", "position": 2, "name": "Legacy Code Modernization", "url": "https://drooid.ai/solutions#legacy", "description": "AI translates COBOL, RPG, VB6, Fortran, PL/SQL to Java, Python, C#, PostgreSQL. 99.5% logic preservation."},
+    {"@type": "ListItem", "position": 3, "name": "Cloud Migration", "url": "https://drooid.ai/solutions#cloud", "description": "On-prem to AWS, Azure, GCP. Containerization, serverless, Terraform IaC generation."},
+    {"@type": "ListItem", "position": 4, "name": "Intelligent Automation", "url": "https://drooid.ai/solutions#automation", "description": "RPA, document processing, workflow automation replacing manual processes."},
+    {"@type": "ListItem", "position": 5, "name": "Data & Analytics Modernization", "url": "https://drooid.ai/solutions#data", "description": "Migrate data warehouses, rebuild ETL pipelines, convert legacy reports to Snowflake, BigQuery, Tableau."},
+    {"@type": "ListItem", "position": 6, "name": "Compliance & Governance", "url": "https://drooid.ai/solutions#compliance", "description": "AI modernizes regulatory reporting, trade surveillance, AML/KYC systems with full compliance preservation."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://drooid.ai/"},
+    {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://drooid.ai/solutions"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafbfc;--white:#fff;--border:#e2e4ea;--border-h:#c8cbd4;--ink:#0f1117;--text:#4b5060;--muted:#888e9e;--accent:#4338ca;--accent-l:#ece9fe;--accent-d:#312e81;--teal:#0d9488;--teal-l:#ccfbf1;--rose:#e11d48;--rose-l:#ffe4e6;--amber:#d97706;--amber-l:#fef3c7;--emerald:#059669;--emerald-l:#d1fae5;--grad:linear-gradient(135deg,#4338ca,#0d9488);--grad-t:linear-gradient(135deg,#4338ca,#0d9488);--r:16px;--nav-bg:rgba(250,251,252,.82)}
+[data-theme="dark"] {
+  --bg:#0a0a12; --white:#13131f; --card:#13131f;
+  --border:#1e1e2e; --border-h:#2a2a3e;
+  --ink:#e2e4ea; --text:#a0a4b8; --muted:#666a7e;
+  --accent:#818cf8; --accent-l:rgba(99,102,241,.15); --accent-d:#c7d2fe;
+  --teal:#2dd4bf; --teal-l:rgba(45,212,191,.12);
+  --rose:#fb7185; --rose-l:rgba(251,113,133,.12);
+  --amber:#fbbf24; --amber-l:rgba(251,191,36,.12);
+  --emerald:#34d399; --emerald-l:rgba(52,211,153,.12);
+  --nav-bg:rgba(10,10,18,.85);
+  --card-bg:rgba(19,19,31,.82);
+  --card-border:rgba(30,30,46,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px}
+.ctr{max-width:1200px;margin:0 auto;padding:0 40px}
+.gt{background:var(--grad-t);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tag{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:inline-block}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:var(--nav-bg);border-bottom:1px solid transparent;transition:.3s}
+nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,.04)}
+.nlogo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nlogo .mark{width:38px;height:38px;border-radius:10px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(13,148,136,.15);position:relative;overflow:visible}
+.nlogo .mark .eye{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(13,148,136,.5)}
+.nlogo .mark .droid-face{display:flex;gap:8px;align-items:center;position:relative;top:-1px}
+.nlogo .mark .mouth{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:14px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
+.nlogo .mark .antenna{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:2px;height:8px;background:var(--teal);opacity:.5}
+.nlogo .mark .antenna-tip{position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.7}
+.nlogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.nlinks{display:flex;align-items:center;gap:28px;list-style:none}
+.nlinks a{font-size:13.5px;font-weight:600;color:var(--text);text-decoration:none;transition:.25s}
+.nlinks a:hover{color:var(--ink)}
+.ncta{font-size:13.5px!important;font-weight:700!important;color:#fff!important;background:var(--grad);padding:9px 22px;border-radius:9px}
+.pg-hero{padding:180px 0 100px;position:relative;overflow:hidden}
+.pg-hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 50% 30%,rgba(67,56,202,.05),transparent)}
+.pg-hero-content{position:relative;z-index:1;text-align:center}
+.pg-hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,6vw,64px);font-weight:800;color:var(--ink);line-height:1.08;letter-spacing:-2px;margin-bottom:22px}
+.pg-hero p{font-size:19px;line-height:1.72;color:var(--text);max-width:620px;margin:0 auto}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:var(--accent);text-decoration:none;margin-bottom:20px;transition:.25s}
+.back-link:hover{gap:10px}
+
+.sol-section{padding:100px 0;scroll-margin-top:80px}
+.sol-section:nth-child(even){background:#fff}
+.sol-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.sol-split.reverse{direction:rtl}
+.sol-split.reverse>*{direction:ltr}
+.sol-text h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;color:var(--ink);line-height:1.15;letter-spacing:-.5px;margin-bottom:18px}
+.sol-text .sub{font-size:17px;line-height:1.75;color:var(--text);margin-bottom:24px}
+.sol-text h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:14px}
+
+.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.cap-item{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);transition:.3s}
+.cap-item:hover{border-color:var(--border-h)}
+.cap-item .ci{width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.cap-item span{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.4}
+
+.sol-stats{display:flex;gap:32px;padding:24px 0;border-top:1.5px solid var(--border);margin-top:8px}
+.sol-stat .ssn{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:800}
+.sol-stat .ssl{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* Tags */
+.m-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.m-tag{padding:4px 10px;border-radius:5px;font-family:'Bricolage Grotesque',sans-serif;font-size:10.5px;font-weight:700;background:var(--bg);border:1px solid var(--border);color:var(--text)}
+
+/* Visuals */
+.sol-visual{border-radius:20px;padding:44px;position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:center}
+.v-dark{background:var(--ink)}
+.v-dark::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 50% at 70% 20%,rgba(67,56,202,.1),transparent)}
+.v-dark>*{position:relative;z-index:1}
+.v-light{background:linear-gradient(145deg,#f0f4ff,#ecfdf5);border:1.5px solid var(--border)}
+.v-warm{background:linear-gradient(145deg,#fef3c7,#ffe4e6);border:1.5px solid var(--border)}
+.v-cool{background:linear-gradient(145deg,#ecfdf5,#ccfbf1);border:1.5px solid var(--border)}
+.v-purple{background:linear-gradient(145deg,#f5f3ff,#ede9fe);border:1.5px solid var(--border)}
+
+.v-flow{display:flex;flex-direction:column;gap:10px}
+.v-flow-row{display:flex;gap:10px}
+.v-flow-box{flex:1;padding:12px;border-radius:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;text-align:center;border:1px solid rgba(255,255,255,.07)}
+.v-flow-label{font-family:'Bricolage Grotesque',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;text-align:center;padding:6px 0}
+.v-flow-arrow{text-align:center;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800;color:#4338ca;padding:8px 0;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:2px;text-transform:uppercase}
+
+.v-code{border-radius:10px;padding:20px;font-family:'Courier New',monospace;font-size:12px;line-height:1.7;margin-bottom:12px}
+.v-code.dark{background:#0f0f1f;color:#a5b4fc}
+.v-code.green{background:#0d1f14;color:#86efac}
+
+/* Result card rows */
+.res-grid{display:flex;flex-direction:column;gap:10px}
+.res-item{background:#fff;border-radius:10px;padding:14px 16px;box-shadow:0 3px 12px rgba(0,0,0,.05);display:flex;align-items:center;gap:10px}
+.res-item .ri{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.res-item div{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--ink)}
+.res-item p{font-size:11px;color:var(--muted);margin-top:1px;font-family:'Instrument Sans',sans-serif;font-weight:400}
+
+/* CTA */
+.pg-cta{padding:120px 0;text-align:center;position:relative}
+.pg-cta-bg{position:absolute;inset:0;pointer-events:none}
+.pg-cta-bg::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(67,56,202,.045),transparent 60%)}
+.pg-cta h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--ink);letter-spacing:-1.5px;margin-bottom:18px;line-height:1.1}
+.pg-cta p{font-size:18px;color:var(--text);max-width:480px;margin:0 auto 36px;line-height:1.6}
+.bp{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:#fff;background:var(--grad);padding:15px 34px;border-radius:12px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.25s;box-shadow:0 4px 16px rgba(67,56,202,.22)}
+.bp:hover{opacity:.9;transform:translateY(-2px)}
+
+
+.rv{opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+
+@media(max-width:1024px){.foot-g{grid-template-columns:1fr 1fr;gap:36px}.sol-split{grid-template-columns:1fr}.sol-split.reverse{direction:ltr}.cap-grid{grid-template-columns:1fr}.sol-stats{flex-wrap:wrap;gap:20px}}
+@media(max-width:768px){.foot-g{grid-template-columns:1fr;gap:28px}.ctr{padding:0 22px}nav{padding:14px 22px}.nlinks{display:none}}
+
+
+
+/* ═══ FOOTER ═══ */
+footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px}
+.foot-brand .flogo{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.foot-brand .flogo .mark{width:34px;height:34px;border-radius:8px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible;box-shadow:0 2px 8px rgba(13,148,136,.15)}
+.foot-brand .flogo .mark .eye{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px rgba(13,148,136,.5)}
+.foot-brand .flogo .mark .droid-face{display:flex;gap:7px;align-items:center;position:relative;top:-1px}
+.foot-brand .flogo .mark .mouth{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:12px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
+.foot-brand .flogo .mark .antenna{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:1.5px;height:7px;background:var(--teal);opacity:.5}
+.foot-brand .flogo .mark .antenna-tip{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:3.5px;height:3.5px;border-radius:50%;background:var(--teal);opacity:.7}
+.foot-brand .flogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;color:var(--ink)}
+.foot-brand p{font-size:13.5px;line-height:1.7;color:var(--text);max-width:270px}
+.foot-col h4{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot-col a{font-size:13.5px;color:var(--text);text-decoration:none;transition:.25s}
+.foot-col a:hover{color:var(--ink)}
+.foot-btm{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted)}
+.foot-soc{display:flex;gap:18px}
+.foot-soc a{color:var(--muted);text-decoration:none;font-size:12.5px;transition:.25s}
+.foot-soc a:hover{color:var(--ink)}
+
+/* ═══ ANIMATED LOGO ═══ */
+.nlogo .mark{position:relative;overflow:hidden}
+.nlogo .mark::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(67,56,202,.3),rgba(13,148,136,.3));opacity:0;animation:logoPulse 3s ease-in-out infinite;border-radius:9px}
+@keyframes logoPulse{0%,100%{opacity:0}50%{opacity:1}}
+
+/* ═══ GLASSMORPHISM CARDS ═══ */
+.card{background:rgba(255,255,255,.82)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1.5px solid rgba(226,228,234,.6)!important;transition:.4s cubic-bezier(.22,.68,0,1)!important}
+.card::before{content:'';position:absolute;inset:0;border-radius:var(--r);padding:1.5px;background:linear-gradient(135deg,rgba(67,56,202,.15),rgba(13,148,136,.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.4s;pointer-events:none}
+.card:hover{border-color:transparent!important;transform:translateY(-6px);box-shadow:0 20px 60px rgba(67,56,202,.08),0 0 30px rgba(67,56,202,.04)!important}
+.card:hover::before{opacity:1}
+
+/* ═══ ENHANCED BUTTONS ═══ */
+.bp{box-shadow:0 4px 20px rgba(67,56,202,.25),0 0 40px rgba(67,56,202,.08)!important}
+.bp:hover{box-shadow:0 8px 30px rgba(67,56,202,.35),0 0 60px rgba(67,56,202,.12)!important}
+
+/* ═══ ANIMATED GRADIENT BG ═══ */
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* ═══ FLOATING PARTICLES ═══ */
+.page-particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:floatParticle linear infinite}
+@keyframes floatParticle{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
+
+/* ═══ SECTION GLOW ═══ */
+.svc-section,.ind-section,.sol-section{position:relative}
+.svc-section::before,.ind-section::before,.sol-section::before{content:'';position:absolute;inset:0;background:linear-gradient(270deg,rgba(67,56,202,.012),rgba(13,148,136,.012),rgba(67,56,202,.012));background-size:400% 400%;animation:gradShift 20s ease infinite;pointer-events:none}
+
+/* ═══ GLOWING HERO BG ═══ */
+.svc-hero,.pg-hero{overflow:hidden}
+.svc-hero::after,.pg-hero::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;top:20%;right:-10%;background:conic-gradient(from 0deg,rgba(67,56,202,.04),rgba(13,148,136,.04),rgba(67,56,202,.02),rgba(13,148,136,.04),rgba(67,56,202,.04));animation:orbSpinSlow 20s linear infinite;filter:blur(60px);pointer-events:none}
+@keyframes orbSpinSlow{to{transform:rotate(360deg)}}
+
+/* ═══ VISUAL PANEL GLOW ═══ */
+.svc-visual,.ind-visual,.sol-visual{position:relative}
+.svc-visual::after,.ind-visual::after,.sol-visual::after{content:'';position:absolute;inset:-2px;border-radius:20px;background:linear-gradient(135deg,rgba(67,56,202,.08),rgba(13,148,136,.08));z-index:-1;filter:blur(12px);opacity:0;transition:.5s}
+.svc-detail:hover .svc-visual::after,.ind-split:hover .ind-visual::after,.sol-split:hover .sol-visual::after{opacity:1}
+
+/* ═══ CTA GLOW ═══ */
+.page-cta,.pg-cta{position:relative;overflow:hidden}
+.page-cta::before,.pg-cta::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(67,56,202,.06),rgba(13,148,136,.03),transparent 60%);animation:ctaPulse 4s ease-in-out infinite;pointer-events:none}
+@keyframes ctaPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+
+/* ═══ ANIMATED TAGS ═══ */
+.tag{position:relative;overflow:hidden}
+.tag::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(67,56,202,.06),transparent);animation:tagShine 3s ease-in-out infinite}
+@keyframes tagShine{0%,100%{left:-100%}50%{left:100%}}
+
+/* ═══ STAT GLOW NUMBERS ═══ */
+.ind-stat .isn,.svc-stats .sn{text-shadow:0 0 20px rgba(67,56,202,.1)}
+
+/* ═══ BACK LINK HOVER ═══ */
+.back-link{transition:.3s!important}
+.back-link:hover{text-shadow:0 0 12px rgba(67,56,202,.15)}
+
+
+/* ═══ BREADCRUMB BAR ═══ */
+.breadcrumb-bar{position:fixed;top:68px;left:0;right:0;z-index:999;padding:10px 40px;background:rgba(250,251,252,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center}
+.breadcrumb-bar a{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:.3s}
+.breadcrumb-bar a:hover{gap:10px;color:var(--accent-d)}
+.breadcrumb-bar .bc-sep{color:var(--muted);font-size:11px;margin:0 8px}
+.breadcrumb-bar .bc-current{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;color:var(--muted)}
+
+/* ═══ THEME TOGGLE ═══ */
+.theme-toggle{width:42px;height:24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;position:relative;transition:.3s;flex-shrink:0;display:flex;align-items:center;padding:0 3px}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:.3s;position:relative;display:flex;align-items:center;justify-content:center}
+.theme-toggle .knob svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+[data-theme="dark"] .theme-toggle .knob{transform:translateX(16px)}
+[data-theme="dark"] .theme-toggle{background:var(--card);border-color:var(--border)}
+
+/* ═══ DARK MODE OVERRIDES ═══ */
+[data-theme="dark"] .sol-section:nth-child(even){background:var(--white)}
+[data-theme="dark"] .svc-section:nth-child(even){background:var(--white)}
+[data-theme="dark"] .sol-hero-bg{background:radial-gradient(ellipse 55% 50% at 50% 30%,rgba(99,102,241,.06),transparent)}
+[data-theme="dark"] .svc-hero-bg{background:radial-gradient(ellipse 55% 50% at 50% 30%,rgba(99,102,241,.06),transparent)}
+[data-theme="dark"] .feat-item{background:var(--card);border-color:var(--border)}
+[data-theme="dark"] .svc-visual.v-dark{background:#08080f}
+[data-theme="dark"] .svc-visual.v-light{background:linear-gradient(145deg,rgba(67,56,202,.06),rgba(13,148,136,.04));border-color:var(--border)}
+[data-theme="dark"] .svc-visual.v-warm{background:linear-gradient(145deg,rgba(251,191,36,.06),rgba(251,113,133,.04));border-color:var(--border)}
+[data-theme="dark"] .svc-visual.v-cool{background:linear-gradient(145deg,rgba(52,211,153,.06),rgba(45,212,191,.04));border-color:var(--border)}
+[data-theme="dark"] .page-cta-bg::before{background:radial-gradient(circle,rgba(99,102,241,.06),transparent 60%)}
+[data-theme="dark"] footer{background:var(--white);border-color:var(--border)}
+[data-theme="dark"] .bs{background:rgba(19,19,31,.85);color:var(--ink);border-color:var(--border)}
+[data-theme="dark"] .back-link{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="page-particles"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nlogo">
+    <div class="mark"><span class="antenna"></span><span class="antenna-tip"></span><span class="droid-face"><span class="eye"></span><span class="eye"></span></span><span class="mouth"></span></div>
+    <div class="wm">Drooid.ai</div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="industries.html">Industries</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><span class="knob"><svg viewBox="0 0 24 24" class="sun-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg viewBox="0 0 24 24" class="moon-icon" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button></li>
+    <li><a href="contact.html" class="ncta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+  <a href="index.html">← Home</a>
+  <span class="bc-sep">›</span>
+  <span class="bc-current">Solutions</span>
+</div>
+
+<section class="pg-hero">
+  <div class="pg-hero-bg"></div>
+  <div class="ctr">
+    <div class="pg-hero-content rv">      <span class="tag">Solutions</span>
+      <h1>Big transformations start<br>with <span class="gt">small proof points</span></h1>
+      <p>Every solution below can start as a lean POC — we prove the approach works on your actual systems before you commit to a full transformation. No risk, no guesswork.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOLUTION 1: CAPITAL MARKETS LIFT & SHIFT ════════ -->
+<section class="sol-section" id="cm-lift">
+  <div class="ctr">
+    <div class="sol-split rv">
+      <div class="sol-text">
+        <span class="tag">Solution 01</span>
+        <h2>Capital Markets <span class="gt">Lift & Shift</span></h2>
+        <p class="sub">Capital markets firms run on mission-critical systems built over decades — trading platforms, risk engines, settlement systems, and regulatory reporting. AI changes the equation: we analyze legacy trading systems, decompose tightly-coupled architectures, migrate proprietary data formats, and rebuild on modern cloud-native platforms with full regulatory compliance preserved.</p>
+        <h4>Migration Capabilities</h4>
+        <div class="cap-grid">
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📈</div><span>Trading platforms — OMS/EMS, order routing, FIX connectivity</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">⚠️</div><span>Risk engines — VaR, Monte Carlo, Greeks to real-time Kafka/Flink</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🏦</div><span>Settlement & clearing — mainframe to T+1 cloud microservices</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">📋</div><span>Regulatory reporting — MiFID II, Dodd-Frank, EMIR, SEC pipelines</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">💹</div><span>Market data — proprietary feeds to modern streaming architecture</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">🗄️</div><span>Data warehouses — Sybase/Oracle to Snowflake/BigQuery</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📊</div><span>Portfolio management — NAV, performance attribution, accounting</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">🔌</div><span>Middleware — TIBCO/MQ to Kafka, ESB to API gateways</span></div>
+        </div>
+        <div class="m-tags"><span class="m-tag">Murex</span><span class="m-tag">Calypso</span><span class="m-tag">FlexTrade</span><span class="m-tag">FIX Protocol</span><span class="m-tag">DTCC</span><span class="m-tag">SWIFT</span><span class="m-tag">ISO 20022</span><span class="m-tag">Bloomberg</span><span class="m-tag">Charles River</span><span class="m-tag">Aladdin</span></div>
+        <div class="sol-stats">
+          <div class="sol-stat"><div class="ssn gt">5-10×</div><div class="ssl">Faster Migration</div></div>
+          <div class="sol-stat"><div class="ssn gt">$MM</div><div class="ssl">License Savings</div></div>
+          <div class="sol-stat"><div class="ssn gt">100%</div><div class="ssl">Audit Preservation</div></div>
+        </div>
+      </div>
+      <div class="sol-visual v-dark">
+        <div class="v-flow">
+          <div class="v-flow-label" style="color:#666">Legacy Stack</div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(252,165,165,.1);color:#fca5a5">Murex / Calypso</div><div class="v-flow-box" style="background:rgba(253,186,116,.1);color:#fdba74">FIX 4.2 Engine</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(165,180,252,.1);color:#a5b4fc">Sybase / Oracle</div><div class="v-flow-box" style="background:rgba(196,181,253,.1);color:#c4b5fd">Batch Risk (COBOL)</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(134,239,172,.1);color:#86efac">Mainframe Settle</div><div class="v-flow-box" style="background:rgba(103,232,249,.1);color:#67e8f9">Crystal Reports</div></div>
+          <div class="v-flow-arrow" style="color:#818cf8">↓ &nbsp;AI Migrates&nbsp; ↓</div>
+          <div class="v-flow-label" style="color:#666">Modern Stack</div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.14);color:#818cf8">Cloud OMS/EMS</div><div class="v-flow-box" style="background:rgba(13,148,136,.14);color:#5eead4">FIX 5.0 / REST</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.14);color:#818cf8">Snowflake / PG</div><div class="v-flow-box" style="background:rgba(13,148,136,.14);color:#5eead4">Real-time Kafka</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.14);color:#818cf8">T+1 Cloud Settle</div><div class="v-flow-box" style="background:rgba(13,148,136,.14);color:#5eead4">Live Dashboards</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOLUTION 2: LEGACY CODE MODERNIZATION ════════ -->
+<section class="sol-section" id="legacy">
+  <div class="ctr">
+    <div class="sol-split reverse rv">
+      <div class="sol-text">
+        <span class="tag">Solution 02</span>
+        <h2>Legacy Code <span class="gt">Modernization</span></h2>
+        <p class="sub">AI translates entire legacy codebases into modern languages while preserving every business rule. No line-by-line rewrite. No army of consultants. Our intelligent engine analyzes data structures, maps data divisions, translates procedural logic, and generates production-ready code with tests and documentation.</p>
+        <h4>Supported Migrations</h4>
+        <div class="cap-grid">
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔄</div><span>COBOL → Java — mainframe to Spring Boot microservices</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">🔄</div><span>COBOL → Python — batch jobs to modern data pipelines</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔄</div><span>RPG → Java — AS/400 to cloud-native applications</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">🔄</div><span>VB6/.NET → C# — desktop apps to modern .NET 8</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔄</div><span>Fortran → Python/C++ — scientific computing modernization</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">🔄</div><span>PL/SQL → PostgreSQL — Oracle to open source</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🧪</div><span>Auto-generated test suites — unit, integration, regression</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--teal-l)">📋</div><span>Full documentation — architecture, API docs, runbooks</span></div>
+        </div>
+        <div class="sol-stats">
+          <div class="sol-stat"><div class="ssn gt">60-90%</div><div class="ssl">Cost Reduction</div></div>
+          <div class="sol-stat"><div class="ssn gt">99.5%</div><div class="ssl">Logic Preserved</div></div>
+          <div class="sol-stat"><div class="ssn gt">85%</div><div class="ssl">Fewer Devs</div></div>
+        </div>
+      </div>
+      <div class="sol-visual v-dark">
+        <div class="v-code dark"><pre style="margin:0">IDENTIFICATION DIVISION.
+PROGRAM-ID. CALC-INTEREST.
+01 WS-PRINCIPAL PIC 9(9)V99.
+PROCEDURE DIVISION.
+    COMPUTE WS-INTEREST =
+      WS-PRINCIPAL * WS-RATE
+      / 100 * WS-YEARS.</pre></div>
+        <div style="text-align:center;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:800;color:#818cf8;padding:6px 0;letter-spacing:2px;text-transform:uppercase">↓ AI Converts ↓</div>
+        <div class="v-code green"><pre style="margin:0">public class InterestCalculator {
+  public BigDecimal calculate() {
+    return principal
+      .multiply(rate)
+      .divide(BigDecimal.valueOf(100))
+      .multiply(BigDecimal.valueOf(years));
+  }
+}</pre></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOLUTION 3: CLOUD MIGRATION ════════ -->
+<section class="sol-section" id="cloud">
+  <div class="ctr">
+    <div class="sol-split rv">
+      <div class="sol-text">
+        <span class="tag">Solution 03</span>
+        <h2>Cloud <span class="gt">Migration</span></h2>
+        <p class="sub">AI refactors on-premise applications for AWS, Azure, or GCP. From containerization and serverless conversion to monolith decomposition and infrastructure-as-code generation — we automate the entire cloud journey, slashing migration timelines and eliminating the risk of manual re-platforming.</p>
+        <h4>What's Included</h4>
+        <div class="cap-grid">
+          <div class="cap-item"><div class="ci" style="background:#fef2f2">☁️</div><span>On-prem to AWS / Azure / GCP — full lift & shift</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🐳</div><span>Docker containerization & Kubernetes orchestration</span></div>
+          <div class="cap-item"><div class="ci" style="background:#fef2f2">⚡</div><span>Serverless conversion — Lambda, Cloud Functions, Azure Functions</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📜</div><span>Infrastructure as code — Terraform, Pulumi, CloudFormation</span></div>
+          <div class="cap-item"><div class="ci" style="background:#fef2f2">🔄</div><span>Monolith to microservices — domain decomposition & event-driven</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🚀</div><span>CI/CD pipeline — GitHub Actions, GitLab, Jenkins, ArgoCD</span></div>
+          <div class="cap-item"><div class="ci" style="background:#fef2f2">📊</div><span>Observability — monitoring, logging, tracing, alerting</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔒</div><span>Security hardening — IAM, secrets management, compliance</span></div>
+        </div>
+        <div class="sol-stats">
+          <div class="sol-stat"><div class="ssn gt">70%</div><div class="ssl">Infra Cost Savings</div></div>
+          <div class="sol-stat"><div class="ssn gt">5×</div><div class="ssl">Faster Migration</div></div>
+          <div class="sol-stat"><div class="ssn gt">99.9%</div><div class="ssl">Uptime SLA</div></div>
+        </div>
+      </div>
+      <div class="sol-visual v-light">
+        <div class="v-flow" style="gap:8px">
+          <div class="v-flow-label" style="color:var(--muted)">On-Premise</div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(225,29,72,.06);color:var(--rose);border:1px solid rgba(225,29,72,.12)">Monolith App</div><div class="v-flow-box" style="background:rgba(225,29,72,.06);color:var(--rose);border:1px solid rgba(225,29,72,.12)">Legacy Database</div></div>
+          <div class="v-flow-arrow">↓ &nbsp;AI Refactors&nbsp; ↓</div>
+          <div class="v-flow-label" style="color:var(--muted)">Cloud Native</div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.06);color:var(--accent);border:1px solid rgba(67,56,202,.12)">API Gateway</div><div class="v-flow-box" style="background:rgba(13,148,136,.06);color:var(--teal);border:1px solid rgba(13,148,136,.12)">Auth Service</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(13,148,136,.06);color:var(--teal);border:1px solid rgba(13,148,136,.12)">Service A</div><div class="v-flow-box" style="background:rgba(67,56,202,.06);color:var(--accent);border:1px solid rgba(67,56,202,.12)">Service B</div><div class="v-flow-box" style="background:rgba(13,148,136,.06);color:var(--teal);border:1px solid rgba(13,148,136,.12)">Service C</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.06);color:var(--accent);border:1px solid rgba(67,56,202,.12)">PostgreSQL</div><div class="v-flow-box" style="background:rgba(13,148,136,.06);color:var(--teal);border:1px solid rgba(13,148,136,.12)">Redis</div><div class="v-flow-box" style="background:rgba(67,56,202,.06);color:var(--accent);border:1px solid rgba(67,56,202,.12)">S3 / Blob</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOLUTION 4: INTELLIGENT AUTOMATION ════════ -->
+<section class="sol-section" id="automation">
+  <div class="ctr">
+    <div class="sol-split reverse rv">
+      <div class="sol-text">
+        <span class="tag">Solution 04</span>
+        <h2>Intelligent <span class="gt">Automation</span></h2>
+        <p class="sub">AI replaces manual, repetitive processes across back-office, compliance, and operations. From robotic process automation and intelligent document processing to cross-system reconciliation and workflow orchestration — we automate the work that currently requires armies of people.</p>
+        <h4>Automation Capabilities</h4>
+        <div class="cap-grid">
+          <div class="cap-item"><div class="ci" style="background:var(--amber-l)">🤖</div><span>RPA — data entry, form filling, cross-system transfers</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📄</div><span>Document processing — extract, classify, route from any format</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--amber-l)">🔗</div><span>API generation — wrap legacy functions as REST/GraphQL APIs</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📧</div><span>Email automation — triage, routing, response drafting, escalation</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--amber-l)">💰</div><span>Invoice processing — extraction, matching, approval workflows</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔄</div><span>Reconciliation — cross-system data matching, exception handling</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--amber-l)">📊</div><span>Report generation — auto-generate from multiple data sources</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">⚡</div><span>Workflow orchestration — multi-step automation with approvals</span></div>
+        </div>
+        <div class="sol-stats">
+          <div class="sol-stat"><div class="ssn gt">80%</div><div class="ssl">Manual Work Eliminated</div></div>
+          <div class="sol-stat"><div class="ssn gt">10×</div><div class="ssl">Processing Speed</div></div>
+          <div class="sol-stat"><div class="ssn gt">99%</div><div class="ssl">Accuracy Rate</div></div>
+        </div>
+      </div>
+      <div class="sol-visual v-warm">
+        <div class="res-grid">
+          <div class="res-item"><div class="ri" style="background:var(--amber-l)">📄</div><div><div>1,247 Invoices Processed</div><p>Auto-extracted, matched, routed</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--accent-l)">📧</div><div><div>3,891 Emails Triaged</div><p>Classified, prioritized, assigned</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--emerald-l)">🔄</div><div><div>Zero Reconciliation Gaps</div><p>Cross-system matching complete</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--rose-l)">📊</div><div><div>42 Reports Auto-Generated</div><p>Compliance, financial, operational</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--teal-l)">⚡</div><div><div>96% Straight-Through Processing</div><p>Minimal human intervention</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOLUTION 5: DATA & ANALYTICS ════════ -->
+<section class="sol-section" id="data">
+  <div class="ctr">
+    <div class="sol-split rv">
+      <div class="sol-text">
+        <span class="tag">Solution 05</span>
+        <h2>Data & Analytics <span class="gt">Modernization</span></h2>
+        <p class="sub">Migrate legacy data warehouses, rebuild ETL pipelines, convert Crystal Reports and SSRS to modern BI tools, and build real-time analytics dashboards. AI handles schema translation, data mapping, and historical migration — moving you from batch to real-time.</p>
+        <h4>What's Included</h4>
+        <div class="cap-grid">
+          <div class="cap-item"><div class="ci" style="background:var(--emerald-l)">🗄️</div><span>Sybase / Oracle / SQL Server → Snowflake, BigQuery, Databricks</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔄</div><span>ETL pipeline modernization — batch to streaming, Airflow/dbt</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--emerald-l)">📊</div><span>Crystal Reports / SSRS / BIRT → Tableau, Power BI, Looker</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📈</div><span>Real-time dashboards — live KPIs, alerts, drill-down analytics</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--emerald-l)">🧩</div><span>Data modeling — star schema, dimensional, data vault design</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🔍</div><span>Data quality — profiling, cleansing, validation, monitoring</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--emerald-l)">📡</div><span>Streaming analytics — Kafka, Flink, real-time event processing</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🤖</div><span>AI/ML pipelines — feature stores, model serving, MLOps</span></div>
+        </div>
+        <div class="sol-stats">
+          <div class="sol-stat"><div class="ssn gt">90%</div><div class="ssl">License Savings</div></div>
+          <div class="sol-stat"><div class="ssn gt">Real-time</div><div class="ssl">Not Batch</div></div>
+          <div class="sol-stat"><div class="ssn gt">7×</div><div class="ssl">Faster Queries</div></div>
+        </div>
+      </div>
+      <div class="sol-visual v-dark">
+        <div class="v-flow">
+          <div class="v-flow-label" style="color:#666">Legacy</div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(252,165,165,.1);color:#fca5a5">Sybase</div><div class="v-flow-box" style="background:rgba(253,186,116,.1);color:#fdba74">Oracle DW</div><div class="v-flow-box" style="background:rgba(196,181,253,.1);color:#c4b5fd">Crystal Rpt</div></div>
+          <div style="text-align:center;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:800;color:#818cf8;padding:8px 0;letter-spacing:2px;text-transform:uppercase">↓ AI Migrates ↓</div>
+          <div class="v-flow-label" style="color:#666">Modern</div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.14);color:#818cf8">Snowflake</div><div class="v-flow-box" style="background:rgba(13,148,136,.14);color:#5eead4">dbt + Airflow</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(13,148,136,.14);color:#5eead4">Kafka Stream</div><div class="v-flow-box" style="background:rgba(67,56,202,.14);color:#818cf8">Tableau / PBI</div></div>
+          <div class="v-flow-row"><div class="v-flow-box" style="background:rgba(67,56,202,.14);color:#818cf8;border:1px solid rgba(129,140,248,.15)">📊 Real-time Dashboards</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SOLUTION 6: COMPLIANCE & GOVERNANCE ════════ -->
+<section class="sol-section" id="compliance">
+  <div class="ctr">
+    <div class="sol-split reverse rv">
+      <div class="sol-text">
+        <span class="tag">Solution 06</span>
+        <h2>Compliance & <span class="gt">Governance</span></h2>
+        <p class="sub">AI modernizes regulatory reporting, trade surveillance, AML/KYC systems, and audit infrastructure. We rebuild legacy compliance systems on modern platforms with ML-powered detection, real-time alerting, and full audit trail preservation — eliminating regulatory gaps during migration.</p>
+        <h4>What's Included</h4>
+        <div class="cap-grid">
+          <div class="cap-item"><div class="ci" style="background:#f3f0ff">📋</div><span>Regulatory reporting — MiFID II, Dodd-Frank, EMIR, SEC/FINRA</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🛡️</div><span>AML/KYC automation — identity verification, risk scoring, SAR</span></div>
+          <div class="cap-item"><div class="ci" style="background:#f3f0ff">🔍</div><span>Trade surveillance — pattern detection, alert triage, investigation</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📊</div><span>Best execution — TCA analysis, venue selection, reporting</span></div>
+          <div class="cap-item"><div class="ci" style="background:#f3f0ff">🏛️</div><span>Sanctions screening — real-time list matching, fuzzy logic, PEP</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">📡</div><span>Real-time alerting — ML-scored alerts with investigation workflows</span></div>
+          <div class="cap-item"><div class="ci" style="background:#f3f0ff">📝</div><span>Audit trail — immutable logs, lineage tracking, retention policies</span></div>
+          <div class="cap-item"><div class="ci" style="background:var(--accent-l)">🤖</div><span>Compliance AI agents — automated investigation and reporting</span></div>
+        </div>
+        <div class="m-tags"><span class="m-tag">MiFID II</span><span class="m-tag">Dodd-Frank</span><span class="m-tag">EMIR</span><span class="m-tag">SEC/FINRA</span><span class="m-tag">AML/KYC</span><span class="m-tag">GDPR</span><span class="m-tag">SOX</span><span class="m-tag">Basel III</span></div>
+        <div class="sol-stats">
+          <div class="sol-stat"><div class="ssn gt">Zero</div><div class="ssl">Regulatory Gaps</div></div>
+          <div class="sol-stat"><div class="ssn gt">100%</div><div class="ssl">Audit Preserved</div></div>
+          <div class="sol-stat"><div class="ssn gt">70%</div><div class="ssl">Fewer False Positives</div></div>
+        </div>
+      </div>
+      <div class="sol-visual v-cool">
+        <div class="res-grid">
+          <div class="res-item"><div class="ri" style="background:var(--emerald-l)">✅</div><div><div>MiFID II Reporting</div><p>Fully compliant — real-time pipeline</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--emerald-l)">✅</div><div><div>AML/KYC Automated</div><p>ML-scored risk, SAR generation</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--emerald-l)">✅</div><div><div>Trade Surveillance Live</div><p>Pattern detection + alert triage</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--emerald-l)">✅</div><div><div>Sanctions Screening</div><p>Real-time list matching active</p></div></div>
+          <div class="res-item"><div class="ri" style="background:var(--accent-l)">📋</div><div><div>Full Audit Trail</div><p>Immutable logs + data lineage</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="pg-cta">
+  <div class="pg-cta-bg"></div>
+  <div class="ctr" style="position:relative;z-index:1">
+    <div class="rv">
+      <span class="tag">Ready to Prove It?</span>
+      <h2>Start with a POC. <span class="gt">Then transform.</span></h2>
+      <p>Tell us about your modernization challenge. We'll embed with your team and build a proof-of-concept that shows real ROI — before you commit to the full transformation.</p>
+      <a href="contact.html" class="bp">Let's Talk <svg width="17" height="17" fill="none" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="ctr">
+    <div class="foot-g">
+      <div class="foot-brand">
+        <div class="flogo"><div class="mark"><span class="antenna"></span><span class="antenna-tip"></span><span class="droid-face"><span class="eye"></span><span class="eye"></span></span><span class="mouth"></span></div><div class="wm">Drooid.ai</div></div>
+        <p>AI-powered development studio — build end-to-end with artificial intelligence.</p>
+      </div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="services.html#websites">AI Websites</a></li><li><a href="services.html#mobile">Mobile Apps</a></li><li><a href="services.html#enterprise">Web Applications</a></li><li><a href="services.html#design">Screen Design</a></li><li><a href="services.html#content">Content Generation</a></li><li><a href="services.html#agents">Agentic AI</a></li></ul></div>
+      <div class="foot-col"><h4>Industries</h4><ul><li><a href="industries.html#sales">Sales Command Center</a></li><li><a href="industries.html#capital-markets">Capital Markets</a></li><li><a href="industries.html#staffing">Staffing & Agency</a></li><li><a href="industries.html#hr">Human Resources</a></li><li><a href="industries.html#legal">Legal</a></li><li><a href="industries.html#transportation">Transportation</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#client">Clients</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-btm">
+      <span>&copy; 2026 Drooid.ai. All rights reserved.</span>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+const nb=document.getElementById("navbar");
+window.addEventListener("scroll",()=>nb.classList.toggle("scrolled",scrollY>40));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("vis")}),{threshold:0.05,rootMargin:"0px 0px -20px 0px"});
+document.querySelectorAll(".rv").forEach(el=>obs.observe(el));
+setTimeout(()=>{document.querySelectorAll(".rv:not(.vis)").forEach(el=>el.classList.add("vis"))},1500);
+
+/* ═══ FLOATING PARTICLES ═══ */
+(function(){
+const container=document.querySelector('.page-particles');
+if(!container)return;
+const colors=['rgba(67,56,202,','rgba(13,148,136,'];
+function spawn(){
+  const p=document.createElement('div');p.className='particle';
+  const size=Math.random()*4+2;
+  const color=colors[Math.floor(Math.random()*2)];
+  p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;background:${color}${Math.random()*.3+.1});animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*5}s`;
+  container.appendChild(p);
+  setTimeout(()=>p.remove(),(Math.random()*15+10)*1000);
+}
+for(let i=0;i<20;i++)setTimeout(spawn,i*500);
+setInterval(spawn,2000);
+})();
+
+/* ═══ MAGNETIC 3D CARD TILT ═══ */
+(function(){
+document.querySelectorAll('.card,.feat-item,.uc-item,.built-item').forEach(card=>{
+  card.style.transition='transform .4s cubic-bezier(.22,.68,0,1)';
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(800px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform=''});
+});
+})();
+
+/* ═══ SCROLL-TRIGGERED SECTION GLOW ═══ */
+(function(){
+const glowObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.style.setProperty('--glow-opacity','1');
+    else e.target.style.setProperty('--glow-opacity','0');
+  });
+},{threshold:0.1});
+document.querySelectorAll('.svc-section,.ind-section,.sol-section').forEach(s=>glowObs.observe(s));
+})();
+
+/* ═══ THEME TOGGLE ═══ */
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const html=document.documentElement;
+  const sunIcon=toggle.querySelector('.sun-icon');
+  const moonIcon=toggle.querySelector('.moon-icon');
+  function setTheme(theme){
+    html.setAttribute('data-theme',theme);
+    localStorage.setItem('drooid-theme',theme);
+    if(theme==='dark'){sunIcon.style.display='none';moonIcon.style.display='block'}
+    else{sunIcon.style.display='block';moonIcon.style.display='none'}
+  }
+  const saved=localStorage.getItem('drooid-theme')||
+    (window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  setTheme(saved);
+  toggle.addEventListener('click',()=>{
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+})();
+
+</script>
+</body>
+</html>
