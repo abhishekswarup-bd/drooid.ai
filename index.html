@@ -455,7 +455,16 @@ nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,
 /* ══════════════════════════════════════════════
    CLIENT SPOTLIGHT
    ══════════════════════════════════════════════ */
-.spot-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:56px;display:flex;align-items:center;gap:56px;box-shadow:0 4px 20px rgba(0,0,0,.035)}
+.spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.spot-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:44px;display:flex;flex-direction:column;gap:28px;box-shadow:0 4px 20px rgba(0,0,0,.035)}
+.cl-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#1A5EA8,#2980d9);display:flex;align-items:center;justify-content:center;color:#F5C842;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(26,94,168,.28)}
+.mock-chat{display:flex;flex-direction:column;gap:10px;width:100%;padding:8px 4px}
+.mock-bubble{border-radius:10px;height:11px}
+.mock-bubble.user{background:linear-gradient(90deg,#4338ca,#6366f1);margin-left:auto;width:55%}
+.mock-bubble.ai{width:80%;background:var(--border)}
+.mock-chat-top{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.mock-chat-top .mock-av{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#1A5EA8,#2980d9)}
+.mock-chat-top .mock-label{height:8px;width:60px;border-radius:4px;background:var(--border)}
 .spot-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:12px;margin-bottom:22px}
 .etf-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#0d9488,#14b8a6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(13,148,136,.28)}
 .spot-card blockquote{font-size:18px;line-height:1.72;color:var(--text);font-style:italic;margin-bottom:22px;padding-left:22px;border-left:3px solid var(--accent)}
@@ -529,6 +538,7 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
   .proc-steps::before{display:none}
   .ls-split,.mod-split{grid-template-columns:1fr}
   .cm-feat{flex-direction:column;gap:22px}
+  .spot-grid{grid-template-columns:1fr}
   .spot-card{flex-direction:column}
   .spot-visual{width:100%}
   .foot-g{grid-template-columns:1fr 1fr;gap:36px}
@@ -586,6 +596,8 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
 [data-theme="dark"] .bs{background:rgba(19,19,31,.85);color:var(--ink);border-color:var(--border)}
 [data-theme="dark"] .spot-card{background:var(--card);border-color:var(--border)}
 [data-theme="dark"] .spot-visual{background:linear-gradient(145deg,rgba(67,56,202,.08),rgba(13,148,136,.06));border-color:var(--border)}
+[data-theme="dark"] .mock-bubble.ai{background:var(--border)}
+[data-theme="dark"] .mock-chat-top .mock-label{background:var(--border)}
 [data-theme="dark"] .mock-dash{background:var(--card)}
 [data-theme="dark"] .mock-cell{background:rgba(255,255,255,.04)}
 [data-theme="dark"] .mock-si{background:rgba(255,255,255,.06)}
@@ -1093,25 +1105,61 @@ PROCEDURE DIVISION.
 <section class="sec" id="client">
   <div class="ctr">
     <div class="rv" style="text-align:center;margin-bottom:56px"><span class="tag">Client Spotlight</span><h2 class="stitle">Trusted by innovators</h2></div>
-    <div class="spot-card rv">
-      <div style="flex:1">
-        <div class="spot-logo"><div class="etf-mark">ETF</div>ETF Junction</div>
-        <blockquote>"Drooid.ai built our entire capital markets intelligence platform — from the AI Copilot to ETF X-Ray and Earnings Edge. What would have taken a traditional team months was delivered in weeks, with institutional-grade quality."</blockquote>
-        <div class="spot-stats">
-          <div><div class="sn gt">5</div><div class="sl">AI Analysis Engines</div></div>
-          <div><div class="sn gt">Real-time</div><div class="sl">Portfolio Intelligence</div></div>
-          <div><div class="sn gt">Weeks</div><div class="sl">Not Months to Deliver</div></div>
+    <div class="spot-grid">
+
+      <!-- ETF Junction -->
+      <div class="spot-card rv">
+        <div>
+          <div class="spot-logo"><div class="etf-mark">ETF</div>ETF Junction</div>
+          <span class="tag" style="margin-bottom:14px;display:inline-block">Capital Markets · Fintech</span>
+          <blockquote>"Drooid.ai built our entire capital markets intelligence platform — from the AI Copilot to ETF X-Ray and Earnings Edge. What would have taken months was delivered in weeks, with institutional-grade quality."</blockquote>
+          <div class="spot-stats" style="margin-top:24px">
+            <div><div class="sn gt">5</div><div class="sl">AI Analysis Engines</div></div>
+            <div><div class="sn gt">Real-time</div><div class="sl">Portfolio Intelligence</div></div>
+            <div><div class="sn gt">Weeks</div><div class="sl">Not Months</div></div>
+          </div>
         </div>
-      </div>
-      <div class="spot-visual">
-        <div class="mock-dash">
-          <div class="mock-top"><span class="mock-d"></span><span class="mock-d"></span><span class="mock-d"></span></div>
-          <div class="mock-body">
-            <div class="mock-side"><div class="mock-si" style="width:100%"></div><div class="mock-si" style="width:70%"></div><div class="mock-si" style="width:85%"></div><div class="mock-si" style="width:60%"></div><div class="mock-si" style="width:90%"></div></div>
-            <div class="mock-main"><div class="mock-chart"></div><div class="mock-row"><div class="mock-cell"></div><div class="mock-cell"></div></div><div class="mock-row"><div class="mock-cell"></div><div class="mock-cell"></div><div class="mock-cell"></div></div></div>
+        <div class="spot-visual">
+          <div class="mock-dash">
+            <div class="mock-top"><span class="mock-d"></span><span class="mock-d"></span><span class="mock-d"></span></div>
+            <div class="mock-body">
+              <div class="mock-side"><div class="mock-si" style="width:100%"></div><div class="mock-si" style="width:70%"></div><div class="mock-si" style="width:85%"></div><div class="mock-si" style="width:60%"></div><div class="mock-si" style="width:90%"></div></div>
+              <div class="mock-main"><div class="mock-chart"></div><div class="mock-row"><div class="mock-cell"></div><div class="mock-cell"></div></div><div class="mock-row"><div class="mock-cell"></div><div class="mock-cell"></div><div class="mock-cell"></div></div></div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- CL Agent — Career Launcher -->
+      <div class="spot-card rv">
+        <div>
+          <div class="spot-logo"><div class="cl-mark">CL</div>Career Launcher</div>
+          <span class="tag" style="margin-bottom:14px;display:inline-block">EdTech · AI Agent</span>
+          <blockquote>"Drooid.ai delivered a fully browser-based AI agent for our content production team — login, chat, scheduling, and live document generation, all in a single zero-backend file. It transformed how we produce exam prep material."</blockquote>
+          <div class="spot-stats" style="margin-top:24px">
+            <div><div class="sn" style="color:#1A5EA8">60KB</div><div class="sl">Zero-Backend App</div></div>
+            <div><div class="sn" style="color:#1A5EA8">4</div><div class="sl">LLM Providers</div></div>
+            <div><div class="sn" style="color:#1A5EA8">Live</div><div class="sl">.docx & .pptx Output</div></div>
+          </div>
+        </div>
+        <div class="spot-visual" style="background:linear-gradient(145deg,#eef4fb,#fffbea)">
+          <div class="mock-dash" style="width:88%">
+            <div class="mock-top" style="background:#1A5EA8"><span class="mock-d" style="background:rgba(245,200,66,.6)"></span><span class="mock-d" style="background:rgba(245,200,66,.4)"></span><span class="mock-d" style="background:rgba(245,200,66,.2)"></span></div>
+            <div class="mock-body" style="padding:12px">
+              <div class="mock-chat">
+                <div class="mock-chat-top"><div class="mock-av"></div><div class="mock-label"></div></div>
+                <div class="mock-bubble ai"></div>
+                <div class="mock-bubble ai" style="width:55%"></div>
+                <div class="mock-bubble user"></div>
+                <div class="mock-bubble ai"></div>
+                <div class="mock-bubble ai" style="width:65%"></div>
+                <div class="mock-bubble user" style="width:40%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
