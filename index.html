@@ -455,9 +455,14 @@ nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,
 /* ══════════════════════════════════════════════
    CLIENT SPOTLIGHT
    ══════════════════════════════════════════════ */
-.spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.spot-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:44px;display:flex;flex-direction:column;gap:28px;box-shadow:0 4px 20px rgba(0,0,0,.035)}
+.spot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.spot-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:24px;box-shadow:0 4px 20px rgba(0,0,0,.035)}
 .cl-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#1A5EA8,#2980d9);display:flex;align-items:center;justify-content:center;color:#F5C842;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(26,94,168,.28)}
+.cp-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#a855f7);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.mock-candles{display:flex;align-items:flex-end;gap:3px;height:52px;padding:0 2px}
+.mock-candle{flex:1;border-radius:2px 2px 0 0}
+.mock-orow{display:flex;gap:3px;margin-top:5px}
+.mock-ocell{flex:1;height:7px;border-radius:3px;background:rgba(255,255,255,.15)}
 .mock-chat{display:flex;flex-direction:column;gap:10px;width:100%;padding:8px 4px}
 .mock-bubble{border-radius:10px;height:11px}
 .mock-bubble.user{background:linear-gradient(90deg,#4338ca,#6366f1);margin-left:auto;width:55%}
@@ -467,7 +472,7 @@ nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,
 .mock-chat-top .mock-label{height:8px;width:60px;border-radius:4px;background:var(--border)}
 .spot-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:12px;margin-bottom:22px}
 .etf-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#0d9488,#14b8a6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(13,148,136,.28)}
-.spot-card blockquote{font-size:18px;line-height:1.72;color:var(--text);font-style:italic;margin-bottom:22px;padding-left:22px;border-left:3px solid var(--accent)}
+.spot-card blockquote{font-size:15px;line-height:1.72;color:var(--text);font-style:italic;margin-bottom:18px;padding-left:18px;border-left:3px solid var(--accent)}
 .spot-stats{display:flex;gap:36px;margin-top:28px}
 .spot-stats .sn{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800}
 .spot-stats .sl{font-size:12px;color:var(--muted);margin-top:3px}
@@ -540,6 +545,7 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
   .cm-feat{flex-direction:column;gap:22px}
   .spot-grid{grid-template-columns:1fr}
   .spot-card{flex-direction:column}
+  @media(min-width:601px) and (max-width:1024px){.spot-grid{grid-template-columns:1fr 1fr}}
   .spot-visual{width:100%}
   .foot-g{grid-template-columns:1fr 1fr;gap:36px}
   .ls-banner .g4{grid-template-columns:repeat(2,1fr)}
@@ -1136,7 +1142,7 @@ PROCEDURE DIVISION.
           <div class="spot-logo"><div class="cl-mark">CL</div>Career Launcher</div>
           <span class="tag" style="margin-bottom:14px;display:inline-block">EdTech · AI Agent</span>
           <blockquote>"Drooid.ai delivered a fully browser-based AI agent for our content production team — login, chat, scheduling, and live document generation, all in a single zero-backend file. It transformed how we produce exam prep material."</blockquote>
-          <div class="spot-stats" style="margin-top:24px">
+          <div class="spot-stats" style="margin-top:20px">
             <div><div class="sn" style="color:#1A5EA8">60KB</div><div class="sl">Zero-Backend App</div></div>
             <div><div class="sn" style="color:#1A5EA8">4</div><div class="sl">LLM Providers</div></div>
             <div><div class="sn" style="color:#1A5EA8">Live</div><div class="sl">.docx & .pptx Output</div></div>
@@ -1155,6 +1161,41 @@ PROCEDURE DIVISION.
                 <div class="mock-bubble ai" style="width:65%"></div>
                 <div class="mock-bubble user" style="width:40%"></div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CoachingPro.ai -->
+      <div class="spot-card rv">
+        <div>
+          <div class="spot-logo"><div class="cp-mark">CP</div>CoachingPro.ai</div>
+          <span class="tag" style="margin-bottom:14px;display:inline-block">Fintech · EdTech · Mobile</span>
+          <blockquote>"A full-stack AI options trading platform — website, Flutter mobile app, iOS, Android, and an interactive flipbook — all designed and deployed by Drooid.ai. Real-time market data, live coaching, and 172 learning modules in one product."</blockquote>
+          <div class="spot-stats" style="margin-top:20px">
+            <div><div class="sn" style="color:#7C3AED">11</div><div class="sl">App Screens</div></div>
+            <div><div class="sn" style="color:#7C3AED">172</div><div class="sl">Learning Modules</div></div>
+            <div><div class="sn" style="color:#7C3AED">iOS &amp; Android</div><div class="sl">Live on App Stores</div></div>
+          </div>
+        </div>
+        <div class="spot-visual" style="background:linear-gradient(145deg,#f5f0ff,#fdf4ff)">
+          <div class="mock-dash" style="width:88%">
+            <div class="mock-top" style="background:#7C3AED"><span class="mock-d" style="background:rgba(255,255,255,.5)"></span><span class="mock-d" style="background:rgba(255,255,255,.35)"></span><span class="mock-d" style="background:rgba(255,255,255,.2)"></span></div>
+            <div class="mock-body" style="padding:10px;background:#1a0a2e">
+              <div class="mock-candles">
+                <div class="mock-candle" style="height:28%;background:#0d9488"></div>
+                <div class="mock-candle" style="height:55%;background:#0d9488"></div>
+                <div class="mock-candle" style="height:40%;background:#ef4444"></div>
+                <div class="mock-candle" style="height:70%;background:#0d9488"></div>
+                <div class="mock-candle" style="height:45%;background:#ef4444"></div>
+                <div class="mock-candle" style="height:80%;background:#0d9488"></div>
+                <div class="mock-candle" style="height:60%;background:#0d9488"></div>
+                <div class="mock-candle" style="height:50%;background:#ef4444"></div>
+                <div class="mock-candle" style="height:90%;background:#0d9488"></div>
+              </div>
+              <div class="mock-orow"><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.5)"></div><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.3)"></div><div class="mock-ocell"></div></div>
+              <div class="mock-orow"><div class="mock-ocell"></div><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.5)"></div><div class="mock-ocell"></div><div class="mock-ocell"></div></div>
+              <div class="mock-orow"><div class="mock-ocell" style="background:rgba(168,85,247,.3)"></div><div class="mock-ocell"></div><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.5)"></div><div class="mock-ocell"></div></div>
             </div>
           </div>
         </div>
@@ -1187,6 +1228,8 @@ PROCEDURE DIVISION.
       <span class="tp"><span class="td" style="background:#05c46b"></span>Vercel</span>
       <span class="tp"><span class="td" style="background:#7c3aed"></span>LangChain</span>
       <span class="tp"><span class="td" style="background:#dc382d"></span>Redis</span>
+      <span class="tp"><span class="td" style="background:#3ECF8E"></span>Supabase</span>
+      <span class="tp"><span class="td" style="background:#635BFF"></span>Stripe</span>
     </div>
   </div>
 </section>
