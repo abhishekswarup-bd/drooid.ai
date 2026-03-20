@@ -455,10 +455,11 @@ nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,
 /* ══════════════════════════════════════════════
    CLIENT SPOTLIGHT
    ══════════════════════════════════════════════ */
-.spot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.spot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .spot-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:24px;box-shadow:0 4px 20px rgba(0,0,0,.035)}
 .cl-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#1A5EA8,#2980d9);display:flex;align-items:center;justify-content:center;color:#F5C842;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(26,94,168,.28)}
 .cp-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#a855f7);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.dp-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#0c1220,#1e3a5f);display:flex;align-items:center;justify-content:center;color:#4A90D9;font-size:14px;font-weight:800;box-shadow:0 4px 12px rgba(74,144,217,.3)}
 .mock-candles{display:flex;align-items:flex-end;gap:3px;height:52px;padding:0 2px}
 .mock-candle{flex:1;border-radius:2px 2px 0 0}
 .mock-orow{display:flex;gap:3px;margin-top:5px}
@@ -476,7 +477,7 @@ nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,
 .spot-stats{display:flex;gap:36px;margin-top:28px}
 .spot-stats .sn{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800}
 .spot-stats .sl{font-size:12px;color:var(--muted);margin-top:3px}
-.spot-visual{width:340px;height:260px;border-radius:18px;flex-shrink:0;background:linear-gradient(145deg,#f0f4ff,#e8fcff);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.spot-visual{width:100%;height:240px;border-radius:18px;flex-shrink:0;background:linear-gradient(145deg,#f0f4ff,#e8fcff);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .mock-dash{width:260px;height:180px;background:#fff;border-radius:11px;box-shadow:0 8px 28px rgba(0,0,0,.07);overflow:hidden}
 .mock-top{height:28px;background:var(--ink);display:flex;align-items:center;gap:5px;padding:0 11px}
 .mock-d{width:6px;height:6px;border-radius:50%;background:#333}
@@ -1142,21 +1143,8 @@ PROCEDURE DIVISION.
             <div><div class="sn" style="color:#1A5EA8">Live</div><div class="sl">.docx & .pptx Output</div></div>
           </div>
         </div>
-        <div class="spot-visual" style="background:linear-gradient(145deg,#eef4fb,#fffbea)">
-          <div class="mock-dash" style="width:88%">
-            <div class="mock-top" style="background:#1A5EA8"><span class="mock-d" style="background:rgba(245,200,66,.6)"></span><span class="mock-d" style="background:rgba(245,200,66,.4)"></span><span class="mock-d" style="background:rgba(245,200,66,.2)"></span></div>
-            <div class="mock-body" style="padding:12px">
-              <div class="mock-chat">
-                <div class="mock-chat-top"><div class="mock-av"></div><div class="mock-label"></div></div>
-                <div class="mock-bubble ai"></div>
-                <div class="mock-bubble ai" style="width:55%"></div>
-                <div class="mock-bubble user"></div>
-                <div class="mock-bubble ai"></div>
-                <div class="mock-bubble ai" style="width:65%"></div>
-                <div class="mock-bubble user" style="width:40%"></div>
-              </div>
-            </div>
-          </div>
+        <div class="spot-visual" style="padding:0;overflow:hidden;background:none">
+          <img src="clagent-screenshot.png" alt="CL Agent screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:18px;display:block">
         </div>
       </div>
 
@@ -1172,26 +1160,25 @@ PROCEDURE DIVISION.
             <div><div class="sn" style="color:#7C3AED">iOS &amp; Android</div><div class="sl">Live on App Stores</div></div>
           </div>
         </div>
-        <div class="spot-visual" style="background:linear-gradient(145deg,#f5f0ff,#fdf4ff)">
-          <div class="mock-dash" style="width:88%">
-            <div class="mock-top" style="background:#7C3AED"><span class="mock-d" style="background:rgba(255,255,255,.5)"></span><span class="mock-d" style="background:rgba(255,255,255,.35)"></span><span class="mock-d" style="background:rgba(255,255,255,.2)"></span></div>
-            <div class="mock-body" style="padding:10px;background:#1a0a2e">
-              <div class="mock-candles">
-                <div class="mock-candle" style="height:28%;background:#0d9488"></div>
-                <div class="mock-candle" style="height:55%;background:#0d9488"></div>
-                <div class="mock-candle" style="height:40%;background:#ef4444"></div>
-                <div class="mock-candle" style="height:70%;background:#0d9488"></div>
-                <div class="mock-candle" style="height:45%;background:#ef4444"></div>
-                <div class="mock-candle" style="height:80%;background:#0d9488"></div>
-                <div class="mock-candle" style="height:60%;background:#0d9488"></div>
-                <div class="mock-candle" style="height:50%;background:#ef4444"></div>
-                <div class="mock-candle" style="height:90%;background:#0d9488"></div>
-              </div>
-              <div class="mock-orow"><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.5)"></div><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.3)"></div><div class="mock-ocell"></div></div>
-              <div class="mock-orow"><div class="mock-ocell"></div><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.5)"></div><div class="mock-ocell"></div><div class="mock-ocell"></div></div>
-              <div class="mock-orow"><div class="mock-ocell" style="background:rgba(168,85,247,.3)"></div><div class="mock-ocell"></div><div class="mock-ocell"></div><div class="mock-ocell" style="background:rgba(168,85,247,.5)"></div><div class="mock-ocell"></div></div>
-            </div>
+        <div class="spot-visual" style="padding:0;overflow:hidden;background:none">
+          <img src="coachingpro-screenshot.png" alt="CoachingPro.ai screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:18px;display:block">
+        </div>
+      </div>
+
+      <!-- Dental Pro -->
+      <div class="spot-card rv">
+        <div>
+          <div class="spot-logo"><div class="dp-mark">🦷</div>Dental Pro</div>
+          <span class="tag" style="margin-bottom:14px;display:inline-block">HealthTech · AI SaaS · Patient Education</span>
+          <blockquote>"Drooid.ai built our entire dental patient education platform as a zero-backend, single-file SaaS app — 50 conditions, 20+ auto-detected languages, AI explanations powered by Claude, and a freemium model. It replaced $400/yr legacy tools overnight."</blockquote>
+          <div class="spot-stats" style="margin-top:20px">
+            <div><div class="sn" style="color:#4A90D9">847+</div><div class="sl">Dental Practices</div></div>
+            <div><div class="sn" style="color:#4A90D9">20+</div><div class="sl">Auto-Detected Languages</div></div>
+            <div><div class="sn" style="color:#4A90D9">35%</div><div class="sl">Case Acceptance Lift</div></div>
           </div>
+        </div>
+        <div class="spot-visual" style="padding:0;overflow:hidden;background:none">
+          <img src="dentalpro-screenshot.png" alt="Dental Pro patient education platform screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:18px;display:block">
         </div>
       </div>
 
