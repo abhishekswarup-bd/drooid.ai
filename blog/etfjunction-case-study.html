@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Built an AI Capital Markets Intelligence Platform for ETF Junction in Weeks, Not Months | Drooid Blog</title>
+  <meta name="description" content="ETF Junction needed sophisticated AI analytics tools for financial advisors. Drooid embedded with their team and delivered an institutional-grade capital markets platform in weeks.">
+  <meta name="keywords" content="AI capital markets platform, ETF analysis, financial analytics, AI copilot, proof-of-concept, fintech development, institutional AI tools">
+  <meta name="author" content="Drooid Team">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://drooid.org/blog/etfjunction-case-study">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://drooid.org/blog/etfjunction-case-study">
+  <meta property="og:title" content="How We Built an AI Capital Markets Intelligence Platform for ETF Junction in Weeks, Not Months">
+  <meta property="og:description" content="ETF Junction needed sophisticated AI analytics tools for financial advisors. Drooid embedded with their team and delivered an institutional-grade capital markets platform in weeks.">
+  <meta property="og:image" content="https://drooid.org/og-image.png">
+  <meta property="og:site_name" content="Drooid">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-03-22T00:00:00-05:00">
+  <meta property="article:author" content="Drooid Team">
+  <meta property="article:section" content="Case Study">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How We Built an AI Capital Markets Intelligence Platform for ETF Junction in Weeks, Not Months">
+  <meta name="twitter:description" content="ETF Junction needed sophisticated AI analytics tools for financial advisors. Drooid embedded with their team and delivered an institutional-grade capital markets platform in weeks.">
+  <meta name="twitter:image" content="https://drooid.org/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How We Built an AI Capital Markets Intelligence Platform for ETF Junction in Weeks, Not Months",
+    "description": "ETF Junction needed sophisticated AI analytics tools for financial advisors. Drooid embedded with their team and delivered an institutional-grade capital markets platform in weeks.",
+    "author": { "@type": "Organization", "name": "Drooid", "url": "https://drooid.org" },
+    "publisher": { "@type": "Organization", "name": "Drooid", "logo": { "@type": "ImageObject", "url": "https://drooid.org/logo.png" } },
+    "datePublished": "2026-03-22",
+    "dateModified": "2026-03-22",
+    "url": "https://drooid.org/blog/etfjunction-case-study",
+    "image": "https://drooid.org/og-image.png",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://drooid.org/blog/etfjunction-case-study" },
+    "keywords": "AI capital markets platform, ETF analysis, financial analytics, AI copilot, proof-of-concept, fintech development, institutional AI tools",
+    "articleSection": "Case Study",
+    "isPartOf": { "@type": "Blog", "name": "Drooid Blog", "url": "https://drooid.org/blog" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://drooid.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://drooid.org/blog" },
+      { "@type": "ListItem", "position": 3, "name": "How We Built an AI Capital Markets Intelligence Platform for ETF Junction in Weeks, Not Months", "item": "https://drooid.org/blog/etfjunction-case-study" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://drooid.org/blog/etfjunction-case-study",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".post-title", ".post-intro", "h2:first-of-type"]
+    }
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc; line-height: 1.7; }
+    nav { background: #fff; border-bottom: 1px solid #e2e4ea; padding: 0 24px; height: 60px; display: flex; align-items: center; }
+    .nav-logo { font-weight: 800; font-size: 20px; color: #4338ca; text-decoration: none; }
+    .nav-link { margin-left: auto; color: #4338ca; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .post-wrap { max-width: 760px; margin: 60px auto; padding: 0 24px 80px; }
+    .post-section { font-size: 13px; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+    h1.post-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #0f1117; margin-bottom: 20px; }
+    .post-meta { font-size: 13px; color: #888; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e2e4ea; }
+    p.post-intro { font-size: 1.1rem; color: #3a3a4a; margin-bottom: 28px; font-weight: 500; }
+    h2 { font-size: 1.35rem; font-weight: 700; color: #0f1117; margin: 40px 0 14px; }
+    p { color: #4b5060; margin-bottom: 18px; }
+    ul { color: #4b5060; margin: 0 0 18px 24px; }
+    ul li { margin-bottom: 8px; }
+    .cta-box { background: linear-gradient(135deg, #4338ca, #0d9488); border-radius: 16px; padding: 36px; margin-top: 56px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: 20px; }
+    .cta-btn { display: inline-block; background: #fff; color: #4338ca; font-weight: 700; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://drooid.org" class="nav-logo">Drooid</a>
+    <a href="https://drooid.org/blog" class="nav-link">← All Posts</a>
+  </nav>
+  <div class="post-wrap">
+    <div class="post-section">Case Study</div>
+    <h1 class="post-title">How We Built an AI Capital Markets Intelligence Platform for ETF Junction in Weeks, Not Months</h1>
+    <div class="post-meta">By Drooid Team &nbsp;·&nbsp; March 22, 2026 &nbsp;·&nbsp; 6 min read</div>
+    <p class="post-intro">ETF Junction needed a sophisticated AI capital markets platform to help financial advisors make smarter investment decisions. Instead of a six-month consulting engagement and half-million-dollar price tag, they partnered with Drooid as an <a href="https://drooid.org">AI development studio</a> to build an institutional-grade solution in weeks.</p>
+
+    <h2>The Challenge: Financial Advisors Need Better Tools</h2>
+    <p>ETF Junction serves financial advisors and wealth managers who need rapid, intelligent analysis of exchange-traded funds and portfolio compositions. Their advisors were juggling multiple data sources, spending hours on manual research, and lacking the kind of natural language intelligence that could accelerate decision-making. They needed a platform that could scale with their user base without the months of planning and the staggering consulting bills that typically accompany fintech development.</p>
+    <p>The traditional path would have meant hiring a large consulting firm, assembling a tiger team, and waiting months to see a working prototype. ETF Junction understood they needed a different approach—they wanted to validate the idea fast with a proof-of-concept before committing significant resources to scaling.</p>
+
+    <h2>Our Approach: Proof-of-Concept First with AI Capital Markets Tools</h2>
+    <p>Drooid embedded directly with ETF Junction's team to understand exactly which use cases would deliver the most immediate value. We didn't start with a lengthy architecture document or a six-month roadmap. We identified the core workflows that would move the needle for their advisors and built them first, creating an AI capital markets platform focused on real-world impact.</p>
+    <p>The result: a full-featured platform delivered in weeks, not months. The solution includes five distinct analysis engines working in concert, each powered by state-of-the-art AI models:</p>
+    <ul>
+      <li><strong>AI Copilot:</strong> Natural language queries that understand financial context and return actionable insights instantly</li>
+      <li><strong>ETF X-Ray:</strong> Deep portfolio analysis showing factor exposure, sector concentration, and hidden risks</li>
+      <li><strong>Earnings Edge:</strong> Real-time earnings intelligence that surfaces opportunities before the crowd</li>
+      <li><strong>Portfolio Risk Engine:</strong> Quantitative risk analysis with stress testing and scenario modeling</li>
+      <li><strong>Factor Exposure Analysis:</strong> Understand exactly what you own and how it moves relative to market factors</li>
+    </ul>
+
+    <h2>Institutional-Grade Quality Without the Institutional Price Tag</h2>
+    <p>What makes this case study remarkable is not just the speed—it's the quality. The platform delivers institutional-grade analytics that rival tools costing $50K+ per year, with the responsiveness and user experience that typical fintech platforms lack. Advisors can ask natural language questions like "Show me all my equity ETFs with tech exposure above 40%" and receive answers with full sourcing and confidence metrics.</p>
+    <p>Every feature was built with real market data and integrated with live pricing feeds. The AI Copilot understands financial terminology, contextualizes user queries within their specific portfolios, and explains its reasoning. There were no shortcuts—this is production-ready software delivering institutional-quality results.</p>
+
+    <h2>Why Speed Matters in Capital Markets</h2>
+    <p>In capital markets, timing is everything. Being two months faster to market means capturing advisors and assets before competitors can respond. By choosing a proof-of-concept-first approach and embedding with a dedicated AI development studio, ETF Junction reduced their time to MVP from six months to six weeks. That's not just a timeline win—it's a competitive advantage that directly impacts market share.</p>
+    <p>More importantly, the team learned what actually works before building out infrastructure to support features that might not matter. The platform validated demand, user engagement patterns, and feature priorities in real time. Now they can scale with confidence, knowing exactly which capabilities their users value most and which workflows drive the greatest return on investment.</p>
+
+    <h2>The Takeaway</h2>
+    <p>Building an AI capital markets platform doesn't require $500K consulting contracts or waiting months for a working prototype. It requires embedding with teams that understand both AI and your specific domain, focusing on the workflows that matter most, and proving the concept works before scaling. ETF Junction proved that approach can deliver institutional-quality results in weeks, without the traditional consulting overhead.</p>
+
+    <div class="cta-box">
+      <h3>Ready to prove AI works for your business?</h3>
+      <p>We embed with your team, build a focused POC, and show real ROI — before you commit to scaling.</p>
+      <a href="mailto:contact@drooid.org" class="cta-btn">Get in touch →</a>
+    </div>
+  </div>
+</body>
+</html>

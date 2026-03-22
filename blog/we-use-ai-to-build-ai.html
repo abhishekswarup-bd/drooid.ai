@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We Use AI to Build AI — What That Actually Looks Like in Practice | Drooid Blog</title>
+  <meta name="description" content="How Drooid uses Claude, GPT-4, Cursor, and other AI tools to build AI applications faster. Learn about our process, oversight, and how humans stay in control.">
+  <meta name="keywords" content="AI-powered development, Claude AI, GPT-4, Cursor IDE, AI code generation, AI development process, human oversight, AI applications">
+  <meta name="author" content="Drooid Team">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://drooid.org/blog/we-use-ai-to-build-ai">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://drooid.org/blog/we-use-ai-to-build-ai">
+  <meta property="og:title" content="We Use AI to Build AI — What That Actually Looks Like in Practice">
+  <meta property="og:description" content="How Drooid uses Claude, GPT-4, Cursor, and other AI tools to build AI applications faster. Learn about our process, oversight, and how humans stay in control.">
+  <meta property="og:image" content="https://drooid.org/og-image.png">
+  <meta property="og:site_name" content="Drooid">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-03-22T00:00:00-05:00">
+  <meta property="article:author" content="Drooid Team">
+  <meta property="article:section" content="Thought Leadership">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="We Use AI to Build AI — What That Actually Looks Like in Practice">
+  <meta name="twitter:description" content="How Drooid uses Claude, GPT-4, Cursor, and other AI tools to build AI applications faster. Learn about our process, oversight, and how humans stay in control.">
+  <meta name="twitter:image" content="https://drooid.org/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "We Use AI to Build AI — What That Actually Looks Like in Practice",
+    "description": "How Drooid uses Claude, GPT-4, Cursor, and other AI tools to build AI applications faster. Learn about our process, oversight, and how humans stay in control.",
+    "author": { "@type": "Organization", "name": "Drooid", "url": "https://drooid.org" },
+    "publisher": { "@type": "Organization", "name": "Drooid", "logo": { "@type": "ImageObject", "url": "https://drooid.org/logo.png" } },
+    "datePublished": "2026-03-22",
+    "dateModified": "2026-03-22",
+    "url": "https://drooid.org/blog/we-use-ai-to-build-ai",
+    "image": "https://drooid.org/og-image.png",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://drooid.org/blog/we-use-ai-to-build-ai" },
+    "keywords": "AI-powered development, Claude AI, GPT-4, Cursor IDE, AI code generation, AI development process, human oversight, AI applications",
+    "articleSection": "Thought Leadership",
+    "isPartOf": { "@type": "Blog", "name": "Drooid Blog", "url": "https://drooid.org/blog" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://drooid.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://drooid.org/blog" },
+      { "@type": "ListItem", "position": 3, "name": "We Use AI to Build AI", "item": "https://drooid.org/blog/we-use-ai-to-build-ai" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://drooid.org/blog/we-use-ai-to-build-ai",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".post-title", ".post-intro", "h2:first-of-type"]
+    }
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc; line-height: 1.7; }
+    nav { background: #fff; border-bottom: 1px solid #e2e4ea; padding: 0 24px; height: 60px; display: flex; align-items: center; }
+    .nav-logo { font-weight: 800; font-size: 20px; color: #4338ca; text-decoration: none; }
+    .nav-link { margin-left: auto; color: #4338ca; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .post-wrap { max-width: 760px; margin: 60px auto; padding: 0 24px 80px; }
+    .post-section { font-size: 13px; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+    h1.post-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #0f1117; margin-bottom: 20px; }
+    .post-meta { font-size: 13px; color: #888; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e2e4ea; }
+    p.post-intro { font-size: 1.1rem; color: #3a3a4a; margin-bottom: 28px; font-weight: 500; }
+    h2 { font-size: 1.35rem; font-weight: 700; color: #0f1117; margin: 40px 0 14px; }
+    p { color: #4b5060; margin-bottom: 18px; }
+    ul { color: #4b5060; margin: 0 0 18px 24px; }
+    ul li { margin-bottom: 8px; }
+    .cta-box { background: linear-gradient(135deg, #4338ca, #0d9488); border-radius: 16px; padding: 36px; margin-top: 56px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: 20px; }
+    .cta-btn { display: inline-block; background: #fff; color: #4338ca; font-weight: 700; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://drooid.org" class="nav-logo">Drooid</a>
+    <a href="https://drooid.org/blog" class="nav-link">← All Posts</a>
+  </nav>
+  <div class="post-wrap">
+    <div class="post-section">Thought Leadership</div>
+    <h1 class="post-title">We Use AI to Build AI — What That Actually Looks Like in Practice</h1>
+    <div class="post-meta">By Drooid Team &nbsp;·&nbsp; March 22, 2026 &nbsp;·&nbsp; 5 min read</div>
+    <p class="post-intro">When we say "we use AI to build AI," people sometimes get the wrong impression. They think we're pushing buttons on some fully automated system that generates products with no human involvement. That's not what this is. Using AI to build AI means using AI-powered tools to accelerate and amplify what our engineers do, while keeping humans in control of architecture, decision-making, and quality. Here's what the actual process looks like, which tools we use, and how oversight works.</p>
+
+    <h2>The Tools We Use Daily</h2>
+    <p>Our primary tools are Claude (for complex reasoning and code generation), GPT-4 (for specific use cases where it excels), and Cursor (an IDE built for AI-assisted development). We also use specialized AI tools for design, copy generation, and testing. None of these tools is a replacement for engineering. They're force multipliers.</p>
+    <p>Claude handles the heavy lifting on architecture decisions and complex feature engineering. GPT-4 is fast for certain types of code generation and quick iterations. Cursor lets our engineers write code 50-70% faster by handling boilerplate, suggesting completions, and generating test suites. These aren't magical. They're tools that work within a disciplined process.</p>
+
+    <h2>Code Generation and How We Use It</h2>
+    <p>When we need to build a feature or fix a bug, an engineer writes a clear specification or describes the problem. An AI tool generates code. The engineer reviews the generated code, tests it, refactors it, integrates it into the larger system, and takes ownership of it. The AI doesn't own anything. The engineer does.</p>
+    <p>This works because our engineers understand the systems they're working on. They can spot when AI-generated code makes sense and when it misses context. They know what tests are necessary. They understand the tradeoffs. We've found that when engineers work this way—using AI as a productivity tool rather than a replacement—code quality actually improves because engineers spend more time on architecture and less time on boilerplate.</p>
+
+    <h2>UI and Design Generation</h2>
+    <p>Frontend development is where AI tools shine. We describe the interface we want, and tools like Claude can generate React components, HTML/CSS, and even interactive prototypes. A designer or engineer then refines it, tests it, adjusts for actual product needs.</p>
+    <p>What's interesting is that AI-generated UI is often a better starting point than a blank canvas. It removes the friction of initial creation. Your team can spend time on what matters—making it work specifically for your users—rather than building basic layout structure.</p>
+
+    <h2>Copy, Marketing, and Documentation</h2>
+    <p>We use AI extensively for copy generation—marketing pages, in-app messaging, documentation. An AI tool can draft content. Our team refines it, adds voice, adjusts for accuracy, and makes sure it actually resonates with users. For documentation especially, AI handles the first draft quickly, freeing up engineers to focus on making the docs accurate and comprehensive.</p>
+
+    <h2>Testing and Quality Assurance</h2>
+    <p>AI can generate test cases, suggesting edge cases humans might miss. It can generate test data. It can help write integration tests. But humans have to validate that the tests are actually testing the right things. We use AI to increase test coverage faster, but our QA process is unchanged—human judgment is the final filter.</p>
+
+    <h2>The Human Oversight Model</h2>
+    <p>The critical part of "using AI to build AI" is that humans remain in control. At every step, someone who understands the business and the technical system makes decisions. AI suggests. Humans decide. AI generates code. Humans review and own it. AI drafts copy. Humans refine and finalize it.</p>
+    <p>This model works because we're clear about what AI does well—handle tedious boilerplate, suggest alternatives, accelerate iteration—and what requires human judgment—architecture decisions, tradeoffs, user needs, quality standards. The tool serves the engineer, not the other way around.</p>
+
+    <h2>Speed and Quality Outcomes</h2>
+    <p>The result is that we can build proof-of-concept applications in days instead of weeks. We can iterate much faster. A website that would have taken three weeks takes four days. A mobile app that would have taken six weeks takes two weeks. But speed isn't the only outcome. Quality is higher because engineers spend less time on mechanical coding and more time on design, testing, and edge cases.</p>
+    <p>That's what an <a href="https://drooid.org">AI-powered development studio</a> actually does—it uses tools that accelerate human capability, keeps humans in control, and delivers better results faster. Not magic. Just better tools in the hands of skilled people who know how to use them.</p>
+
+    <div class="cta-box">
+      <h3>Ready to prove AI works for your business?</h3>
+      <p>We embed with your team, build a focused POC, and show real ROI — before you commit to scaling.</p>
+      <a href="mailto:contact@drooid.org" class="cta-btn">Get in touch →</a>
+    </div>
+  </div>
+</body>
+</html>

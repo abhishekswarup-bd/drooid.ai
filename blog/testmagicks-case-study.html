@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building TestMagicks: A Zero-Backend AI Content Production Agent for Exam Prep Teams | Drooid Blog</title>
+  <meta name="description" content="TestMagicks is a zero-backend AI content production agent that runs entirely in the browser. 60KB app with 4 LLM providers, live document generation, and no server costs.">
+  <meta name="keywords" content="AI content production agent, EdTech AI, exam prep software, browser-based AI, zero-backend, AI automation, content generation">
+  <meta name="author" content="Drooid Team">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://drooid.org/blog/testmagicks-case-study">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://drooid.org/blog/testmagicks-case-study">
+  <meta property="og:title" content="Building TestMagicks: A Zero-Backend AI Content Production Agent for Exam Prep Teams">
+  <meta property="og:description" content="TestMagicks is a zero-backend AI content production agent that runs entirely in the browser. 60KB app with 4 LLM providers, live document generation, and no server costs.">
+  <meta property="og:image" content="https://drooid.org/og-image.png">
+  <meta property="og:site_name" content="Drooid">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-03-22T00:00:00-05:00">
+  <meta property="article:author" content="Drooid Team">
+  <meta property="article:section" content="Case Study">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building TestMagicks: A Zero-Backend AI Content Production Agent for Exam Prep Teams">
+  <meta name="twitter:description" content="TestMagicks is a zero-backend AI content production agent that runs entirely in the browser. 60KB app with 4 LLM providers, live document generation, and no server costs.">
+  <meta name="twitter:image" content="https://drooid.org/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Building TestMagicks: A Zero-Backend AI Content Production Agent for Exam Prep Teams",
+    "description": "TestMagicks is a zero-backend AI content production agent that runs entirely in the browser. 60KB app with 4 LLM providers, live document generation, and no server costs.",
+    "author": { "@type": "Organization", "name": "Drooid", "url": "https://drooid.org" },
+    "publisher": { "@type": "Organization", "name": "Drooid", "logo": { "@type": "ImageObject", "url": "https://drooid.org/logo.png" } },
+    "datePublished": "2026-03-22",
+    "dateModified": "2026-03-22",
+    "url": "https://drooid.org/blog/testmagicks-case-study",
+    "image": "https://drooid.org/og-image.png",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://drooid.org/blog/testmagicks-case-study" },
+    "keywords": "AI content production agent, EdTech AI, exam prep software, browser-based AI, zero-backend, AI automation, content generation",
+    "articleSection": "Case Study",
+    "isPartOf": { "@type": "Blog", "name": "Drooid Blog", "url": "https://drooid.org/blog" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://drooid.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://drooid.org/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Building TestMagicks: A Zero-Backend AI Content Production Agent for Exam Prep Teams", "item": "https://drooid.org/blog/testmagicks-case-study" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://drooid.org/blog/testmagicks-case-study",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".post-title", ".post-intro", "h2:first-of-type"]
+    }
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc; line-height: 1.7; }
+    nav { background: #fff; border-bottom: 1px solid #e2e4ea; padding: 0 24px; height: 60px; display: flex; align-items: center; }
+    .nav-logo { font-weight: 800; font-size: 20px; color: #4338ca; text-decoration: none; }
+    .nav-link { margin-left: auto; color: #4338ca; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .post-wrap { max-width: 760px; margin: 60px auto; padding: 0 24px 80px; }
+    .post-section { font-size: 13px; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+    h1.post-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #0f1117; margin-bottom: 20px; }
+    .post-meta { font-size: 13px; color: #888; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e2e4ea; }
+    p.post-intro { font-size: 1.1rem; color: #3a3a4a; margin-bottom: 28px; font-weight: 500; }
+    h2 { font-size: 1.35rem; font-weight: 700; color: #0f1117; margin: 40px 0 14px; }
+    p { color: #4b5060; margin-bottom: 18px; }
+    ul { color: #4b5060; margin: 0 0 18px 24px; }
+    ul li { margin-bottom: 8px; }
+    .cta-box { background: linear-gradient(135deg, #4338ca, #0d9488); border-radius: 16px; padding: 36px; margin-top: 56px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: 20px; }
+    .cta-btn { display: inline-block; background: #fff; color: #4338ca; font-weight: 700; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://drooid.org" class="nav-logo">Drooid</a>
+    <a href="https://drooid.org/blog" class="nav-link">← All Posts</a>
+  </nav>
+  <div class="post-wrap">
+    <div class="post-section">Case Study</div>
+    <h1 class="post-title">Building TestMagicks: A Zero-Backend AI Content Production Agent for Exam Prep Teams</h1>
+    <div class="post-meta">By Drooid Team &nbsp;·&nbsp; March 22, 2026 &nbsp;·&nbsp; 7 min read</div>
+    <p class="post-intro">TestMagicks needed an AI content production agent to help EdTech teams generate practice exams, study guides, and learning materials at scale. The solution: a completely browser-based AI application with zero backend infrastructure, multiple LLM providers, and live document export—all delivered as a single 60KB HTML file.</p>
+
+    <h2>The Problem: Content Creation at EdTech Scale</h2>
+    <p>EdTech companies creating exam prep materials face a brutal bottleneck: content production is manual, slow, and expensive. TestMagicks was looking for a way to let their teams generate full practice exams, study guides, flashcard decks, and learning modules in minutes instead of hours. Traditional solutions would have required hiring more content writers or licensing expensive educational content platforms. Neither approach was economically viable.</p>
+    <p>The real need was an AI content production agent that their teams could use directly—something intuitive, fast, and under their control. They wanted to avoid vendor lock-in, keep all their data private, and maintain flexibility to experiment with different AI models. A backend-heavy solution would have added complexity and cost. They needed something different.</p>
+
+    <h2>Zero-Backend Architecture: Why It Matters</h2>
+    <p>Drooid built TestMagicks as a completely serverless AI content production agent that runs entirely in the browser. Everything happens on the user's machine—no data touches external servers except the direct API calls to LLM providers. This approach unlocked several critical advantages:</p>
+    <ul>
+      <li><strong>Zero infrastructure cost:</strong> No servers, no databases, no DevOps overhead. Just deploy the HTML file anywhere and it works.</li>
+      <li><strong>Privacy-first:</strong> Content never sits on a server. Users have complete control over their data and their API credentials.</li>
+      <li><strong>LLM flexibility:</strong> Support for OpenAI, Anthropic Claude, Google Gemini, and Groq, all configurable without backend changes.</li>
+      <li><strong>Live document generation:</strong> Generate .docx and .pptx files directly in the browser. No separate API calls to document services.</li>
+      <li><strong>Instant deployment:</strong> Update the app, refresh the browser, and everyone has the latest version immediately.</li>
+    </ul>
+
+    <h2>The Architecture: AI-to-AI Development</h2>
+    <p>The entire application is a single HTML file—60KB of compressed JavaScript, CSS, and HTML that includes login management, a full chat interface, scheduling capabilities, and real-time document export. Drooid used AI to build the AI content production agent itself. This kind of meta-development—using LLMs to code the application that orchestrates LLMs—accelerated development and kept the scope tightly focused.</p>
+    <p>The app manages multiple concurrent LLM API calls, handles streaming responses, stores conversation history, and generates formatted documents on the fly. It includes intelligent routing logic to handle different content types—exams need different structure than study guides, which differ from flashcard decks. A single prompt framework adapted to each content type, ensuring consistency across outputs.</p>
+
+    <h2>Real-World Impact: Transforming Content Production Workflows</h2>
+    <p>TestMagicks teams now generate a month's worth of practice exam materials in a day. A workflow that previously required hiring freelance content writers or spending 40 hours manually creating materials now takes 2-3 hours with the AI content production agent doing the heavy lifting. The output quality rivals hand-written content, with consistent structure, pedagogically sound explanations, and appropriate difficulty scaling.</p>
+    <p>The tool also enables experimentation at scale. Content teams can quickly test different question formats, difficulty levels, and explanation styles without committing significant time. They iterate based on student performance data, refining the AI's prompts to generate better learning outcomes. This rapid feedback loop would be impossible with traditional manual creation.</p>
+
+    <h2>Multi-LLM Provider Support Built In</h2>
+    <p>TestMagicks users can switch between OpenAI, Anthropic Claude, Google Gemini, and Groq depending on cost, speed, and quality preferences for different content types. Some content works better with GPT-4's reasoning. Other content benefits from Claude's structured output capability. Groq excels at fast, cost-efficient generation of bulk materials. This flexibility is baked directly into the browser application—no backend configuration required.</p>
+    <p>Users authenticate directly with each provider using API keys stored locally in their browser. No credential management backend needed. This architecture means TestMagicks never has access to user credentials, reducing security risk and regulatory complexity.</p>
+
+    <h2>Why Browser-First Won</h2>
+    <p>A traditional approach would have built a backend API layer, authentication service, database, document generation pipeline, and deployed it all to cloud infrastructure. That would have taken longer, cost more to operate, and created ongoing maintenance burden. The zero-backend approach solved the same problem in weeks with near-zero operating costs and complete user data privacy.</p>
+    <p>The only external dependencies are the LLM APIs themselves. Everything else—the interface, the document generation, the conversation management, the scheduling—runs on the user's machine. This is the future of AI-powered applications: minimal backend, maximum control, and user-owned infrastructure.</p>
+
+    <h2>The Takeaway</h2>
+    <p>Building the best AI content production agent didn't require building a complex platform. It required understanding that modern browser capabilities are powerful enough to handle real AI workflows. By choosing a zero-backend approach and focusing on a single, well-defined use case—helping EdTech teams produce materials faster—Drooid delivered TestMagicks in weeks. The result is an application that's faster, more private, cheaper to operate, and more flexible than any traditionally architected alternative.</p>
+
+    <div class="cta-box">
+      <h3>Ready to prove AI works for your business?</h3>
+      <p>We embed with your team, build a focused POC, and show real ROI — before you commit to scaling.</p>
+      <a href="mailto:contact@drooid.org" class="cta-btn">Get in touch →</a>
+    </div>
+  </div>
+</body>
+</html>

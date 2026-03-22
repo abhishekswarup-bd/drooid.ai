@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tiger Team Trap: Why Big Consulting AI Projects Fail | Drooid Blog</title>
+  <meta name="description" content="Tiger teams—large consulting squads at $500K+—consistently fail at AI projects. Learn why embedded teams win and the proof-of-concept-first model matters.">
+  <meta name="keywords" content="AI consulting, tiger team, AI implementation failure, big consulting AI, embedded teams, proof-of-concept AI, AI strategy, consulting engagement">
+  <meta name="author" content="Drooid Team">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://drooid.org/blog/tiger-team-trap">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://drooid.org/blog/tiger-team-trap">
+  <meta property="og:title" content="The Tiger Team Trap: Why Big Consulting AI Projects Fail and Small Embedded Teams Win">
+  <meta property="og:description" content="Tiger teams—large consulting squads at $500K+—consistently fail at AI projects. Learn why embedded teams win and the proof-of-concept-first model matters.">
+  <meta property="og:image" content="https://drooid.org/og-image.png">
+  <meta property="og:site_name" content="Drooid">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-03-22T00:00:00-05:00">
+  <meta property="article:author" content="Drooid Team">
+  <meta property="article:section" content="Thought Leadership">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Tiger Team Trap: Why Big Consulting AI Projects Fail and Small Embedded Teams Win">
+  <meta name="twitter:description" content="Tiger teams—large consulting squads at $500K+—consistently fail at AI projects. Learn why embedded teams win and the proof-of-concept-first model matters.">
+  <meta name="twitter:image" content="https://drooid.org/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Tiger Team Trap: Why Big Consulting AI Projects Fail and Small Embedded Teams Win",
+    "description": "Tiger teams—large consulting squads at $500K+—consistently fail at AI projects. Learn why embedded teams win and the proof-of-concept-first model matters.",
+    "author": { "@type": "Organization", "name": "Drooid", "url": "https://drooid.org" },
+    "publisher": { "@type": "Organization", "name": "Drooid", "logo": { "@type": "ImageObject", "url": "https://drooid.org/logo.png" } },
+    "datePublished": "2026-03-22",
+    "dateModified": "2026-03-22",
+    "url": "https://drooid.org/blog/tiger-team-trap",
+    "image": "https://drooid.org/og-image.png",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://drooid.org/blog/tiger-team-trap" },
+    "keywords": "AI consulting, tiger team, AI implementation failure, big consulting AI, embedded teams, proof-of-concept AI, AI strategy, consulting engagement",
+    "articleSection": "Thought Leadership",
+    "isPartOf": { "@type": "Blog", "name": "Drooid Blog", "url": "https://drooid.org/blog" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://drooid.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://drooid.org/blog" },
+      { "@type": "ListItem", "position": 3, "name": "The Tiger Team Trap", "item": "https://drooid.org/blog/tiger-team-trap" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://drooid.org/blog/tiger-team-trap",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".post-title", ".post-intro", "h2:first-of-type"]
+    }
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc; line-height: 1.7; }
+    nav { background: #fff; border-bottom: 1px solid #e2e4ea; padding: 0 24px; height: 60px; display: flex; align-items: center; }
+    .nav-logo { font-weight: 800; font-size: 20px; color: #4338ca; text-decoration: none; }
+    .nav-link { margin-left: auto; color: #4338ca; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .post-wrap { max-width: 760px; margin: 60px auto; padding: 0 24px 80px; }
+    .post-section { font-size: 13px; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+    h1.post-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #0f1117; margin-bottom: 20px; }
+    .post-meta { font-size: 13px; color: #888; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e2e4ea; }
+    p.post-intro { font-size: 1.1rem; color: #3a3a4a; margin-bottom: 28px; font-weight: 500; }
+    h2 { font-size: 1.35rem; font-weight: 700; color: #0f1117; margin: 40px 0 14px; }
+    p { color: #4b5060; margin-bottom: 18px; }
+    ul { color: #4b5060; margin: 0 0 18px 24px; }
+    ul li { margin-bottom: 8px; }
+    .cta-box { background: linear-gradient(135deg, #4338ca, #0d9488); border-radius: 16px; padding: 36px; margin-top: 56px; text-align: center; color: #fff; }
+    .cta-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: 20px; }
+    .cta-btn { display: inline-block; background: #fff; color: #4338ca; font-weight: 700; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://drooid.org" class="nav-logo">Drooid</a>
+    <a href="https://drooid.org/blog" class="nav-link">← All Posts</a>
+  </nav>
+  <div class="post-wrap">
+    <div class="post-section">Thought Leadership</div>
+    <h1 class="post-title">The Tiger Team Trap: Why Big Consulting AI Projects Fail and Small Embedded Teams Win</h1>
+    <div class="post-meta">By Drooid Team &nbsp;·&nbsp; March 22, 2026 &nbsp;·&nbsp; 5 min read</div>
+    <p class="post-intro">You've seen the pitch: "We'll deploy a 15-person tiger team for six months, build your AI strategy, and transform your organization." The engagement costs $500K-$2M, and the timeline stretches to a year. Two years later, your implementation is stalled, the consulting team is long gone, and the expensive AI system they built doesn't work for your real business. This pattern repeats so often it's become the dominant failure mode for AI consulting. Here's why the tiger team model is broken, and why small, embedded teams consistently outperform them.</p>
+
+    <h2>What Tiger Teams Actually Are</h2>
+    <p>A tiger team is a large consulting squad—typically 10-20 people—deployed for a fixed engagement period. They come in with a methodology, build a solution, document everything, train your team, and leave. It sounds reasonable. It almost never works.</p>
+    <p>The structure creates immediate misalignment. The consulting firm's economics reward long engagements and high headcount. Your business's economics reward fast delivery and proof that something works. The consulting firm wants to build comprehensive solutions that justify their budget. You want to minimize risk and prove ROI before scaling. These incentives are fundamentally opposed.</p>
+
+    <h2>Why Tiger Teams Fail</h2>
+    <p>The failure pattern is predictable. The team arrives with templates and methodologies developed for previous clients. They spend weeks in discovery meetings. They build according to specifications that seemed reasonable three months ago but don't match your actual business realities now. They finish the engagement, leave detailed documentation, and vanish. Your team inherits code they don't understand, architecture decisions they didn't make, and a product that doesn't quite fit your needs.</p>
+    <p>The deeper problem: tiger teams are disconnected from the business. They don't sit with your team daily. They don't hear the early warning signs that something isn't going to work. They can't make quick decisions based on real feedback. By the time problems become obvious, the engagement is over and you're on your own.</p>
+    <p>And when AI is involved, the stakes are higher. AI systems don't fail gracefully. They fail silently. A tiger team can miss critical edge cases that your team would have caught if they were embedded from day one.</p>
+
+    <h2>Why Embedded Teams Win</h2>
+    <p>Small embedded teams operate differently. They sit with your people. They learn your constraints in real-time. They build something small first, test it, and iterate based on actual usage. They make adjustments mid-course. When problems emerge, they're there to fix them. When unexpected opportunities appear, they can pivot quickly.</p>
+    <p>The economics are aligned. An embedded team succeeds when you succeed. If the thing you built doesn't work, they're motivated to fix it because they're still on the hook. They can't run out the clock and move to the next engagement. That alignment creates urgency and creativity.</p>
+    <p>Embedded teams also own the knowledge transfer as they go. Your team learns by working alongside the external team, not by reading documentation after they leave. When the engagement ends, your team doesn't inherit a black box—they inherit expertise and systems they built with their own hands.</p>
+
+    <h2>The Proof-of-Concept-First Model</h2>
+    <p>The best predictor of success isn't the size of the team or the length of the engagement. It's whether you start with a small, time-limited proof-of-concept before committing to anything bigger.</p>
+    <p>A real POC is small (4-6 weeks), focused (one clear problem), and measurable (you can see if it worked). It forces clarity about what you're actually trying to accomplish. It generates real feedback from real users. It builds confidence in a contained way before you scale.</p>
+    <p>Then, if the POC works, you can expand—with the same team that understands your context, or with your internal team now armed with working code and proven approach.</p>
+
+    <h2>What This Means for Your AI Consulting Decision</h2>
+    <p>When you're evaluating AI consulting partners, ask whether they're proposing tiger teams or embedded teams. Ask if they insist on starting with a POC or jumping straight to a multi-month engagement. Ask if they're willing to take a portion of their fee at risk based on outcomes. The willingness to bet on results is a strong signal that incentives are aligned.</p>
+    <p>The companies that have succeeded fastest with AI aren't the ones that hired the biggest consulting firms. They're the ones that said no to tiger teams, insisted on small embedded teams and proof-of-concept-first approaches, and moved fast with partners who could iterate with them. That's a lesson worth learning before you sign a multi-million-dollar engagement that probably won't work.</p>
+
+    <div class="cta-box">
+      <h3>Ready to prove AI works for your business?</h3>
+      <p>We embed with your team, build a focused POC, and show real ROI — before you commit to scaling.</p>
+      <a href="mailto:contact@drooid.org" class="cta-btn">Get in touch →</a>
+    </div>
+  </div>
+</body>
+</html>
