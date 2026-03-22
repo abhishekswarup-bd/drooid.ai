@@ -193,6 +193,15 @@
 }
 </script>
 
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -634,6 +643,9 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
 .foot-soc a{color:var(--muted);text-decoration:none;font-size:12.5px;transition:.25s}
 .foot-soc a:hover{color:var(--ink)}
 
+.nav-search-btn{background:none;border:1.5px solid var(--border);border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--text);font-size:13px;font-family:inherit;transition:.2s}
+.nav-search-btn:hover{border-color:var(--accent);color:var(--ink)}
+.nav-search-btn kbd{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--muted)}
 /* ═══ THEME TOGGLE ═══ */
 .theme-toggle{width:42px;height:24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;position:relative;transition:.3s;flex-shrink:0;display:flex;align-items:center;padding:0 3px}
 .theme-toggle:hover{border-color:var(--accent)}
@@ -684,6 +696,11 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
     <li><a href="services.html">Services</a></li>
     <li><a href="industries.html">Industries</a></li>
     <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><button class="nav-search-btn" onclick="openSearch()" aria-label="Search site">
+      <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Search <kbd>&#x2318;K</kbd>
+    </button></li>
     <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><span class="knob"><svg viewBox="0 0 24 24" class="sun-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg viewBox="0 0 24 24" class="moon-icon" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button></li>
     <li><a href="contact.html" class="ncta">Let's Talk</a></li>
   </ul>
@@ -1288,7 +1305,7 @@ PROCEDURE DIVISION.
       </div>
       <div class="foot-col"><h4>Services</h4><ul><li><a href="services.html#websites">AI Websites</a></li><li><a href="services.html#mobile">Mobile Apps</a></li><li><a href="services.html#enterprise">Web Applications</a></li><li><a href="services.html#design">Screen Design</a></li><li><a href="services.html#content">Content Generation</a></li><li><a href="services.html#agents">Agentic AI</a></li></ul></div>
       <div class="foot-col"><h4>Industries</h4><ul><li><a href="industries.html#sales">Sales Command Center</a></li><li><a href="industries.html#capital-markets">Capital Markets</a></li><li><a href="industries.html#staffing">Staffing &amp; Agency</a></li><li><a href="industries.html#hr">Human Resources</a></li><li><a href="industries.html#legal">Legal</a></li><li><a href="industries.html#transportation">Transportation</a></li></ul></div>
-      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#client">Clients</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#client">Clients</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     </div>
     <div class="foot-btm">
       <span>&copy; 2026 Drooid. All rights reserved.</span>
@@ -1373,6 +1390,9 @@ if(statsSection)vizObs.observe(statsSection);
 
 /* ═══ (parallax removed - static orb) ═══ */
 
+.nav-search-btn{background:none;border:1.5px solid var(--border);border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--text);font-size:13px;font-family:inherit;transition:.2s}
+.nav-search-btn:hover{border-color:var(--accent);color:var(--ink)}
+.nav-search-btn kbd{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--muted)}
 /* ═══ THEME TOGGLE ═══ */
 (function(){
   const toggle=document.getElementById('themeToggle');
@@ -1393,5 +1413,7 @@ if(statsSection)vizObs.observe(statsSection);
   });
 })();
 </script>
+<script src="search-index.js"></script>
+<script src="search.js"></script>
 </body>
 </html>
