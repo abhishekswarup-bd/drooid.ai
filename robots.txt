@@ -1,11 +1,11 @@
-# Drooid.ai — robots.txt
-# https://drooid.ai
+# Drooid — robots.txt
+# https://drooid.org
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://drooid.ai/sitemap.xml
+Sitemap: https://drooid.org/sitemap.xml
 
 # Allow all major search engines and AI crawlers
 User-agent: Googlebot
@@ -33,4 +33,10 @@ User-agent: Bytespider
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
