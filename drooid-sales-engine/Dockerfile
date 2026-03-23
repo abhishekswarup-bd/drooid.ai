@@ -13,7 +13,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies with security audit
-RUN npm ci --only=production && \
+RUN npm install --omit=dev && \
     npm audit --production --audit-level=moderate || true
 
 # Final stage
