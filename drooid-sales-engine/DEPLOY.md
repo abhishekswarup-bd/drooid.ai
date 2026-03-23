@@ -14,15 +14,15 @@ Go to [railway.com](https://railway.com) → Sign in with GitHub
 In Railway dashboard → your service → **Variables** tab, add these:
 
 ```
-GEMINI_API_KEY=AIzaSyDB8TuLbxP9H8-W2Ht036DTqZWrdxr-NAA
-GEMINI_API_KEY_FALLBACK=AIzaSyBr6Lg3IVrioBl9Q4GmpAB7cQxkQCBBhd8
+GEMINI_API_KEY=<your-gemini-api-key>
+GEMINI_API_KEY_FALLBACK=<your-gemini-fallback-key>
 GEMINI_MODEL=gemini-2.5-flash
-SUPABASE_URL=https://rrtgynwurrdyhxudbesv.supabase.co
-SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJydGd5bnd1cnJkeWh4dWRiZXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNDAyODMsImV4cCI6MjA4OTgxNjI4M30.hD9ECsyjhZk6ZfCRtMXzq6Z6v54gFCy9QsKv49Eofw4
-SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJydGd5bnd1cnJkeWh4dWRiZXN2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDI0MDI4MywiZXhwIjoyMDg5ODE2MjgzfQ.a_BOOJgUUKAkIT-YkYlwOwjWDTawqu9S6_EWyPLSF_Q
-SENDGRID_API_KEY=your_sendgrid_key
+SUPABASE_URL=<your-supabase-url>
+SUPABASE_ANON_KEY=<your-supabase-anon-key>
+SUPABASE_SERVICE_KEY=<your-supabase-service-key>
+SENDGRID_API_KEY=<your-sendgrid-key>
 SENDGRID_FROM_EMAIL=outreach@drooid.org
-HUNTER_API_KEY=your_hunter_key
+HUNTER_API_KEY=<your-hunter-key>
 APPROVAL_MODE=manual
 DAILY_OUTREACH_LIMIT=25
 DAILY_EMAIL_LIMIT=100
