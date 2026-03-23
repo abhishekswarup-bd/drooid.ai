@@ -52,11 +52,11 @@ var logger = winston.createLogger({
       ),
     }),
     new winston.transports.File({
-      filename: process.env.LOG_DIR + '/openclaw-error.log' || '/var/log/openclaw/error.log',
+      filename: (process.env.LOG_DIR || './logs') + '/openclaw-error.log',
       level: 'error'
     }),
     new winston.transports.File({
-      filename: process.env.LOG_DIR + '/openclaw-security.log' || '/var/log/openclaw/security.log'
+      filename: (process.env.LOG_DIR || './logs') + '/openclaw-security.log'
     })
   ],
 });
