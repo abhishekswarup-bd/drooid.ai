@@ -8,7 +8,8 @@ RUN apk add --no-cache \
     ca-certificates \
     python3 \
     make \
-    g++
+    g++ \
+    git
 
 WORKDIR /app
 
