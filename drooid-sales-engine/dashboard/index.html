@@ -787,7 +787,7 @@
         // Load Pipeline Funnel
         async function loadPipelineFunnel() {
             try {
-                const stages = ['new', 'qualified', 'engaged', 'proposal', 'closed'];
+                const stages = ['lead', 'qualified', 'meeting', 'proposal', 'negotiation', 'closed_won', 'closed_lost'];
                 const stageCounts = {};
 
                 for (const stage of stages) {
@@ -803,11 +803,13 @@
 
                 // Generate funnel HTML
                 const stageLabels = {
-                    'new': 'New Leads',
+                    'lead': 'New Leads',
                     'qualified': 'Qualified',
-                    'engaged': 'Engaged',
+                    'meeting': 'Meeting',
                     'proposal': 'Proposal',
-                    'closed': 'Closed Won'
+                    'negotiation': 'Negotiation',
+                    'closed_won': 'Closed Won',
+                    'closed_lost': 'Closed Lost'
                 };
 
                 let funnelHTML = '';
@@ -878,7 +880,7 @@
             try {
                 const { data: approvals } = await supabase
                     .from('approvals')
-                    .select('id, agent_id, action_type, description, created_at')
+                    .select('id, agent_id, action_type, payload, created_at')
                     .eq('status', 'pending')
                     .order('created_at', { ascending: true });
 
@@ -898,17 +900,20 @@
                 approvals.forEach(approval => {
                     const time = new Date(approval.created_at);
                     const timeString = time.toLocaleTimeString();
+                    const description = approval.payload?.agent_name
+                        ? `${approval.payload.agent_name}: ${approval.payload.content || approval.action_type}`
+                        : approval.payload?.content || approval.action_type;
 
                     approvalsHTML += `
                         <div class="approval-item">
                             <div class="approval-content">
                                 <div class="approval-type">${approval.action_type}</div>
-                                <div class="approval-description">${approval.description}</div>
+                                <div class="approval-description">${description}</div>
                                 <div class="approval-time">${timeString}</div>
                             </div>
                             <div class="approval-buttons">
-                                <button class="btn btn-approve" onclick="approveAction(${approval.id}, this)">Approve</button>
-                                <button class="btn btn-reject" onclick="rejectAction(${approval.id}, this)">Reject</button>
+                                <button class="btn btn-approve" onclick="approveAction('${approval.id}', this)">Approve</button>
+                                <button class="btn btn-reject" onclick="rejectAction('${approval.id}', this)">Reject</button>
                             </div>
                         </div>
                     `;
@@ -926,15 +931,15 @@
             try {
                 const { data: metrics } = await supabase
                     .from('agent_metrics')
-                    .select('agent_name, metric_name, metric_value')
-                    .order('agent_name', { ascending: true });
+                    .select('agent_id, metric_name, metric_value')
+                    .order('agent_id', { ascending: true });
 
                 // Group metrics by department
                 const deptMetrics = {};
                 Object.keys(departments).forEach(dept => {
                     deptMetrics[dept] = {};
                     departments[dept].forEach(agent => {
-                        const agentMetrics = metrics?.filter(m => m.agent_name === agent) || [];
+                        const agentMetrics = metrics?.filter(m => m.agent_id === agent) || [];
                         deptMetrics[dept][agent] = agentMetrics;
                     });
                 });
@@ -982,18 +987,17 @@
             button.textContent = 'Approving...';
 
             try {
-                const response = await fetch(`/api/approvals/${approvalId}/approve`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' }
-                });
+                const { error } = await supabase
+                    .from('approvals')
+                    .update({ status: 'approved', reviewed_at: new Date().toISOString() })
+                    .eq('id', approvalId);
 
-                if (response.ok) {
-                    // Refresh approvals
+                if (!error) {
                     await loadApprovals();
                 } else {
                     button.disabled = false;
                     button.textContent = 'Approve';
-                    alert('Failed to approve action');
+                    alert('Failed to approve: ' + error.message);
                 }
             } catch (error) {
                 console.error('Error approving action:', error);
@@ -1009,18 +1013,17 @@
             button.textContent = 'Rejecting...';
 
             try {
-                const response = await fetch(`/api/approvals/${approvalId}/reject`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' }
-                });
+                const { error } = await supabase
+                    .from('approvals')
+                    .update({ status: 'rejected', reviewed_at: new Date().toISOString() })
+                    .eq('id', approvalId);
 
-                if (response.ok) {
-                    // Refresh approvals
+                if (!error) {
                     await loadApprovals();
                 } else {
                     button.disabled = false;
                     button.textContent = 'Reject';
-                    alert('Failed to reject action');
+                    alert('Failed to reject: ' + error.message);
                 }
             } catch (error) {
                 console.error('Error rejecting action:', error);
