@@ -1,0 +1,74 @@
+version: '3.9'
+
+services:
+  drooid-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: drooid-sales-engine
+    restart: unless-stopped
+    ports:
+      # Localhost-only binding for security
+      - "127.0.0.1:3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      # Load from .env file
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.5-flash}
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_KEY}
+      APPROVAL_MODE: ${APPROVAL_MODE:-manual}
+    volumes:
+      # Mount logs directory
+      - ./logs:/app/logs:rw
+      # Read-only mounts for config
+      - ./config:/app/config:ro
+      - ./agents:/app/agents:ro
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    # Memory limits
+    mem_limit: 512m
+    memswap_limit: 512m
+    # CPU limits
+    cpus: '1'
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Supabase proxy for additional security
+  # Uncomment if running Supabase locally
+  # supabase:
+  #   image: supabase/supabase:latest
+  #   ports:
+  #     - "127.0.0.1:5432:5432"
+  #   environment:
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #   volumes:
+  #     - supabase_data:/var/lib/postgresql/data
+  #   security_opt:
+  #     - no-new-privileges:true
+
+volumes:
+  # Commented out - use local ./logs directory instead
+  # logs:
+  # supabase_data:
+
+networks:
+  default:
+    name: drooid-network
+    driver: bridge

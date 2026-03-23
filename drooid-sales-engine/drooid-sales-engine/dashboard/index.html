@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DROOID COMMAND CENTER</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0F1117;
+      --bg-secondary: #1A1F2E;
+      --color-indigo: #4338CA;
+      --color-teal: #0D9488;
+      --color-green: #10B981;
+      --color-amber: #F59E0B;
+      --color-red: #EF4444;
+      --color-text: #F8FAFC;
+      --color-text-dim: #CBD5E1;
+      --color-border: #334155;
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 12px;
+      --spacing-lg: 16px;
+      --spacing-xl: 24px;
+      --spacing-2xl: 32px;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--color-text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--spacing-xl);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-2xl);
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--color-indigo);
+    }
+
+    .header-controls {
+      display: flex;
+      gap: var(--spacing-lg);
+      align-items: center;
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--color-green);
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .last-refresh {
+      font-size: 12px;
+      color: var(--color-text-dim);
+    }
+
+    button {
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--color-indigo);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #5346d9;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* KPI Row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .kpi-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: var(--spacing-lg);
+      transition: border-color 0.3s;
+    }
+
+    .kpi-card:hover {
+      border-color: var(--color-indigo);
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      color: var(--color-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--spacing-sm);
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-indigo);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .kpi-change {
+      font-size: 12px;
+      color: var(--color-text-dim);
+    }
+
+    .kpi-change.up {
+      color: var(--color-green);
+    }
+
+    .kpi-change.down {
+      color: var(--color-red);
+    }
+
+    /* Pipeline Kanban */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: var(--spacing-2xl);
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-text);
+    }
+
+    .pipeline-kanban {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+      overflow-x: auto;
+      padding: var(--spacing-sm) 0;
+    }
+
+    .pipeline-column {
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: var(--spacing-md);
+      min-height: 300px;
+    }
+
+    .column-header {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .column-count {
+      font-size: 14px;
+      color: var(--color-indigo);
+      font-weight: 600;
+    }
+
+    .deal-card {
+      background: rgba(67, 56, 202, 0.1);
+      border: 1px solid var(--color-indigo);
+      border-radius: 4px;
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .deal-card:hover {
+      background: rgba(67, 56, 202, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .deal-company {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .deal-value {
+      font-size: 14px;
+      color: var(--color-green);
+      font-weight: 700;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .deal-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--color-text-dim);
+    }
+
+    .health-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    .health-green { background: var(--color-green); }
+    .health-amber { background: var(--color-amber); }
+    .health-red { background: var(--color-red); }
+
+    /* Agent Health Grid */
+    .agent-health-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .agent-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: var(--spacing-md);
+      transition: all 0.3s;
+    }
+
+    .agent-card:hover {
+      border-color: var(--color-indigo);
+      background: rgba(67, 56, 202, 0.05);
+    }
+
+    .agent-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .agent-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .agent-name {
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--color-text);
+    }
+
+    .agent-phase {
+      font-size: 10px;
+      color: var(--color-text-dim);
+      text-transform: uppercase;
+    }
+
+    .agent-stats {
+      font-size: 11px;
+      color: var(--color-text-dim);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .agent-time {
+      color: var(--color-text-dim);
+      font-size: 10px;
+    }
+
+    /* Approval Queue */
+    .approval-queue {
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .approval-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .approval-content {
+      flex: 1;
+    }
+
+    .approval-type {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .approval-preview {
+      font-size: 12px;
+      color: var(--color-text-dim);
+      max-height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .approval-agent {
+      font-size: 11px;
+      color: var(--color-text-dim);
+    }
+
+    .approval-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-shrink: 0;
+    }
+
+    .approval-actions button {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 11px;
+    }
+
+    .btn-approve {
+      background: var(--color-green);
+    }
+
+    .btn-approve:hover {
+      background: #059669;
+    }
+
+    .btn-reject {
+      background: var(--color-red);
+    }
+
+    .btn-reject:hover {
+      background: #dc2626;
+    }
+
+    /* Activity Feed */
+    .activity-feed {
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .activity-item {
+      display: flex;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-time {
+      font-size: 11px;
+      color: var(--color-text-dim);
+      white-space: nowrap;
+    }
+
+    .activity-content {
+      flex: 1;
+    }
+
+    .activity-agent {
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--color-indigo);
+    }
+
+    .activity-message {
+      font-size: 12px;
+      color: var(--color-text);
+      margin-top: 2px;
+    }
+
+    .activity-status {
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .status-success {
+      color: var(--color-green);
+    }
+
+    .status-error {
+      color: var(--color-red);
+    }
+
+    .status-pending {
+      color: var(--color-amber);
+    }
+
+    /* Charts */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .chart-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: var(--spacing-lg);
+    }
+
+    .chart-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-text);
+    }
+
+    /* Loading */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      color: var(--color-text-dim);
+      font-size: 12px;
+    }
+
+    .spinner {
+      width: 12px;
+      height: 12px;
+      border: 2px solid rgba(67, 56, 202, 0.3);
+      border-top-color: var(--color-indigo);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Error */
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--color-red);
+      border-radius: 4px;
+      padding: var(--spacing-md);
+      color: var(--color-red);
+      font-size: 12px;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: var(--spacing-lg);
+      }
+
+      .header {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        align-items: flex-start;
+      }
+
+      .header-controls {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .kpi-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .pipeline-kanban {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-health-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      }
+
+      .approval-item {
+        flex-direction: column;
+      }
+
+      .approval-actions {
+        width: 100%;
+      }
+
+      .approval-actions button {
+        flex: 1;
+      }
+
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Filter */
+    .filter-controls {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+      flex-wrap: wrap;
+    }
+
+    .filter-controls input,
+    .filter-controls select {
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      color: var(--color-text);
+      font-size: 12px;
+    }
+
+    .filter-controls input::placeholder {
+      color: var(--color-text-dim);
+    }
+
+    /* Empty state */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-2xl);
+      color: var(--color-text-dim);
+      text-align: center;
+    }
+
+    .empty-state-icon {
+      font-size: 32px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-title">DROOID COMMAND CENTER</div>
+      <div class="header-controls">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span>Live</span>
+        </div>
+        <div class="last-refresh">Last refresh: <span id="lastRefresh">--:--:--</span></div>
+        <button onclick="refreshDashboard()">Refresh</button>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorContainer"></div>
+
+    <!-- KPI Row -->
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Active Leads</div>
+        <div class="kpi-value" id="activeLeads">0</div>
+        <div class="kpi-change">Active in pipeline</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pipeline Value</div>
+        <div class="kpi-value" id="pipelineValue">$0</div>
+        <div class="kpi-change">Open opportunities</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Meetings This Week</div>
+        <div class="kpi-value" id="meetingsThisWeek">0</div>
+        <div class="kpi-change">Scheduled</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Response Rate</div>
+        <div class="kpi-value" id="responseRate">0%</div>
+        <div class="kpi-change">All channels</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pending Approvals</div>
+        <div class="kpi-value" id="pendingApprovals">0</div>
+        <div class="kpi-change">Awaiting review</div>
+      </div>
+    </div>
+
+    <!-- Pipeline Kanban -->
+    <div class="section-title">Pipeline Kanban</div>
+    <div class="pipeline-kanban" id="pipelineKanban">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span>Loading pipeline...</span>
+      </div>
+    </div>
+
+    <!-- Agent Health Grid -->
+    <div class="section-title">Agent Health</div>
+    <div class="agent-health-grid" id="agentHealthGrid">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span>Loading agents...</span>
+      </div>
+    </div>
+
+    <!-- Approval Queue -->
+    <div class="section-title">Approval Queue</div>
+    <div class="approval-queue" id="approvalQueue">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span>Loading approvals...</span>
+      </div>
+    </div>
+
+    <!-- Activity Feed -->
+    <div class="section-title">Activity Feed</div>
+    <div style="display: flex; gap: var(--spacing-md); margin-bottom: var(--spacing-lg);">
+      <input type="text" id="agentFilter" placeholder="Filter by agent..." style="flex: 1;">
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="success">Success</option>
+        <option value="error">Error</option>
+        <option value="pending">Pending</option>
+      </select>
+    </div>
+    <div class="activity-feed" id="activityFeed">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span>Loading activity...</span>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="section-title">Performance Analytics</div>
+    <div class="charts-grid">
+      <div class="chart-container">
+        <div class="chart-title">Pipeline Funnel</div>
+        <canvas id="pipelineFunnelChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <div class="chart-title">Daily Outreach Volume (30 Days)</div>
+        <canvas id="outreachVolumeChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <div class="chart-title">Response Rates by Channel</div>
+        <canvas id="responseRateChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Configuration
+    const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
+    const SUPABASE_ANON_KEY = 'your-anon-key';
+
+    // Initialize Supabase
+    const { createClient } = window.supabase;
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Charts instances
+    let charts = {};
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshDashboard();
+      setInterval(refreshDashboard, 60000); // Auto-refresh every 60 seconds
+    });
+
+    async function refreshDashboard() {
+      try {
+        clearError();
+        updateRefreshTime();
+
+        // Load all data in parallel
+        await Promise.all([
+          loadKPIs(),
+          loadPipeline(),
+          loadAgentHealth(),
+          loadApprovalQueue(),
+          loadActivityFeed(),
+          loadCharts()
+        ]);
+      } catch (error) {
+        showError(`Dashboard error: ${error.message}`);
+        console.error('Dashboard error:', error);
+      }
+    }
+
+    async function loadKPIs() {
+      try {
+        // Active Leads
+        const { data: activeLeads } = await supabase
+          .from('leads')
+          .select('*', { count: 'exact' })
+          .eq('status', 'active');
+
+        document.getElementById('activeLeads').textContent = activeLeads?.length || 0;
+
+        // Pipeline Value
+        const { data: pipeline } = await supabase
+          .from('pipeline')
+          .select('deal_value');
+
+        const pipelineValue = (pipeline || []).reduce((sum, d) => sum + (d.deal_value || 0), 0);
+        document.getElementById('pipelineValue').textContent = `$${(pipelineValue / 1000).toFixed(0)}K`;
+
+        // Meetings This Week
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+
+        const { data: meetings } = await supabase
+          .from('pipeline')
+          .select('*')
+          .eq('stage', 'meeting')
+          .gte('created_at', weekAgo.toISOString());
+
+        document.getElementById('meetingsThisWeek').textContent = meetings?.length || 0;
+
+        // Response Rate
+        const { data: outreach } = await supabase
+          .from('outreach')
+          .select('response_at, sent_at');
+
+        const sent = (outreach || []).filter(o => o.sent_at).length;
+        const responses = (outreach || []).filter(o => o.response_at).length;
+        const responseRate = sent > 0 ? ((responses / sent) * 100).toFixed(1) : 0;
+
+        document.getElementById('responseRate').textContent = `${responseRate}%`;
+
+        // Pending Approvals
+        const { data: approvals } = await supabase
+          .from('approvals')
+          .select('*', { count: 'exact' })
+          .eq('status', 'pending');
+
+        document.getElementById('pendingApprovals').textContent = approvals?.length || 0;
+      } catch (error) {
+        console.error('Error loading KPIs:', error);
+      }
+    }
+
+    async function loadPipeline() {
+      try {
+        const { data: deals } = await supabase
+          .from('pipeline')
+          .select('*');
+
+        const stages = [
+          { name: 'Lead', value: 'lead' },
+          { name: 'Qualified', value: 'qualified' },
+          { name: 'Meeting', value: 'meeting' },
+          { name: 'Proposal', value: 'proposal' },
+          { name: 'Negotiation', value: 'negotiation' },
+          { name: 'Closed Won', value: 'closed_won' }
+        ];
+
+        const kanban = document.getElementById('pipelineKanban');
+        kanban.innerHTML = '';
+
+        stages.forEach(stage => {
+          const stageDeals = (deals || []).filter(d => d.stage === stage.value);
+          const stageValue = stageDeals.reduce((sum, d) => sum + (d.deal_value || 0), 0);
+
+          const column = document.createElement('div');
+          column.className = 'pipeline-column';
+          column.innerHTML = `
+            <div class="column-header">
+              ${stage.name}
+              <div class="column-count">${stageDeals.length}</div>
+            </div>
+            ${stageDeals.map(deal => {
+              const daysInStage = deal.updated_at
+                ? Math.floor((Date.now() - new Date(deal.updated_at).getTime()) / (1000 * 60 * 60 * 24))
+                : 0;
+              const healthClass = daysInStage > 7 ? 'health-red' : daysInStage > 3 ? 'health-amber' : 'health-green';
+
+              return `
+                <div class="deal-card">
+                  <div class="deal-company">${deal.company_name || 'Unknown'}</div>
+                  <div class="deal-value">$${(deal.deal_value || 0).toLocaleString()}</div>
+                  <div class="deal-meta">
+                    <span><span class="health-indicator ${healthClass}"></span>${daysInStage}d</span>
+                    <span>${deal.contact_name || 'N/A'}</span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          `;
+
+          kanban.appendChild(column);
+        });
+      } catch (error) {
+        console.error('Error loading pipeline:', error);
+      }
+    }
+
+    async function loadAgentHealth() {
+      try {
+        const { data: metrics } = await supabase
+          .from('agent_metrics')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(50);
+
+        const agentLatest = {};
+        (metrics || []).forEach(metric => {
+          if (!agentLatest[metric.agent_id]) {
+            agentLatest[metric.agent_id] = metric;
+          }
+        });
+
+        const grid = document.getElementById('agentHealthGrid');
+        grid.innerHTML = '';
+
+        const agents = Object.values(agentLatest).slice(0, 29); // Show up to 29 agents
+
+        if (agents.length === 0) {
+          grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">○</div><div>No agents running</div></div>';
+          return;
+        }
+
+        agents.forEach(agent => {
+          const statusClass = agent.status === 'error' ? 'health-red' : agent.status === 'completed_with_alerts' ? 'health-amber' : 'health-green';
+          const lastRun = new Date(agent.created_at);
+          const hoursAgo = Math.floor((Date.now() - lastRun.getTime()) / (1000 * 60 * 60));
+          const timeStr = hoursAgo < 1 ? 'now' : `${hoursAgo}h ago`;
+
+          const card = document.createElement('div');
+          card.className = 'agent-card';
+          card.innerHTML = `
+            <div class="agent-header">
+              <div class="agent-status-dot ${statusClass}"></div>
+              <div>
+                <div class="agent-name">${agent.agent_name || agent.agent_id}</div>
+                <div class="agent-phase">${agent.agent_id}</div>
+              </div>
+            </div>
+            <div class="agent-stats">
+              <div>Calls: ${agent.api_calls || 0}</div>
+              <div>Tokens: ${(agent.tokens_used || 0).toLocaleString()}</div>
+              <div class="agent-time">${timeStr}</div>
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+      } catch (error) {
+        console.error('Error loading agent health:', error);
+      }
+    }
+
+    async function loadApprovalQueue() {
+      try {
+        const { data: approvals } = await supabase
+          .from('approvals')
+          .select('*')
+          .eq('status', 'pending')
+          .order('created_at', { ascending: true })
+          .limit(10);
+
+        const queue = document.getElementById('approvalQueue');
+        queue.innerHTML = '';
+
+        if (!approvals || approvals.length === 0) {
+          queue.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✓</div><div>No pending approvals</div></div>';
+          return;
+        }
+
+        approvals.forEach(approval => {
+          const contentPreview = JSON.stringify(approval.content).substring(0, 100) + '...';
+
+          const item = document.createElement('div');
+          item.className = 'approval-item';
+          item.innerHTML = `
+            <div class="approval-content">
+              <div class="approval-type">${approval.type}</div>
+              <div class="approval-preview">${contentPreview}</div>
+              <div class="approval-agent">From: ${approval.agent_id}</div>
+            </div>
+            <div class="approval-actions">
+              <button class="btn-approve" onclick="approveItem('${approval.id}')">Approve</button>
+              <button class="btn-reject" onclick="rejectItem('${approval.id}')">Reject</button>
+            </div>
+          `;
+
+          queue.appendChild(item);
+        });
+      } catch (error) {
+        console.error('Error loading approval queue:', error);
+      }
+    }
+
+    async function loadActivityFeed() {
+      try {
+        const agentFilter = document.getElementById('agentFilter').value;
+        const statusFilter = document.getElementById('statusFilter').value;
+
+        let query = supabase
+          .from('agent_logs')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(50);
+
+        if (agentFilter) {
+          query = query.ilike('agent_id', `%${agentFilter}%`);
+        }
+
+        if (statusFilter) {
+          query = query.eq('status', statusFilter);
+        }
+
+        const { data: logs } = await query;
+
+        const feed = document.getElementById('activityFeed');
+        feed.innerHTML = '';
+
+        if (!logs || logs.length === 0) {
+          feed.innerHTML = '<div class="empty-state"><div class="empty-state-icon">○</div><div>No activity</div></div>';
+          return;
+        }
+
+        logs.forEach(log => {
+          const time = new Date(log.created_at);
+          const timeStr = time.toLocaleTimeString();
+          const statusClass = log.status === 'error' ? 'status-error' : log.status === 'success' ? 'status-success' : 'status-pending';
+
+          const item = document.createElement('div');
+          item.className = 'activity-item';
+          item.innerHTML = `
+            <div class="activity-time">${timeStr}</div>
+            <div class="activity-content">
+              <div class="activity-agent">${log.agent_name}</div>
+              <div class="activity-message">${log.details?.summary || 'Run completed'}</div>
+              <div class="activity-status ${statusClass}">${log.status}</div>
+            </div>
+          `;
+
+          feed.appendChild(item);
+        });
+      } catch (error) {
+        console.error('Error loading activity feed:', error);
+      }
+    }
+
+    async function loadCharts() {
+      try {
+        await Promise.all([
+          loadPipelineFunnelChart(),
+          loadOutreachVolumeChart(),
+          loadResponseRateChart()
+        ]);
+      } catch (error) {
+        console.error('Error loading charts:', error);
+      }
+    }
+
+    async function loadPipelineFunnelChart() {
+      try {
+        const { data: pipeline } = await supabase
+          .from('pipeline')
+          .select('stage');
+
+        const stages = {
+          'lead': 0,
+          'qualified': 0,
+          'meeting': 0,
+          'proposal': 0,
+          'negotiation': 0,
+          'closed_won': 0
+        };
+
+        (pipeline || []).forEach(deal => {
+          if (deal.stage in stages) {
+            stages[deal.stage]++;
+          }
+        });
+
+        const ctx = document.getElementById('pipelineFunnelChart').getContext('2d');
+
+        if (charts.pipelineFunnel) {
+          charts.pipelineFunnel.destroy();
+        }
+
+        charts.pipelineFunnel = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: Object.keys(stages).map(s => s.charAt(0).toUpperCase() + s.slice(1).replace('_', ' ')),
+            datasets: [{
+              label: 'Deals',
+              data: Object.values(stages),
+              backgroundColor: '#4338CA',
+              borderColor: '#4338CA',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { color: '#CBD5E1' },
+                grid: { color: '#334155' }
+              },
+              x: {
+                ticks: { color: '#CBD5E1' },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      } catch (error) {
+        console.error('Error loading pipeline funnel chart:', error);
+      }
+    }
+
+    async function loadOutreachVolumeChart() {
+      try {
+        const { data: outreach } = await supabase
+          .from('outreach')
+          .select('created_at');
+
+        const days = {};
+        const today = new Date();
+
+        for (let i = 29; i >= 0; i--) {
+          const date = new Date(today);
+          date.setDate(date.getDate() - i);
+          const key = date.toISOString().split('T')[0];
+          days[key] = 0;
+        }
+
+        (outreach || []).forEach(item => {
+          const key = item.created_at.split('T')[0];
+          if (key in days) {
+            days[key]++;
+          }
+        });
+
+        const ctx = document.getElementById('outreachVolumeChart').getContext('2d');
+
+        if (charts.outreachVolume) {
+          charts.outreachVolume.destroy();
+        }
+
+        charts.outreachVolume = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: Object.keys(days),
+            datasets: [{
+              label: 'Daily Outreach',
+              data: Object.values(days),
+              borderColor: '#0D9488',
+              backgroundColor: 'rgba(13, 148, 136, 0.1)',
+              borderWidth: 2,
+              tension: 0.4,
+              fill: true
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { color: '#CBD5E1' },
+                grid: { color: '#334155' }
+              },
+              x: {
+                ticks: { color: '#CBD5E1' },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      } catch (error) {
+        console.error('Error loading outreach volume chart:', error);
+      }
+    }
+
+    async function loadResponseRateChart() {
+      try {
+        const { data: outreach } = await supabase
+          .from('outreach')
+          .select('channel, response_at, sent_at');
+
+        const channels = {
+          'linkedin': { sent: 0, responses: 0 },
+          'email': { sent: 0, responses: 0 },
+          'phone': { sent: 0, responses: 0 }
+        };
+
+        (outreach || []).forEach(item => {
+          const channel = item.channel || 'email';
+          if (channel in channels && item.sent_at) {
+            channels[channel].sent++;
+            if (item.response_at) {
+              channels[channel].responses++;
+            }
+          }
+        });
+
+        const rates = Object.entries(channels).map(([channel, data]) => {
+          return data.sent > 0 ? ((data.responses / data.sent) * 100).toFixed(1) : 0;
+        });
+
+        const ctx = document.getElementById('responseRateChart').getContext('2d');
+
+        if (charts.responseRate) {
+          charts.responseRate.destroy();
+        }
+
+        charts.responseRate = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: Object.keys(channels).map(c => c.charAt(0).toUpperCase() + c.slice(1)),
+            datasets: [{
+              label: 'Response Rate %',
+              data: rates,
+              backgroundColor: '#10B981',
+              borderColor: '#10B981',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: '#CBD5E1' },
+                grid: { color: '#334155' }
+              },
+              x: {
+                ticks: { color: '#CBD5E1' },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      } catch (error) {
+        console.error('Error loading response rate chart:', error);
+      }
+    }
+
+    async function approveItem(approvalId) {
+      try {
+        const response = await fetch(`/api/approve/${approvalId}`, { method: 'POST' });
+        if (!response.ok) throw new Error('Approval failed');
+        await loadApprovalQueue();
+        await loadKPIs();
+      } catch (error) {
+        showError(`Failed to approve item: ${error.message}`);
+      }
+    }
+
+    async function rejectItem(approvalId) {
+      try {
+        const response = await fetch(`/api/reject/${approvalId}`, { method: 'POST' });
+        if (!response.ok) throw new Error('Rejection failed');
+        await loadApprovalQueue();
+      } catch (error) {
+        showError(`Failed to reject item: ${error.message}`);
+      }
+    }
+
+    function updateRefreshTime() {
+      const now = new Date();
+      document.getElementById('lastRefresh').textContent = now.toLocaleTimeString();
+    }
+
+    function showError(message) {
+      const container = document.getElementById('errorContainer');
+      container.innerHTML = `<div class="error-message">${message}</div>`;
+    }
+
+    function clearError() {
+      document.getElementById('errorContainer').innerHTML = '';
+    }
+
+    // Filter listeners
+    document.getElementById('agentFilter').addEventListener('input', loadActivityFeed);
+    document.getElementById('statusFilter').addEventListener('change', loadActivityFeed);
+  </script>
+</body>
+</html>

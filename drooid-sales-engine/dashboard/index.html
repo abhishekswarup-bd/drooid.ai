@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drooid CEO Command Center</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.41.0/dist/umd/supabase.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #0a0f1f;
+            --card-bg: #1a2847;
+            --border-color: #2d4a6b;
+            --text-primary: #e0e7ff;
+            --text-secondary: #a1afc9;
+            --accent-teal: #14b8a6;
+            --accent-indigo: #6366f1;
+            --accent-purple: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-darker);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bg-dark), var(--card-bg));
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-indigo));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .refresh-btn {
+            background-color: var(--accent-teal);
+            border: none;
+            color: var(--bg-darker);
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .refresh-btn:hover {
+            background-color: #0d9488;
+            transform: translateY(-2px);
+        }
+
+        .refresh-btn:active {
+            transform: translateY(0);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* KPI Section */
+        .kpi-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.1);
+        }
+
+        .kpi-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .kpi-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        .kpi-change {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .kpi-change.positive {
+            color: var(--success);
+        }
+
+        .kpi-change.negative {
+            color: var(--danger);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Pipeline Funnel */
+        .funnel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: rgba(20, 184, 166, 0.05);
+            border-left: 4px solid var(--accent-teal);
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .funnel-stage:hover {
+            background-color: rgba(20, 184, 166, 0.1);
+        }
+
+        .funnel-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            min-width: 100px;
+        }
+
+        .funnel-bar-container {
+            flex: 1;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .funnel-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-indigo));
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+            color: var(--bg-darker);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .funnel-count {
+            min-width: 60px;
+            text-align: right;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            max-height: 600px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent-indigo);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .activity-item:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-left-color: var(--accent-teal);
+        }
+
+        .activity-time {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .activity-agent {
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+
+        .activity-status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .activity-status.success {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .activity-status.error {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+
+        /* Approvals */
+        .approvals-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .approval-item {
+            padding: 1.25rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+
+        .approval-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-indigo);
+        }
+
+        .approval-content {
+            flex: 1;
+        }
+
+        .approval-type {
+            font-size: 0.75rem;
+            color: var(--accent-indigo);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .approval-description {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .approval-time {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .approval-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-approve {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-reject {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background-color: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Department Grid */
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .department-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .department-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-4px);
+        }
+
+        .department-header {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(99, 102, 241, 0.1));
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .department-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+        }
+
+        .department-metrics {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .metric-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-teal);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-indigo);
+        }
+
+        /* Loading state */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(20, 184, 166, 0.2);
+            border-top-color: var(--accent-teal);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .kpi-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .department-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approval-item {
+                flex-direction: column;
+            }
+
+            .approval-buttons {
+                width: 100%;
+            }
+
+            .btn {
+                flex: 1;
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">Drooid</div>
+            <div class="header-title">CEO Command Center</div>
+        </div>
+        <div class="header-right">
+            <button class="refresh-btn" onclick="manualRefresh()">
+                ↻ Refresh Now
+            </button>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Live Updates</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- KPI Section -->
+        <div class="kpi-section">
+            <div class="kpi-card">
+                <div class="kpi-label">Total Leads</div>
+                <div class="kpi-value" id="kpiTotalLeads">0</div>
+                <div class="kpi-change positive" id="kpiLeadsChange">↑ 0% from last week</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Active Pipeline</div>
+                <div class="kpi-value" id="kpiActivePipeline">0</div>
+                <div class="kpi-change positive" id="kpiPipelineChange">↑ 0% this month</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Outreach Sent Today</div>
+                <div class="kpi-value" id="kpiOutreach">0</div>
+                <div class="kpi-change positive" id="kpiOutreachChange">↑ 0% vs yesterday</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Agent Actions Today</div>
+                <div class="kpi-value" id="kpiAgentActions">0</div>
+                <div class="kpi-change positive" id="kpiActionsChange">↑ 0 across all agents</div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Left Column: Pipeline & Approvals -->
+            <div>
+                <!-- Pipeline Funnel -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <div class="card-title">Sales Pipeline Funnel</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="funnel-container" id="pipelineFunnel">
+                            <div class="loading"><div class="spinner"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Approvals Queue -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Pending Approvals</div>
+                        <span id="approvalCount" style="background-color: var(--danger); padding: 0.25rem 0.75rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 600;">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="approvals-container" id="approvalsQueue">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">✓</div>
+                                <p>No pending approvals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Agent Activity -->
+            <div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Agent Activity Feed</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-feed" id="activityFeed">
+                            <div class="loading"><div class="spinner"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Department Performance -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <div class="card-header">
+                <div class="card-title">Department Performance</div>
+            </div>
+            <div class="card-body">
+                <div class="department-grid" id="departmentGrid">
+                    <div class="loading" style="grid-column: 1/-1;"><div class="spinner"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Supabase Configuration
+        const SUPABASE_URL = 'https://rrtgynwurrdyhxudbesv.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJydGd5bnd1cnJkeWh4dWRiZXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNDAyODMsImV4cCI6MjA4OTgxNjI4M30.hD9ECsyjhZk6ZfCRtMXzq6Z6v54gFCy9QsKv49Eofw4';
+
+        // Initialize Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Department mapping
+        const departments = {
+            'Discover': ['Market Scanner', 'ICP Researcher', 'Tech Stack Analyst'],
+            'Engage': ['BDR', 'Prospect Researcher', 'Sales Writer', 'Objection Handler', 'Follow-up', 'Multi-channel'],
+            'Convert': ['Demo Scheduler', 'Proposal Generator', 'ROI Calculator', 'Negotiation Analyst', 'Contract Prep', 'Competitor Intel', 'Win/Loss Analyst', 'Customer Success'],
+            'Create': ['Thought Leadership', 'Case Study Writer', 'Social Media', 'Website Publisher', 'Events & Community'],
+            'Innovate': ['Product Feedback', 'Market Trends', 'Brand & Comms'],
+            'Partner': ['Strategic Partnerships'],
+            'Manage': ['CEO Dashboard', 'Performance Optimizer', 'Compliance Monitor']
+        };
+
+        // Global state
+        let refreshInterval = null;
+        let lastRefresh = null;
+
+        // Initialize dashboard
+        async function initDashboard() {
+            await refreshDashboard();
+            // Set up auto-refresh every 30 seconds
+            if (refreshInterval) clearInterval(refreshInterval);
+            refreshInterval = setInterval(refreshDashboard, 30000);
+        }
+
+        // Main refresh function
+        async function refreshDashboard() {
+            try {
+                lastRefresh = new Date();
+
+                // Load all data in parallel
+                await Promise.all([
+                    loadKPIs(),
+                    loadPipelineFunnel(),
+                    loadAgentActivity(),
+                    loadApprovals(),
+                    loadDepartmentMetrics()
+                ]);
+            } catch (error) {
+                console.error('Dashboard refresh error:', error);
+            }
+        }
+
+        // Load KPIs
+        async function loadKPIs() {
+            try {
+                // Total Leads
+                const { count: totalLeads } = await supabase
+                    .from('leads')
+                    .select('*', { count: 'exact', head: true });
+
+                // Active Pipeline
+                const { data: pipelineData } = await supabase
+                    .from('pipeline')
+                    .select('id')
+                    .in('stage', ['qualified', 'engaged', 'proposal']);
+                const activePipeline = pipelineData?.length || 0;
+
+                // Outreach sent today
+                const today = new Date().toISOString().split('T')[0];
+                const { data: outreachData } = await supabase
+                    .from('outreach')
+                    .select('id')
+                    .gte('sent_at', today + 'T00:00:00');
+                const outreachSent = outreachData?.length || 0;
+
+                // Agent actions today
+                const { data: agentLogsData } = await supabase
+                    .from('agent_logs')
+                    .select('id')
+                    .gte('created_at', today + 'T00:00:00');
+                const agentActions = agentLogsData?.length || 0;
+
+                // Update KPI cards
+                document.getElementById('kpiTotalLeads').textContent = totalLeads || 0;
+                document.getElementById('kpiActivePipeline').textContent = activePipeline;
+                document.getElementById('kpiOutreach').textContent = outreachSent;
+                document.getElementById('kpiAgentActions').textContent = agentActions;
+
+                // Update change indicators (mock data for now)
+                document.getElementById('kpiLeadsChange').textContent = '↑ 12% from last week';
+                document.getElementById('kpiPipelineChange').textContent = '↑ 8% this month';
+                document.getElementById('kpiOutreachChange').textContent = '↑ 15% vs yesterday';
+                document.getElementById('kpiActionsChange').textContent = `↑ ${agentActions} across all agents`;
+            } catch (error) {
+                console.error('Error loading KPIs:', error);
+            }
+        }
+
+        // Load Pipeline Funnel
+        async function loadPipelineFunnel() {
+            try {
+                const stages = ['new', 'qualified', 'engaged', 'proposal', 'closed'];
+                const stageCounts = {};
+
+                for (const stage of stages) {
+                    const { data } = await supabase
+                        .from('pipeline')
+                        .select('id', { count: 'exact' })
+                        .eq('stage', stage);
+                    stageCounts[stage] = data?.length || 0;
+                }
+
+                // Find max value for scaling
+                const maxCount = Math.max(...Object.values(stageCounts), 1);
+
+                // Generate funnel HTML
+                const stageLabels = {
+                    'new': 'New Leads',
+                    'qualified': 'Qualified',
+                    'engaged': 'Engaged',
+                    'proposal': 'Proposal',
+                    'closed': 'Closed Won'
+                };
+
+                let funnelHTML = '';
+                stages.forEach(stage => {
+                    const count = stageCounts[stage];
+                    const percentage = (count / maxCount) * 100;
+                    funnelHTML += `
+                        <div class="funnel-stage">
+                            <div class="funnel-label">${stageLabels[stage]}</div>
+                            <div class="funnel-bar-container">
+                                <div class="funnel-bar" style="width: ${percentage}%">${count > 0 ? count : ''}</div>
+                            </div>
+                            <div class="funnel-count">${count}</div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('pipelineFunnel').innerHTML = funnelHTML;
+            } catch (error) {
+                console.error('Error loading pipeline:', error);
+                document.getElementById('pipelineFunnel').innerHTML = '<div class="empty-state"><p>Error loading pipeline data</p></div>';
+            }
+        }
+
+        // Load Agent Activity Feed
+        async function loadAgentActivity() {
+            try {
+                const { data: logs } = await supabase
+                    .from('agent_logs')
+                    .select('id, agent_name, action, status, created_at, error')
+                    .order('created_at', { ascending: false })
+                    .limit(20);
+
+                if (!logs || logs.length === 0) {
+                    document.getElementById('activityFeed').innerHTML = '<div class="empty-state"><p>No recent activity</p></div>';
+                    return;
+                }
+
+                let feedHTML = '';
+                logs.forEach(log => {
+                    const time = new Date(log.created_at);
+                    const timeString = time.toLocaleTimeString();
+                    const statusClass = log.status === 'success' ? 'success' : log.status === 'error' ? 'error' : '';
+                    const statusText = log.status?.toUpperCase() || 'PENDING';
+
+                    feedHTML += `
+                        <div class="activity-item">
+                            <div>
+                                <span class="activity-agent">${log.agent_name}</span>
+                                executed <strong>${log.action}</strong>
+                                <span class="activity-status ${statusClass}">${statusText}</span>
+                            </div>
+                            ${log.error ? `<div style="color: var(--danger); font-size: 0.75rem; margin-top: 0.5rem;">${log.error}</div>` : ''}
+                            <div class="activity-time">${timeString}</div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('activityFeed').innerHTML = feedHTML;
+            } catch (error) {
+                console.error('Error loading activity feed:', error);
+                document.getElementById('activityFeed').innerHTML = '<div class="empty-state"><p>Error loading activity data</p></div>';
+            }
+        }
+
+        // Load Approvals Queue
+        async function loadApprovals() {
+            try {
+                const { data: approvals } = await supabase
+                    .from('approvals')
+                    .select('id, agent_id, action_type, description, created_at')
+                    .eq('status', 'pending')
+                    .order('created_at', { ascending: true });
+
+                document.getElementById('approvalCount').textContent = approvals?.length || 0;
+
+                if (!approvals || approvals.length === 0) {
+                    document.getElementById('approvalsQueue').innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">✓</div>
+                            <p>No pending approvals</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let approvalsHTML = '';
+                approvals.forEach(approval => {
+                    const time = new Date(approval.created_at);
+                    const timeString = time.toLocaleTimeString();
+
+                    approvalsHTML += `
+                        <div class="approval-item">
+                            <div class="approval-content">
+                                <div class="approval-type">${approval.action_type}</div>
+                                <div class="approval-description">${approval.description}</div>
+                                <div class="approval-time">${timeString}</div>
+                            </div>
+                            <div class="approval-buttons">
+                                <button class="btn btn-approve" onclick="approveAction(${approval.id}, this)">Approve</button>
+                                <button class="btn btn-reject" onclick="rejectAction(${approval.id}, this)">Reject</button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('approvalsQueue').innerHTML = approvalsHTML;
+            } catch (error) {
+                console.error('Error loading approvals:', error);
+                document.getElementById('approvalsQueue').innerHTML = '<div class="empty-state"><p>Error loading approvals</p></div>';
+            }
+        }
+
+        // Load Department Metrics
+        async function loadDepartmentMetrics() {
+            try {
+                const { data: metrics } = await supabase
+                    .from('agent_metrics')
+                    .select('agent_name, metric_name, metric_value')
+                    .order('agent_name', { ascending: true });
+
+                // Group metrics by department
+                const deptMetrics = {};
+                Object.keys(departments).forEach(dept => {
+                    deptMetrics[dept] = {};
+                    departments[dept].forEach(agent => {
+                        const agentMetrics = metrics?.filter(m => m.agent_name === agent) || [];
+                        deptMetrics[dept][agent] = agentMetrics;
+                    });
+                });
+
+                let gridHTML = '';
+                Object.keys(departments).forEach(dept => {
+                    const agents = departments[dept];
+                    let metricHTML = '';
+
+                    agents.forEach(agent => {
+                        const agentMetrics = deptMetrics[dept][agent];
+                        const successCount = agentMetrics?.filter(m => m.metric_name === 'success_count')?.reduce((sum, m) => sum + m.metric_value, 0) || 0;
+                        const taskCount = agentMetrics?.filter(m => m.metric_name === 'task_count')?.reduce((sum, m) => sum + m.metric_value, 0) || 0;
+
+                        metricHTML += `
+                            <div class="metric-row">
+                                <div class="metric-label">${agent}</div>
+                                <div class="metric-value">${successCount}/${taskCount}</div>
+                            </div>
+                        `;
+                    });
+
+                    gridHTML += `
+                        <div class="department-card">
+                            <div class="department-header">
+                                <div class="department-name">${dept}</div>
+                            </div>
+                            <div class="department-metrics">
+                                ${metricHTML || '<div class="empty-state"><p>No metrics available</p></div>'}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('departmentGrid').innerHTML = gridHTML;
+            } catch (error) {
+                console.error('Error loading department metrics:', error);
+                document.getElementById('departmentGrid').innerHTML = '<div class="empty-state"><p>Error loading department data</p></div>';
+            }
+        }
+
+        // Approve action
+        async function approveAction(approvalId, button) {
+            button.disabled = true;
+            button.textContent = 'Approving...';
+
+            try {
+                const response = await fetch(`/api/approvals/${approvalId}/approve`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Refresh approvals
+                    await loadApprovals();
+                } else {
+                    button.disabled = false;
+                    button.textContent = 'Approve';
+                    alert('Failed to approve action');
+                }
+            } catch (error) {
+                console.error('Error approving action:', error);
+                button.disabled = false;
+                button.textContent = 'Approve';
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Reject action
+        async function rejectAction(approvalId, button) {
+            button.disabled = true;
+            button.textContent = 'Rejecting...';
+
+            try {
+                const response = await fetch(`/api/approvals/${approvalId}/reject`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Refresh approvals
+                    await loadApprovals();
+                } else {
+                    button.disabled = false;
+                    button.textContent = 'Reject';
+                    alert('Failed to reject action');
+                }
+            } catch (error) {
+                console.error('Error rejecting action:', error);
+                button.disabled = false;
+                button.textContent = 'Reject';
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Manual refresh
+        function manualRefresh() {
+            const btn = document.querySelector('.refresh-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '⟳ Refreshing...';
+            btn.disabled = true;
+
+            refreshDashboard().finally(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initDashboard);
+
+        // Cleanup on unload
+        window.addEventListener('beforeunload', () => {
+            if (refreshInterval) clearInterval(refreshInterval);
+        });
+    </script>
+</body>
+</html>

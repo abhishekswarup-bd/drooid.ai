@@ -1,0 +1,160 @@
+{
+  "dashboard": {
+    "name": "Drooid CEO Command Center",
+    "version": "1.0.0",
+    "description": "Real-time AI sales engine analytics dashboard",
+    "port": 3001,
+    "refreshInterval": 30000,
+    "maxActivityItems": 20,
+    "maxApprovalItems": 50
+  },
+  "supabase": {
+    "url": "https://rrtgynwurrdyhxudbesv.supabase.co",
+    "tables": {
+      "leads": {
+        "name": "leads",
+        "description": "Lead information and scoring",
+        "fields": ["id", "company", "domain", "industry", "employee_count", "revenue_range", "location", "source", "icp_score", "status", "created_at"]
+      },
+      "pipeline": {
+        "name": "pipeline",
+        "description": "Deal pipeline stages and values",
+        "fields": ["id", "lead_id", "stage", "deal_value", "probability", "owner_agent", "notes", "created_at"]
+      },
+      "outreach": {
+        "name": "outreach",
+        "description": "Sent messages and engagement tracking",
+        "fields": ["id", "contact_id", "channel", "subject", "body", "status", "sent_at", "opened_at", "replied_at", "created_at"]
+      },
+      "agent_logs": {
+        "name": "agent_logs",
+        "description": "Agent execution logs and activity",
+        "fields": ["id", "agent_id", "agent_name", "action", "input_summary", "output_summary", "tokens_used", "model", "duration_ms", "status", "error", "created_at"]
+      },
+      "agent_metrics": {
+        "name": "agent_metrics",
+        "description": "Performance metrics by agent",
+        "fields": ["id", "agent_id", "agent_name", "metric_name", "metric_value", "period", "created_at"]
+      },
+      "approvals": {
+        "name": "approvals",
+        "description": "Pending approval queue",
+        "fields": ["id", "agent_id", "action_type", "description", "payload", "status", "decided_at", "decided_by", "created_at"]
+      },
+      "content": {
+        "name": "content",
+        "description": "Generated content and materials",
+        "fields": ["id", "type", "title", "body", "author_agent", "status", "published_at", "created_at"]
+      }
+    }
+  },
+  "departments": {
+    "Discover": {
+      "agents": ["Market Scanner", "ICP Researcher", "Tech Stack Analyst"],
+      "color": "#14b8a6"
+    },
+    "Engage": {
+      "agents": ["BDR", "Prospect Researcher", "Sales Writer", "Objection Handler", "Follow-up", "Multi-channel"],
+      "color": "#06b6d4"
+    },
+    "Convert": {
+      "agents": ["Demo Scheduler", "Proposal Generator", "ROI Calculator", "Negotiation Analyst", "Contract Prep", "Competitor Intel", "Win/Loss Analyst", "Customer Success"],
+      "color": "#8b5cf6"
+    },
+    "Create": {
+      "agents": ["Thought Leadership", "Case Study Writer", "Social Media", "Website Publisher", "Events & Community"],
+      "color": "#f59e0b"
+    },
+    "Innovate": {
+      "agents": ["Product Feedback", "Market Trends", "Brand & Comms"],
+      "color": "#ec4899"
+    },
+    "Partner": {
+      "agents": ["Strategic Partnerships"],
+      "color": "#3b82f6"
+    },
+    "Manage": {
+      "agents": ["CEO Dashboard", "Performance Optimizer", "Compliance Monitor"],
+      "color": "#6366f1"
+    }
+  },
+  "api": {
+    "rateLimiting": {
+      "general": {
+        "windowMs": 900000,
+        "max": 100
+      },
+      "approvals": {
+        "windowMs": 60000,
+        "max": 20
+      }
+    },
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/",
+        "description": "Main dashboard HTML"
+      },
+      {
+        "method": "GET",
+        "path": "/health",
+        "description": "Server health check"
+      },
+      {
+        "method": "GET",
+        "path": "/api/metrics",
+        "description": "Get current KPI metrics"
+      },
+      {
+        "method": "GET",
+        "path": "/api/agents",
+        "description": "Get agent performance data"
+      },
+      {
+        "method": "GET",
+        "path": "/api/pending-approvals",
+        "description": "Get count of pending approvals"
+      },
+      {
+        "method": "POST",
+        "path": "/api/approvals/:id/approve",
+        "description": "Approve a pending action"
+      },
+      {
+        "method": "POST",
+        "path": "/api/approvals/:id/reject",
+        "description": "Reject a pending action"
+      }
+    ]
+  },
+  "kpis": [
+    {
+      "id": "totalLeads",
+      "label": "Total Leads",
+      "query": "SELECT COUNT(*) FROM leads",
+      "unit": "leads",
+      "trend": "weekly"
+    },
+    {
+      "id": "activePipeline",
+      "label": "Active Pipeline",
+      "query": "SELECT COUNT(*) FROM pipeline WHERE stage IN ('qualified', 'engaged', 'proposal')",
+      "unit": "deals",
+      "trend": "monthly"
+    },
+    {
+      "id": "outreachSent",
+      "label": "Outreach Sent Today",
+      "query": "SELECT COUNT(*) FROM outreach WHERE DATE(sent_at) = CURRENT_DATE",
+      "unit": "messages",
+      "trend": "daily"
+    },
+    {
+      "id": "agentActions",
+      "label": "Agent Actions Today",
+      "query": "SELECT COUNT(*) FROM agent_logs WHERE DATE(created_at) = CURRENT_DATE",
+      "unit": "actions",
+      "trend": "daily"
+    }
+  ]
+}

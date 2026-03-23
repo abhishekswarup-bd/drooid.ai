@@ -1,0 +1,28 @@
+# Environment variables (NEVER commit secrets)
+.env
+.env.*
+!.env.template
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# OpenClaw/Baileys session data (encrypted, but still sensitive)
+session_data/
+auth_info/
+baileys_store/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/

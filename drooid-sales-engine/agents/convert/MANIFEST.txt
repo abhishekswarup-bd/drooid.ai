@@ -1,0 +1,401 @@
+DROOID SALES ENGINE - CONVERSION AGENTS MANIFEST
+================================================
+
+Created: 2026-03-22
+Version: 1.0 Production Ready
+
+AGENT FILES (8 total)
+====================
+
+10-pre-call-researcher.js (9.3K)
+  Agent ID: agent-10
+  Function: Deep research and briefing before sales meetings
+  Input: lead_id, contact_id, meeting_details
+  Output: Structured briefing (exec_summary, talking_points, questions, objections)
+  Storage: pipeline.notes + content (pre_call_brief)
+  Approval Required: NO
+  Gemini Temperature: 0.3 (research focused)
+  Timeout: 30s
+
+11-proposal-writer.js (11K)
+  Agent ID: agent-11
+  Function: Custom proposal generation after qualified meetings
+  Input: lead_id, contact_id, meeting_notes, requirements
+  Output: Full markdown proposal + deal_value + win_probability
+  Storage: content (proposal) + approvals (pending CEO)
+  Approval Required: YES
+  Gemini Temperature: 0.4 (creative but focused)
+  Timeout: 45s
+
+12-pipeline-tracker.js (12K)
+  Agent ID: agent-12
+  Function: Daily pipeline health monitoring and risk flagging
+  Input: All active deals from pipeline table
+  Output: Health report (healthy/at-risk/stale) + recommendations
+  Storage: agent_metrics (pipeline_health) + tasks (actions)
+  Approval Required: NO
+  Gemini Temperature: 0.3 (analytical)
+  Timeout: 40s
+
+13-nurture-agent.js (11K)
+  Agent ID: agent-13
+  Function: Value-focused nurture for warm prospects
+  Input: Contacts in nurture stage
+  Output: Personalized nurture touchpoint per contact
+  Storage: outreach (message_type: nurture) + scheduling
+  Approval Required: YES
+  Gemini Temperature: 0.5 (personalized)
+  Timeout: 20s per contact
+
+14-competitive-intel.js (10K)
+  Agent ID: agent-14
+  Function: Competitive battlecard creation and caching
+  Input: competitor_name, optional: deal_id
+  Output: Competitive battlecard (strengths, weaknesses, differentiation)
+  Storage: content (competitive_intel) + deal_competitive_intel links
+  Approval Required: NO
+  Gemini Temperature: 0.3 (analytical)
+  Timeout: 35s (or 2s if cached)
+
+15-win-loss-analyst.js (12K)
+  Agent ID: agent-15
+  Function: Analysis of closed deals for patterns and learning
+  Input: period_days (default: 90), include_lost flag
+  Output: Win/loss report + pattern analysis + recommendations
+  Storage: agent_metrics + content (win_loss_analysis)
+  Approval Required: NO
+  Gemini Temperature: 0.3 (analytical)
+  Timeout: 45s
+
+16-referral-generator.js (13K)
+  Agent ID: agent-16
+  Function: Referral request generation from satisfied customers
+  Input: Auto-scans closed_won deals (60 days) + engaged prospects
+  Output: Personalized referral requests + talking points
+  Storage: outreach (message_type: referral_ask) + approvals (pending)
+  Approval Required: YES
+  Gemini Temperature: 0.5 (personalized)
+  Timeout: 20s per candidate
+
+17-testimonial-collector.js (14K)
+  Agent ID: agent-17
+  Function: Testimonial and case study collection
+  Input: Closed_won deals 30-90 days old
+  Output: Testimonial requests + suggested drafts
+  Storage: outreach (message_type: testimonial_request) + content (case_study)
+  Approval Required: YES
+  Gemini Temperature: 0.5 (personalized)
+  Timeout: 25s per client
+
+DOCUMENTATION FILES (4 total)
+=============================
+
+README.md
+  Complete agent guide with:
+  - Detailed description of each agent
+  - Database requirements
+  - Integration checklist
+  - Performance characteristics
+  - Usage examples
+  - Monitoring & metrics
+
+ARCHITECTURE.md
+  System design document with:
+  - Overview diagram
+  - Agent interaction map
+  - Upstream/downstream data flows
+  - Data schema and key fields
+  - Request/response patterns
+  - Approval workflow details
+  - Scaling considerations
+  - Monitoring and alerting
+  - Security & compliance
+  - Deployment checklist
+  - Extension points
+
+QUICK_START.md
+  Quick reference guide with:
+  - File listing
+  - Key features checklist
+  - Agent quick reference table
+  - Running agents (code examples)
+  - Approval workflow diagram
+  - Database setup
+  - Testing examples
+  - Monitoring checklist
+  - Common issues & solutions
+  - Performance benchmarks
+  - Customization guide
+  - Next steps
+
+MANIFEST.txt
+  This file - complete inventory
+
+CODE STATISTICS
+===============
+
+Total Lines:          3,358
+  - Agent Code:       ~2,300 lines
+  - Documentation:   ~1,058 lines
+
+Agent Code Breakdown:
+  - Error handling:    ~15% per agent
+  - DB operations:     ~20% per agent
+  - Gemini calls:      ~10% per agent
+  - Output parsing:    ~10% per agent
+  - Business logic:    ~45% per agent
+
+Documentation Breakdown:
+  - README:            ~400 lines
+  - ARCHITECTURE:      ~450 lines
+  - QUICK_START:       ~200 lines
+
+PRODUCTION READINESS CHECKLIST
+==============================
+
+Code Quality:
+  [✓] All agents have comprehensive error handling
+  [✓] All agents use try/catch with logging
+  [✓] All agents validate Gemini JSON output
+  [✓] All agents handle partial failures gracefully
+  [✓] All agents include timeout handling
+  [✓] All agents return standardized results
+
+Database Integration:
+  [✓] All agents read from Supabase
+  [✓] All agents write results to Supabase
+  [✓] All agents log actions via db.logAgentAction()
+  [✓] All agents create content records for storage
+  [✓] All agents handle FK relationships properly
+  [✓] All agents respect data isolation
+
+Gemini Integration:
+  [✓] All agents use shared callGemini() client
+  [✓] All agents have detailed system prompts (4-5 paragraphs)
+  [✓] All agents set appropriate temperature (0.3-0.5)
+  [✓] All agents configure appropriate timeouts (20-45s)
+  [✓] All agents handle streaming and async properly
+  [✓] All agents parse and validate JSON output
+
+Approval Workflow:
+  [✓] 4 agents require approval (11, 13, 16, 17)
+  [✓] All approval records have expiration (7 days)
+  [✓] All approval records include metadata
+  [✓] Rejection feedback loop available
+  [✓] Approval tracking in agent_metrics
+
+Business Logic:
+  [✓] Pre-call researcher: research-grade briefings
+  [✓] Proposal writer: custom proposals
+  [✓] Pipeline tracker: daily health monitoring
+  [✓] Nurture agent: value-first engagement
+  [✓] Competitive intel: honest battlecards
+  [✓] Win/loss analyst: pattern recognition
+  [✓] Referral generator: smart timing & asks
+  [✓] Testimonial collector: client success stories
+
+DEPENDENCIES
+============
+
+Required Files (must exist):
+  ../../integrations/gemini-client.js (callGemini function)
+  ../../integrations/supabase-client.js (db instance)
+
+Required Supabase Tables:
+  - pipeline
+  - leads
+  - contacts
+  - outreach
+  - content
+  - approvals
+  - agent_metrics
+  - engagement_tracking
+  - deal_competitive_intel
+  - tasks
+
+Required Environment:
+  - Node.js 18+
+  - Gemini API key
+  - Supabase credentials
+  - Email service (for outreach)
+
+DEPLOYMENT STEPS
+================
+
+1. Verify Integration Files
+   - Check gemini-client.js exists and exports callGemini()
+   - Check supabase-client.js exists and exports db
+   - Test both with sample queries
+
+2. Create Database Tables
+   - Run migration scripts for all required tables
+   - Create indexes per ARCHITECTURE.md
+   - Test connectivity with db.from('pipeline').select()
+
+3. Configure Environment
+   - Set GEMINI_API_KEY
+   - Set SUPABASE_URL and SUPABASE_KEY
+   - Test API connectivity
+
+4. Deploy Agent Files
+   - Copy all 8 agent files to agents/convert/
+   - Verify file permissions
+   - Test require() import
+
+5. Setup Scheduler
+   - Agent #12 (Pipeline Tracker): daily (9am)
+   - Agent #13 (Nurture): daily (8am)
+   - Agents #16, #17: daily (10am)
+   - Agents #10, #11, #14, #15: on-demand
+
+6. Configure Approvals
+   - Build approval dashboard UI
+   - Setup email notifications for pending approvals
+   - Configure 7-day expiration cleanup
+
+7. Setup Email Delivery
+   - Configure email service (SendGrid, AWS SES, etc)
+   - Test outreach message sending
+   - Setup tracking for opens/clicks
+
+8. Monitoring & Alerts
+   - Create agent performance dashboard
+   - Setup alerts for failures (>10% error rate)
+   - Monitor execution times (>60s = investigate)
+   - Track approval response times
+
+9. Test All Agents
+   - Run each agent with sample data
+   - Verify output storage
+   - Confirm approvals created correctly
+   - Test error handling
+
+10. Go Live
+    - Enable scheduler
+    - Monitor logs closely
+    - Iterate on prompt quality
+    - Gather feedback from sales team
+
+AGENT INTERACTION GRAPH
+=======================
+
+Pre-Sales Pipeline:
+  New Lead
+    ↓
+  [Agent #10: Pre-Call Researcher]
+    ↓
+  CEO Reviews Brief
+    ↓
+  Sales Meeting
+    ↓
+  [Agent #11: Proposal Writer]
+    ↓
+  [CEO Approval #11]
+    ↓
+  Send Proposal → Decision
+
+Active Deal Monitoring:
+  Daily
+    ↓
+  [Agent #12: Pipeline Tracker]
+    ↓
+  Sales Team Actions
+
+Prospect Engagement:
+  Contact in Nurture
+    ↓
+  [Agent #13: Nurture Agent]
+    ↓
+  [CEO Approval #13]
+    ↓
+  Send Touchpoint → Engagement
+
+Competitive Context:
+  Competitor Mentioned
+    ↓
+  [Agent #14: Competitive Intel]
+    ↓
+  Battlecard (Cached or New)
+
+Learning Loop:
+  Deals Close (Won/Lost)
+    ↓
+  [Agent #15: Win/Loss Analyst]
+    ↓
+  Insights & Trends
+
+Customer Relationships:
+  Deal Won
+    ↓
+  [Agent #16: Referral Generator]
+    ↓
+  [CEO Approval #16]
+    ↓
+  Referral Request
+    
+  30+ Days Post-Close
+    ↓
+  [Agent #17: Testimonial Collector]
+    ↓
+  [CEO Approval #17]
+    ↓
+  Testimonial Request → Case Study
+
+VERSIONING
+==========
+
+Version: 1.0
+Release Date: 2026-03-22
+Status: Production Ready
+
+All agents:
+- ✓ Complete error handling
+- ✓ Comprehensive logging
+- ✓ JSON validation
+- ✓ Approval workflows where needed
+- ✓ Supabase integration
+- ✓ Gemini 2.5 Flash optimized
+- ✓ Detailed documentation
+- ✓ Ready for immediate deployment
+
+SUPPORT & DOCUMENTATION
+=======================
+
+README.md: Complete agent descriptions and usage
+ARCHITECTURE.md: System design and data flows
+QUICK_START.md: Quick reference and troubleshooting
+Code comments: Inline documentation in each agent file
+
+For issues or enhancements:
+1. Check QUICK_START.md troubleshooting section
+2. Review ARCHITECTURE.md data flow diagrams
+3. Check agent logs via db.logAgentAction() queries
+4. Examine Gemini response in console logs
+5. Verify database schema matches requirements
+
+NEXT RELEASE ROADMAP
+====================
+
+v1.1 (Planned):
+  - Multi-language support for proposals
+  - A/B testing framework for nurture touches
+  - Advanced competitor tracking
+  - Customer sentiment analysis from outreach responses
+  - ROI calculation engine
+
+v1.2 (Planned):
+  - Webhook integration for CRM sync
+  - Advanced pipeline forecasting
+  - Deal risk prediction
+  - Automated follow-up escalation
+  - Real-time engagement scoring
+
+v2.0 (Future):
+  - Multi-agent collaboration workflows
+  - Custom model fine-tuning
+  - Advanced personalization engine
+  - Predictive lead scoring
+  - Autonomous deal progression
+
+END OF MANIFEST
+================
