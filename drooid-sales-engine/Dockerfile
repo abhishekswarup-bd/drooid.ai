@@ -1,20 +1,23 @@
 # Hardened Node.js container for DROOID Sales Engine
 FROM node:20-alpine AS builder
 
-# Install security tools
+# Install security tools and native build dependencies
 RUN apk add --no-cache \
     tini \
     dumb-init \
-    ca-certificates
+    ca-certificates \
+    python3 \
+    make \
+    g++
 
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with security audit
-RUN npm install --omit=dev && \
-    npm audit --production --audit-level=moderate || true
+# Install dependencies (separate from audit so failures are visible)
+RUN npm install --omit=dev
+RUN npm audit --production --audit-level=moderate || true
 
 # Final stage
 FROM node:20-alpine
