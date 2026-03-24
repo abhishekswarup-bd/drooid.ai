@@ -1737,11 +1737,21 @@
             'Neha Chopra','Kavitha Rajan','Pooja Srinivasan','Stephanie Reed',
             'Amanda Collins','Priya Sharma','Nicole Petersen','Olivia Brooks'
         ]);
+        const OC_MALE_HAIR = 'theCaesar,theCaesarAndSidePart,sides,shortCurly,shortFlat,shortRound,shortWaved,shavedSides,dreads01,dreads02,frizzle,shaggyMullet';
+        const OC_FEMALE_HAIR = 'miaWallace,longButNotTooLong,bob,bun,bigHair,straight01,straight02,straightAndStrand,curly,curvy,fro,froBand';
+        const OC_DARK_HAIR = '2c1b18,4a312c,724133,a55728,b58143,d6b370';
+        const OC_ALL_HAIR = '2c1b18,4a312c,724133,a55728,b58143,d6b370,c93305,e8e1e1,ecdcbf';
+        const OC_MALE_CLOTHES = '262e33,3c4f5c,65c9ff,5199e4,25557c,929598';
+        const OC_FEMALE_CLOTHES = '262e33,3c4f5c,65c9ff,5199e4,25557c,929598,ff488e,ff5c5c,a7ffc4,ffd95c';
         function ocAvatarUrl(name, personality) {
-            const seed = (name + ' ' + (personality || '')).trim();
             const isFemale = OC_FEMALE_NAMES.has(name);
+            const seed = (name + ' ' + (personality || '') + (isFemale ? ' woman' : ' man')).trim();
             let url = 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(seed);
-            url += isFemale ? '&facialHairProbability=0' : '&facialHairProbability=33';
+            if (isFemale) {
+                url += '&facialHairProbability=0&top=' + OC_FEMALE_HAIR + '&hairColor=' + OC_ALL_HAIR + '&clothingColor=' + OC_FEMALE_CLOTHES;
+            } else {
+                url += '&facialHairProbability=40&top=' + OC_MALE_HAIR + '&hairColor=' + OC_DARK_HAIR + '&clothingColor=' + OC_MALE_CLOTHES;
+            }
             return url;
         }
         function ocRenderNode(a) {
