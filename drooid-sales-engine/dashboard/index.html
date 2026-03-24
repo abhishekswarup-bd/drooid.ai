@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drooid CEO Command Center</title>
+    <title>Drooid Sales Command Center</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.41.0/dist/umd/supabase.js"></script>
     <style>
         * {
@@ -582,14 +582,227 @@
             margin-bottom: 1rem;
             opacity: 0.5;
         }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 0;
+            margin-left: 2rem;
+        }
+
+        .nav-tab {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:first-child { border-radius: 0.375rem 0 0 0.375rem; }
+        .nav-tab:last-child { border-radius: 0 0.375rem 0.375rem 0; }
+        .nav-tab:not(:first-child) { border-left: none; }
+
+        .nav-tab.active {
+            background: var(--accent-teal);
+            color: var(--bg-darker);
+            border-color: var(--accent-teal);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(20, 184, 166, 0.15);
+            color: var(--text-primary);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Logo SVG */
+        .logo-svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        /* Org Chart Styles */
+        .org-ceo-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .org-ceo-card {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--card-bg), var(--bg-dark));
+            border: 2px solid var(--accent-teal);
+            border-radius: 1rem;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 8px 32px rgba(20, 184, 166, 0.15);
+        }
+
+        .org-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent-indigo);
+        }
+
+        .org-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .org-title {
+            font-size: 0.95rem;
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .org-bio {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            max-width: 400px;
+        }
+
+        /* Phase Group */
+        .phase-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .phase-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-indigo);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-label::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: var(--accent-teal);
+            border-radius: 2px;
+        }
+
+        .leadership-section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-indigo);
+        }
+
+        .org-leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .org-leadership-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .org-leadership-card:hover {
+            border-color: var(--accent-teal);
+            box-shadow: 0 8px 24px rgba(20, 184, 166, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .org-leadership-card .org-avatar {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            border-color: var(--accent-teal);
+        }
+
+        .org-leadership-card .org-name { font-size: 1.15rem; }
+
+        .org-card-meta {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .org-card-meta span { color: var(--accent-indigo); font-weight: 600; }
+
+        .org-team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .org-team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .org-team-card:hover {
+            border-color: var(--accent-indigo);
+            transform: translateY(-2px);
+        }
+
+        .org-team-card .org-avatar {
+            width: 48px;
+            height: 48px;
+            font-size: 1.1rem;
+            border-width: 2px;
+        }
+
+        .org-team-card .org-name { font-size: 0.95rem; }
+
+        .org-team-card .org-title { font-size: 0.8rem; }
+
+        .org-location {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <div class="header">
         <div class="header-left">
+            <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="3" fill="none"/>
+                <circle cx="14" cy="16" r="3" fill="#14b8a6"/>
+                <circle cx="26" cy="16" r="3" fill="#6366f1"/>
+                <path d="M12 26 Q20 32 28 26" stroke="url(#logoGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#14b8a6"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+            </svg>
             <div class="logo">Drooid</div>
-            <div class="header-title">CEO Command Center</div>
+            <div class="header-title">Sales Command Center</div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="switchTab('dashboard')">Dashboard</button>
+                <button class="nav-tab" onclick="switchTab('team')">Team</button>
+            </div>
         </div>
         <div class="header-right">
             <button class="refresh-btn" onclick="manualRefresh()">
@@ -604,6 +817,8 @@
 
     <!-- Main Container -->
     <div class="container">
+        <!-- Dashboard Tab -->
+        <div id="tab-dashboard" class="tab-content active">
         <!-- KPI Section -->
         <div class="kpi-section">
             <div class="kpi-card">
@@ -687,15 +902,157 @@
                 </div>
             </div>
         </div>
+        </div><!-- end tab-dashboard -->
+
+        <!-- Team Tab -->
+        <div id="tab-team" class="tab-content">
+            <!-- CEO -->
+            <div class="org-ceo-section">
+                <div class="org-ceo-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #4338CA, #0D9488);">AS</div>
+                    <div class="org-name">Abi Sundaresan</div>
+                    <div class="org-title">CEO &amp; Founder</div>
+                    <div class="org-bio">Leading the charge in AI implementation and agent orchestration. 15+ years of SaaS experience with a vision for how AI agents can transform sales operations.</div>
+                </div>
+            </div>
+
+            <!-- Leadership -->
+            <div class="leadership-section-title">Leadership Team</div>
+            <div class="org-leadership-grid">
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #667EEA, #764BA2);">RM</div>
+                    <div class="org-name">Ryan Mitchell</div>
+                    <div class="org-title">Business Development Representative</div>
+                    <div class="org-location">San Francisco, CA</div>
+                    <div class="org-card-meta"><span>Focus:</span> Discovery &amp; Outreach</div>
+                </div>
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #F093FB, #F5576C);">PS</div>
+                    <div class="org-name">Priya Sharma</div>
+                    <div class="org-title">Senior Sales Writer</div>
+                    <div class="org-location">Austin, TX</div>
+                    <div class="org-card-meta"><span>Focus:</span> Personalized Messaging</div>
+                </div>
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">DAM</div>
+                    <div class="org-name">Dr. Arjun Mehta</div>
+                    <div class="org-title">Head of Content</div>
+                    <div class="org-location">London, UK</div>
+                    <div class="org-card-meta"><span>Focus:</span> Thought Leadership</div>
+                </div>
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #FA709A, #FEE140);">OB</div>
+                    <div class="org-name">Olivia Brooks</div>
+                    <div class="org-title">Social Media Strategist</div>
+                    <div class="org-location">Miami, FL</div>
+                    <div class="org-card-meta"><span>Focus:</span> Community Building</div>
+                </div>
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #A8EDEA, #FED6E3);">VD</div>
+                    <div class="org-name">Vikram Desai</div>
+                    <div class="org-title">Events &amp; Community Lead</div>
+                    <div class="org-location">Toronto, Canada</div>
+                    <div class="org-card-meta"><span>Focus:</span> Events &amp; Webinars</div>
+                </div>
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #FF9A56, #FF6A88);">NC</div>
+                    <div class="org-name">Natalie Cooper</div>
+                    <div class="org-title">Brand &amp; Communications Manager</div>
+                    <div class="org-location">Amsterdam, Netherlands</div>
+                    <div class="org-card-meta"><span>Focus:</span> Brand &amp; Reputation</div>
+                </div>
+                <div class="org-leadership-card">
+                    <div class="org-avatar" style="background: linear-gradient(135deg, #6B73FF, #000DFF);">AK</div>
+                    <div class="org-name">Ananya Krishnan</div>
+                    <div class="org-title">Director of Strategic Partnerships</div>
+                    <div class="org-location">Singapore</div>
+                    <div class="org-card-meta"><span>Focus:</span> Strategic Partnerships</div>
+                </div>
+            </div>
+
+            <!-- Core Ops by Phase -->
+            <div class="leadership-section-title">Core Operations Team</div>
+
+            <div class="phase-group">
+                <div class="phase-label">DISCOVER</div>
+                <div class="org-team-grid">
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #667EEA, #764BA2);">MS</div><div class="org-name">Matt Sullivan</div><div class="org-title">Prospect Scout</div><div class="org-location">Boston, MA</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #667EEA, #764BA2);">DP</div><div class="org-name">Deepak Patel</div><div class="org-title">Decision-Maker Finder</div><div class="org-location">New York, NY</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #667EEA, #764BA2);">KR</div><div class="org-name">Kavitha Rajan</div><div class="org-title">ICP Profiler</div><div class="org-location">San Francisco, CA</div></div>
+                </div>
+            </div>
+
+            <div class="phase-group">
+                <div class="phase-label">ENGAGE</div>
+                <div class="org-team-grid">
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #F093FB, #F5576C);">BH</div><div class="org-name">Brandon Hayes</div><div class="org-title">Email Sequence Writer</div><div class="org-location">Seattle, WA</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #F093FB, #F5576C);">SG</div><div class="org-name">Sneha Gupta</div><div class="org-title">Response Handler</div><div class="org-location">Chicago, IL</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #F093FB, #F5576C);">JT</div><div class="org-name">Jason Torres</div><div class="org-title">Objection Handler</div><div class="org-location">Dublin, Ireland</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #F093FB, #F5576C);">MN</div><div class="org-name">Meera Nair</div><div class="org-title">Meeting Scheduler</div><div class="org-location">Los Angeles, CA</div></div>
+                </div>
+            </div>
+
+            <div class="phase-group">
+                <div class="phase-label">CONVERT</div>
+                <div class="org-team-grid">
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">CD</div><div class="org-name">Chris Donovan</div><div class="org-title">Pre-Call Researcher</div><div class="org-location">Denver, CO</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">RI</div><div class="org-name">Rahul Iyer</div><div class="org-title">Proposal Writer</div><div class="org-location">Austin, TX</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">SR</div><div class="org-name">Stephanie Reed</div><div class="org-title">Pipeline Tracker</div><div class="org-location">Bangalore, India</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">AV</div><div class="org-name">Aditya Verma</div><div class="org-title">Nurture Agent</div><div class="org-location">Portland, OR</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">NP</div><div class="org-name">Nicole Petersen</div><div class="org-title">Competitive Intel</div><div class="org-location">Manchester, UK</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">SR2</div><div class="org-name">Suresh Reddy</div><div class="org-title">Win/Loss Analyst</div><div class="org-location">Madrid, Spain</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">AC</div><div class="org-name">Amanda Collins</div><div class="org-title">Referral Generator</div><div class="org-location">Copenhagen, Denmark</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">RM2</div><div class="org-name">Rohan Malhotra</div><div class="org-title">Testimonial Collector</div><div class="org-location">Atlanta, GA</div></div>
+                </div>
+            </div>
+
+            <div class="phase-group">
+                <div class="phase-label">CREATE</div>
+                <div class="org-team-grid">
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #FA709A, #FEE140);">TB</div><div class="org-name">Tyler Brennan</div><div class="org-title">Website Publisher</div><div class="org-location">Berlin, Germany</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #FA709A, #FEE140);">PS2</div><div class="org-name">Pooja Srinivasan</div><div class="org-title">SEO Optimizer</div><div class="org-location">Mexico City, Mexico</div></div>
+                </div>
+            </div>
+
+            <div class="phase-group">
+                <div class="phase-label">INNOVATE</div>
+                <div class="org-team-grid">
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #A8EDEA, #FED6E3);">DK</div><div class="org-name">David Kim</div><div class="org-title">Revenue Ideation</div><div class="org-location">Minneapolis, MN</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #A8EDEA, #FED6E3);">NC2</div><div class="org-name">Neha Chopra</div><div class="org-title">Analytics Optimizer</div><div class="org-location">Mumbai, India</div></div>
+                </div>
+            </div>
+
+            <div class="phase-group">
+                <div class="phase-label">MANAGE</div>
+                <div class="org-team-grid">
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #FF9A56, #FF6A88);">DW</div><div class="org-name">Derek Washington</div><div class="org-title">Pipeline Manager</div><div class="org-location">Bristol, UK</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #FF9A56, #FF6A88);">SB</div><div class="org-name">Sanjay Bhatia</div><div class="org-title">Quality Manager</div><div class="org-location">Shanghai, China</div></div>
+                    <div class="org-team-card"><div class="org-avatar" style="background: linear-gradient(135deg, #FF9A56, #FF6A88);">RN</div><div class="org-name">Rachel Nguyen</div><div class="org-title">Performance Manager</div><div class="org-location">Stockholm, Sweden</div></div>
+                </div>
+            </div>
+        </div><!-- end tab-team -->
     </div>
 
     <script>
         // Supabase Configuration
         const SUPABASE_URL = 'https://rrtgynwurrdyhxudbesv.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJydGd5bnd1cnJkeWh4dWRiZXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNDAyODMsImV4cCI6MjA4OTgxNjI4M30.hD9ECsyjhZk6ZfCRtMXzq6Z6v54gFCy9QsKv49Eofw4';
+        const SUPABASE_ANON_KEY = 'sb_publishable_O9LbL7UPRkHMxC_azFZ3oQ_M3kiFAoy';
 
         // Initialize Supabase
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Tab switching
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            // Highlight the clicked tab
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                if (el.getAttribute('onclick') && el.getAttribute('onclick').includes(tab)) {
+                    el.classList.add('active');
+                }
+            });
+        }
 
         // Department mapping
         const departments = {
