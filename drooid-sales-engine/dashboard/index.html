@@ -1046,6 +1046,22 @@
         .oc-fun-fact::before { content: '\1F4A1 '; }
         .oc-reports-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
         .oc-report-pill { font-size: 9px; padding: 2px 7px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+
+        /* ── Light Theme Overrides for Org Chart ── */
+        html[data-theme="light"] .oc-node-name { color: #e2e8f0; }
+        html[data-theme="light"] .oc-node-role { color: #94a3b8; }
+        html[data-theme="light"] .oc-node-status { color: #94a3b8; }
+        html[data-theme="light"] .oc-ns-label { color: #cbd5e1; }
+        html[data-theme="light"] .oc-ns-val { color: #94a3b8; }
+        html[data-theme="light"] .oc-node-phase { opacity: 1; }
+        html[data-theme="light"] .oc-avatar { border-color: rgba(255,255,255,0.25); }
+        html[data-theme="light"] .oc-status-dot { border-color: #1a2847; }
+        html[data-theme="light"] .oc-tree ul::before { border-left-color: #94a3b8; }
+        html[data-theme="light"] .oc-tree li::before,
+        html[data-theme="light"] .oc-tree li::after { border-top-color: #94a3b8; }
+        html[data-theme="light"] .oc-tree li > .oc-node::before { border-left-color: #94a3b8; }
+        html[data-theme="light"] .oc-d-name { color: #0f172a; }
+        html[data-theme="light"] .oc-d-text strong { color: #0f172a; }
         .oc-report-pill:hover { transform: scale(1.05); }
         .oc-rp-sales { background: rgba(59,130,246,0.12); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
         .oc-rp-marketing { background: rgba(139,92,246,0.12); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.2); }
