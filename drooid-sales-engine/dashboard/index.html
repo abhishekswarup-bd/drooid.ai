@@ -1732,9 +1732,17 @@
                 <div class="oc-ns-val${overdue}">Next: ${nextA}</div>
             </div>`;
         }
+        const OC_FEMALE_NAMES = new Set([
+            'Sneha Gupta','Meera Nair','Rachel Nguyen','Ananya Krishnan',
+            'Neha Chopra','Kavitha Rajan','Pooja Srinivasan','Stephanie Reed',
+            'Amanda Collins','Priya Sharma','Nicole Petersen','Olivia Brooks'
+        ]);
         function ocAvatarUrl(name, personality) {
             const seed = (name + ' ' + (personality || '')).trim();
-            return 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(seed);
+            const isFemale = OC_FEMALE_NAMES.has(name);
+            let url = 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(seed);
+            url += isFemale ? '&facialHairProbability=0' : '&facialHairProbability=33';
+            return url;
         }
         function ocRenderNode(a) {
             const st = ocGetStatus(a);
