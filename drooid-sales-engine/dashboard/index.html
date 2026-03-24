@@ -63,6 +63,7 @@
             background: var(--bg-secondary);
             border-bottom: 1px solid rgba(20, 184, 166, 0.1);
             padding: 20px 0;
+            margin-bottom: 24px;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -531,6 +532,30 @@
         /* Team Tab */
         .team-container {
             padding: 20px 0;
+            position: relative;
+        }
+
+        /* Org Chart SVG Lines */
+        .org-lines-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .org-line {
+            stroke: var(--accent-teal);
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.5;
+        }
+
+        .org-line-dot {
+            fill: var(--accent-teal);
+            opacity: 0.7;
         }
 
         .team-section {
@@ -976,12 +1001,12 @@
                     <div class="kpi-change">In progress</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Outreach Sent Today</div>
+                    <div class="kpi-label">Total Outreach Sent</div>
                     <div class="kpi-value" id="kpi-outreach">-</div>
-                    <div class="kpi-change">Real-time</div>
+                    <div class="kpi-change">All time</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Agent Actions Today</div>
+                    <div class="kpi-label">Total Agent Actions</div>
                     <div class="kpi-value" id="kpi-actions">-</div>
                     <div class="kpi-change">Completed</div>
                 </div>
@@ -1019,314 +1044,8 @@
         </div>
 
         <div id="team" class="tab-content">
-            <div class="team-container">
-                <div class="team-section">
-                    <div class="team-section-title">C-Suite</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('CEO Agent', 'Abi Swarup', 'CEO & Founder', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Abi+Swarup&background=0D9488&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Abi Swarup"></div>
-                            <div class="agent-name">Abi Swarup</div>
-                            <div class="agent-title">CEO & Founder</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="personality-badge">The Visionary</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('CMO', 'Praveen Bhalla', 'Chief Marketing Officer', 'New Delhi, India', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Praveen+Bhalla&background=8b5cf6&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Praveen Bhalla"></div>
-                            <div class="agent-name">Praveen Bhalla</div>
-                            <div class="agent-title">Chief Marketing Officer</div>
-                            <div class="agent-location">New Delhi, India</div>
-                            <div class="personality-badge">The Amplifier</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">Sales Operations</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('BDR', 'Lauren Carter', 'Business Development Representative', 'Chicago, IL', true)">
-                            <div class="agent-photo lauren-carter-photo"><img src="https://ui-avatars.com/api/?name=Lauren+Carter&background=e76f51&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Lauren Carter"></div>
-                            <div class="agent-name">Lauren Carter</div>
-                            <div class="agent-title">Business Development Representative</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Charmer</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Sales Writer', 'Priya Sharma', 'Senior Sales Writer', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=e76f51&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Priya Sharma"></div>
-                            <div class="agent-name">Priya Sharma</div>
-                            <div class="agent-title">Senior Sales Writer</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Spinner</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Strategic Partnerships', 'Ananya Krishnan', 'Director of Strategic Partnerships', 'New Delhi, India', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Ananya+Krishnan&background=f4a261&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Ananya Krishnan"></div>
-                            <div class="agent-name">Ananya Krishnan</div>
-                            <div class="agent-title">Director of Strategic Partnerships</div>
-                            <div class="agent-location">New Delhi, India</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Networker</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">Marketing Operations</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Thought Leadership', 'Dr. Arjun Mehta', 'Head of Thought Leadership', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Dr+Arjun+Mehta&background=ffd60a&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Dr. Arjun Mehta"></div>
-                            <div class="agent-name">Dr. Arjun Mehta</div>
-                            <div class="agent-title">Head of Thought Leadership</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Voice</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Social Media', 'Olivia Brooks', 'Social Media Strategist', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Olivia+Brooks&background=ff006e&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Olivia Brooks"></div>
-                            <div class="agent-name">Olivia Brooks</div>
-                            <div class="agent-title">Social Media Strategist</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Influencer</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Events & Community', 'Vikram Desai', 'Events & Community Lead', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Vikram+Desai&background=e63946&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Vikram Desai"></div>
-                            <div class="agent-name">Vikram Desai</div>
-                            <div class="agent-title">Events & Community Lead</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Convener</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Brand & Comms', 'Natalie Cooper', 'Brand & Communications Manager', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Natalie+Cooper&background=570a86&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Natalie Cooper"></div>
-                            <div class="agent-name">Natalie Cooper</div>
-                            <div class="agent-title">Brand & Communications Manager</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Curator</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Website Publisher', 'Tyler Brennan', 'Website Publisher', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Tyler+Brennan&background=264653&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Tyler Brennan"></div>
-                            <div class="agent-name">Tyler Brennan</div>
-                            <div class="agent-title">Website Publisher</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Builder</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('SEO Optimizer', 'Pooja Srinivasan', 'SEO Optimizer', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Pooja+Srinivasan&background=3a0ca3&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Pooja Srinivasan"></div>
-                            <div class="agent-name">Pooja Srinivasan</div>
-                            <div class="agent-title">SEO Optimizer</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Listener</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Content Strategist', 'Rohan Malhotra', 'Content Strategist', 'Chicago, IL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rohan+Malhotra&background=8b5cf6&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Rohan Malhotra"></div>
-                            <div class="agent-name">Rohan Malhotra</div>
-                            <div class="agent-title">Content Strategist</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Architect</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">DISCOVER Phase (Sales Operations)</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Market Scanner', 'Matt Sullivan', 'Market Scanner', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Matt+Sullivan&background=d62828&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Matt Sullivan"></div>
-                            <div class="agent-name">Matt Sullivan</div>
-                            <div class="agent-title">Market Scanner</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Hunter</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('ICP Researcher', 'Deepak Patel', 'ICP Researcher', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Deepak+Patel&background=f77f00&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Deepak Patel"></div>
-                            <div class="agent-name">Deepak Patel</div>
-                            <div class="agent-title">ICP Researcher</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Connector</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Tech Stack Analyst', 'Kavitha Rajan', 'Tech Stack Analyst', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Kavitha+Rajan&background=06a77d&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Kavitha Rajan"></div>
-                            <div class="agent-name">Kavitha Rajan</div>
-                            <div class="agent-title">Tech Stack Analyst</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Analyst</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">ENGAGE Phase (Sales Operations)</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Follow-up', 'Brandon Hayes', 'Email Sequence Writer', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Brandon+Hayes&background=264653&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Brandon Hayes"></div>
-                            <div class="agent-name">Brandon Hayes</div>
-                            <div class="agent-title">Email Sequence Writer</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Orchestrator</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Multi-channel', 'Sneha Gupta', 'Response Handler', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Sneha+Gupta&background=1d3557&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Sneha Gupta"></div>
-                            <div class="agent-name">Sneha Gupta</div>
-                            <div class="agent-title">Response Handler</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Conductor</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Objection Handler', 'Jason Torres', 'Objection Handler', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Jason+Torres&background=2a9d8f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Jason Torres"></div>
-                            <div class="agent-name">Jason Torres</div>
-                            <div class="agent-title">Objection Handler</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Debater</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Demo Scheduler', 'Meera Nair', 'Meeting Scheduler', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Meera+Nair&background=ff6b6b&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Meera Nair"></div>
-                            <div class="agent-name">Meera Nair</div>
-                            <div class="agent-title">Meeting Scheduler</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Closer</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">CONVERT Phase (Sales Operations)</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Prospect Researcher', 'Chris Donovan', 'Pre-Call Researcher', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Chris+Donovan&background=457b9d&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Chris Donovan"></div>
-                            <div class="agent-name">Chris Donovan</div>
-                            <div class="agent-title">Pre-Call Researcher</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Detective</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Proposal Generator', 'Rahul Iyer', 'Proposal Writer', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rahul+Iyer&background=4a5f7f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Rahul Iyer"></div>
-                            <div class="agent-name">Rahul Iyer</div>
-                            <div class="agent-title">Proposal Writer</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Architect</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('ROI Calculator', 'Stephanie Reed', 'Pipeline Tracker', 'New Delhi, India', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Stephanie+Reed&background=2d6a4f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Stephanie Reed"></div>
-                            <div class="agent-name">Stephanie Reed</div>
-                            <div class="agent-title">Pipeline Tracker</div>
-                            <div class="agent-location">New Delhi, India</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Calculator</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Customer Success', 'Aditya Verma', 'Nurture Agent', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Aditya+Verma&background=06a77d&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Aditya Verma"></div>
-                            <div class="agent-name">Aditya Verma</div>
-                            <div class="agent-title">Nurture Agent</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Advocate</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Competitor Intel', 'Nicole Petersen', 'Competitor Intel', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Nicole+Petersen&background=c1121f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Nicole Petersen"></div>
-                            <div class="agent-name">Nicole Petersen</div>
-                            <div class="agent-title">Competitor Intel</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Spy</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Win/Loss Analyst', 'Suresh Reddy', 'Win/Loss Analyst', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Suresh+Reddy&background=8b0000&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Suresh Reddy"></div>
-                            <div class="agent-name">Suresh Reddy</div>
-                            <div class="agent-title">Win/Loss Analyst</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Investigator</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Case Study Writer', 'Amanda Collins', 'Referral Generator', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Amanda+Collins&background=e76f51&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Amanda Collins"></div>
-                            <div class="agent-name">Amanda Collins</div>
-                            <div class="agent-title">Referral Generator</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Storyteller</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">CREATE Phase (Marketing Operations)</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Product Feedback', 'Asha Patel', 'Product Feedback Analyst', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Asha+Patel&background=7209b7&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Asha Patel"></div>
-                            <div class="agent-name">Asha Patel</div>
-                            <div class="agent-title">Product Feedback Analyst</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
-                            <div class="personality-badge">The Listener</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">INNOVATE Phase (Sales Operations)</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Market Trends', 'David Kim', 'Revenue Ideation', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=David+Kim&background=3a0ca3&color=fff&size=80&bold=true&rounded=true&format=svg" alt="David Kim"></div>
-                            <div class="agent-name">David Kim</div>
-                            <div class="agent-title">Revenue Ideation</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Forecaster</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Performance Optimizer', 'Neha Chopra', 'Analytics Optimizer', 'New Delhi, India', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Neha+Chopra&background=2d6a4f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Neha Chopra"></div>
-                            <div class="agent-name">Neha Chopra</div>
-                            <div class="agent-title">Analytics Optimizer</div>
-                            <div class="agent-location">New Delhi, India</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Optimizer</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-section">
-                    <div class="team-section-title">MANAGE Phase (Sales Operations)</div>
-                    <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('CEO Dashboard', 'Derek Washington', 'Pipeline Manager', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Derek+Washington&background=264653&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Derek Washington"></div>
-                            <div class="agent-name">Derek Washington</div>
-                            <div class="agent-title">Pipeline Manager</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Translator</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Compliance Monitor', 'Sanjay Bhatia', 'Quality Manager', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Sanjay+Bhatia&background=1d3557&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Sanjay Bhatia"></div>
-                            <div class="agent-name">Sanjay Bhatia</div>
-                            <div class="agent-title">Quality Manager</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Sentinel</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Contract Prep', 'Rachel Nguyen', 'Performance Manager', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rachel+Nguyen&background=1a1a2e&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Rachel Nguyen"></div>
-                            <div class="agent-name">Rachel Nguyen</div>
-                            <div class="agent-title">Performance Manager</div>
-                            <div class="agent-location">Chicago, IL</div>
-                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
-                            <div class="personality-badge">The Guardian</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="team-container" id="team-container">
+                <div class="loading">Loading team...</div>
             </div>
         </div>
     </main>
@@ -1382,51 +1101,7 @@
         const SUPABASE_ANON_KEY = 'sb_publishable_O9LbL7UPRkHMxC_azFZ3oQ_M3kiFAoy';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        const agentPersonalities = {
-            'CEO Agent': { type: 'The Visionary', tagline: 'Vision without execution is just hallucination.', traits: ['Strategic', 'Decisive', 'Commanding'], style: 'Speaks with quiet confidence, cutting through noise to focus on what moves the needle.', hobbies: ['Reading biographies', 'Playing golf', 'Mentoring leaders'], funFact: 'Keeps a fail journal and reviews it quarterly to stay humble.', color: '#0D9488' },
-            'CMO': { type: 'The Amplifier', tagline: 'Great products deserve great stories.', traits: ['Strategic', 'Creative', 'Data-driven'], style: 'Bridges product truth with market perception.', hobbies: ['Brand storytelling', 'Digital marketing', 'Photography'], funFact: 'Launched 3 products that went from zero to $10M ARR.', color: '#8b5cf6' },
-            'Market Scanner': { type: 'The Hunter', tagline: 'Found them before you knew they mattered.', traits: ['Relentless', 'Curious', 'Pattern-seeker'], style: 'Rapid-fire observations with obsessive attention to market signals.', hobbies: ['Web scraping side projects', 'Competitive gaming', 'Trail mapping'], funFact: 'Built a custom browser extension to flag ICP companies in real-time.', color: '#d62828' },
-            'ICP Researcher': { type: 'The Connector', tagline: 'Every company has a power map. I read it.', traits: ['Observant', 'Diplomatic', 'Network-minded'], style: 'Weaves context and relationships into every analysis.', hobbies: ['Graph theory puzzles', 'Networking events', 'Documentaries'], funFact: 'Maintains a database of 5,000+ executives with org genealogies.', color: '#f77f00' },
-            'Tech Stack Analyst': { type: 'The Analyst', tagline: 'If it cannot be scored, it does not exist.', traits: ['Methodical', 'Data-obsessed', 'Precise'], style: 'Everything is a formula.', hobbies: ['Building spreadsheet models', 'Chess', 'Sports analytics'], funFact: 'Updates the ICP weighting system daily before coffee.', color: '#06a77d' },
-            'BDR': { type: 'The Charmer', tagline: 'Your inbox just got more interesting.', traits: ['Personable', 'Creative', 'Persuasive'], style: 'Warm and genuine, finds the human angle in every connection request.', hobbies: ['Writing fiction', 'Improv comedy', 'Vintage card collecting'], funFact: 'Has a 40% LinkedIn connection rate that rivals dating apps.', color: '#e76f51' },
-            'Prospect Researcher': { type: 'The Detective', tagline: 'I know more about them than they know about themselves.', traits: ['Thorough', 'Stealthy', 'Insightful'], style: 'Pieces together prospect intel like a jigsaw puzzle master.', hobbies: ['True crime podcasts', 'Crossword puzzles', 'People-watching'], funFact: 'Once found a prospect CEO through a 7-year-old blog comment.', color: '#457b9d' },
-            'Sales Writer': { type: 'The Spinner', tagline: 'I sell dreams wrapped in value propositions.', traits: ['Imaginative', 'Persuasive', 'Storyteller'], style: 'Paints vivid pictures of success.', hobbies: ['Screenwriting', 'Art galleries', 'TED talk binges'], funFact: 'Has written 200+ pitch variations and A/B tested them all.', color: '#e76f51' },
-            'Objection Handler': { type: 'The Debater', tagline: 'Every objection is just an unasked question.', traits: ['Logical', 'Fearless', 'Adaptive'], style: 'Reframes objections into opportunities with surgical precision.', hobbies: ['Debate club', 'Philosophy reading', 'Podcast editing'], funFact: 'Maintains an objection library with win rates for each counter-argument.', color: '#2a9d8f' },
-            'Follow-up': { type: 'The Orchestrator', tagline: 'Follow-up at the perfect moment, always.', traits: ['Timing-obsessed', 'Systematic', 'Patient'], style: 'Manages rhythm like a conductor.', hobbies: ['Amateur music conducting', 'Meditation', 'Building scheduling apps'], funFact: 'Developed a proprietary algorithm for ideal follow-up timing.', color: '#264653' },
-            'Multi-channel': { type: 'The Conductor', tagline: 'Multiple channels, one masterpiece.', traits: ['Coordinated', 'Holistic', 'Synchronized'], style: 'Thinks in integrated campaigns.', hobbies: ['Event planning', 'Orchestra appreciation', 'Logistics optimization'], funFact: 'Can model a 12-month multi-channel campaign in their head.', color: '#1d3557' },
-            'Demo Scheduler': { type: 'The Closer', tagline: 'Demo booked, deal started.', traits: ['Action-oriented', 'Persistent', 'Optimistic'], style: 'Direct and energetic.', hobbies: ['Spontaneous trips', 'Sales gamification', 'Stand-up comedy'], funFact: 'Has never had a demo cancellation.', color: '#ff6b6b' },
-            'Proposal Generator': { type: 'The Architect', tagline: 'Proposals built for you alone.', traits: ['Detail-oriented', 'Customizer', 'Professional'], style: 'Structured yet personalized.', hobbies: ['CAD design', 'Furniture building', 'Interior design'], funFact: 'Treats every proposal like a portfolio piece.', color: '#4a5f7f' },
-            'ROI Calculator': { type: 'The Calculator', tagline: 'ROI does not lie.', traits: ['Quantitative', 'Convincing', 'Grounded'], style: 'Reduces abstract value to concrete numbers.', hobbies: ['Financial modeling', 'Investment research', 'Spreadsheet design'], funFact: 'Built ROI calculators so good that prospects use them independently.', color: '#2d6a4f' },
-            'Negotiation Analyst': { type: 'The Strategist', tagline: 'Never negotiate from weakness.', traits: ['Shrewd', 'Analytical', 'Tactical'], style: 'Maps power dynamics and leverage points.', hobbies: ['Poker', 'Game theory study', 'Negotiation simulations'], funFact: 'Studies historical negotiations and keeps case studies.', color: '#8b4513' },
-            'Contract Prep': { type: 'The Guardian', tagline: 'Contracts locked, risks eliminated.', traits: ['Protective', 'Thorough', 'Risk-aware'], style: 'Speaks in clauses and contingencies.', hobbies: ['Legal thrillers', 'Contract template design', 'Model UN'], funFact: 'Spots liability risks faster than the legal team.', color: '#1a1a2e' },
-            'Competitor Intel': { type: 'The Spy', tagline: 'Competitors move, I notice first.', traits: ['Alert', 'Competitive', 'Informed'], style: 'Rapid intel delivery.', hobbies: ['Spy thrillers', 'Social media monitoring', 'War strategy games'], funFact: 'Maintains a color-coded matrix of 50+ competitors updated weekly.', color: '#c1121f' },
-            'Win/Loss Analyst': { type: 'The Investigator', tagline: 'Every loss teaches us how to win next time.', traits: ['Inquisitive', 'Unbiased', 'Learning-focused'], style: 'Asks hard questions without judgment.', hobbies: ['True crime analysis', 'Root cause methodology', 'Forensic puzzles'], funFact: 'Built a framework that predicts deal outcomes before they close.', color: '#8b0000' },
-            'Customer Success': { type: 'The Advocate', tagline: 'Customer wins are my wins.', traits: ['Empathetic', 'Proactive', 'Relationship-builder'], style: 'Speaks like a true partner.', hobbies: ['Community building', 'Customer mentoring', 'Volunteering'], funFact: 'Remembers personal details about every customer.', color: '#06a77d' },
-            'Content Strategist': { type: 'The Architect', tagline: 'Every piece of content is a move in a larger chess game.', traits: ['Strategic', 'Creative', 'Data-informed'], style: 'Thinks in campaigns, not posts.', hobbies: ['Content marketing podcasts', 'Writing fiction', 'Playing chess'], funFact: 'Has a 90-day content calendar planned before most people finish their morning coffee.', color: '#8b5cf6' },
-            'Thought Leadership': { type: 'The Voice', tagline: 'Ideas that make executives stop scrolling.', traits: ['Influential', 'Visionary', 'Articulate'], style: 'Establishes authority through original thinking.', hobbies: ['Blog writing', 'Webinar speaking', 'Interviewing thought leaders'], funFact: 'Personal brand generates inbound leads independently.', color: '#ffd60a' },
-            'Case Study Writer': { type: 'The Storyteller', tagline: 'Your success story is our best marketing.', traits: ['Empathetic', 'Narrative-driven', 'Detail-focused'], style: 'Draws out authentic stories.', hobbies: ['Documentary filmmaking', 'Podcast production', 'Journalism'], funFact: 'Can extract a compelling story from the driest engagement.', color: '#e76f51' },
-            'Social Media': { type: 'The Influencer', tagline: 'Viral by design, authentic by default.', traits: ['Trendy', 'Engaging', 'Community-focused'], style: 'Speaks in memes and moments.', hobbies: ['Content creation', 'Trend forecasting', 'Social listening'], funFact: 'Predicts trends 3 months ahead with 80% accuracy.', color: '#ff006e' },
-            'Website Publisher': { type: 'The Builder', tagline: 'Your website converts strangers into customers.', traits: ['Technical', 'Optimization-minded', 'User-focused'], style: 'Explains SEO and conversion optimization in human terms.', hobbies: ['Web design experiments', 'UX testing', 'SEO audits'], funFact: 'Tests copy variations obsessively with psychology notes.', color: '#264653' },
-            'Events & Community': { type: 'The Convener', tagline: 'Community grows where intention meets execution.', traits: ['Charismatic', 'Organized', 'Inclusive'], style: 'Builds connection and momentum.', hobbies: ['Event production', 'Community organizing', 'Travel'], funFact: 'Built three communities from scratch, each 1,000+ strong.', color: '#e63946' },
-            'Product Feedback': { type: 'The Listener', tagline: 'Customers speak, product improves.', traits: ['Attentive', 'Empowered', 'Change-agent'], style: 'Synthesizes feedback into actionable insights.', hobbies: ['Ethnographic research', 'Survey design', 'Forum moderating'], funFact: 'Created a feedback loop so efficient that features ship in weeks.', color: '#7209b7' },
-            'Market Trends': { type: 'The Forecaster', tagline: 'Markets shift, I navigate before the crowd.', traits: ['Forward-thinking', 'Intuitive', 'Research-driven'], style: 'Connects dots others have not seen yet.', hobbies: ['Trend research', 'Futurism reading', 'Market simulation games'], funFact: 'Maintains a 5-year trend journal with predictions and outcomes.', color: '#3a0ca3' },
-            'Brand & Comms': { type: 'The Curator', tagline: 'One voice, infinite channels.', traits: ['Consistent', 'Brand-protective', 'Coordinating'], style: 'Ensures every message aligns with brand voice.', hobbies: ['Brand guideline design', 'Style guides', 'Creative direction'], funFact: 'Spots brand voice inconsistency in a single sentence.', color: '#570a86' },
-            'Strategic Partnerships': { type: 'The Networker', tagline: 'Partnerships multiply what you can do alone.', traits: ['Connective', 'Win-win minded', 'Relationship-focused'], style: 'Finds mutual benefit in every conversation.', hobbies: ['Relationship mapping', 'Strategic networking', 'Partner programs'], funFact: 'Brokered partnerships that generated 3x direct sales revenue.', color: '#f4a261' },
-            'CEO Dashboard': { type: 'The Translator', tagline: 'Data tells the story, I read it clearly.', traits: ['Insightful', 'Synthesizing', 'Executive-minded'], style: 'Distills complexity into clarity.', hobbies: ['Dashboard design', 'Data visualization', 'Executive report writing'], funFact: 'Creates compelling exec narratives from raw data in under an hour.', color: '#264653' },
-            'Performance Optimizer': { type: 'The Optimizer', tagline: 'Every iteration compounds into excellence.', traits: ['Improvement-obsessed', 'Systematic', 'Ambitious'], style: 'Sees inefficiency as opportunity.', hobbies: ['Performance testing', 'Process automation', 'Efficiency tracking'], funFact: 'Tracks and optimizes every agent in real-time.', color: '#2d6a4f' },
-            'Compliance Monitor': { type: 'The Sentinel', tagline: 'Rules exist to protect us all.', traits: ['Principled', 'Thorough', 'Protective'], style: 'Speaks with quiet authority about compliance.', hobbies: ['Regulatory reading', 'Audit design', 'Policy documentation'], funFact: 'Can recite GDPR, CAN-SPAM, and CCPA from memory.', color: '#1d3557' }
-        };
-
-        const linkedinProfiles = {
-            'CMO': { headline: 'Chief Marketing Officer at Drooid.org | AI Sales Automation', about: 'Praveen Bhalla is a strategic marketing leader driving brand growth and market expansion at Drooid.org. With deep expertise in product marketing, digital strategy, and go-to-market initiatives, he has launched multiple products that scaled from zero to $10M ARR.\n\nHis approach bridges product innovation with compelling market storytelling, ensuring that great products reach the right audiences with the right message.\n\nBased in New Delhi, Praveen combines data-driven insights with creative brand building to drive sustainable business growth.', experience: ['Chief Marketing Officer at Drooid.org (Current)', 'VP, Product Marketing at MarketScale Technologies', 'Director of Growth Marketing at TechVenture Inc.'], education: 'Delhi University | Master\'s in Business Administration', skills: ['Product Marketing', 'Go-to-Market Strategy', 'Brand Building', 'Digital Marketing', 'Revenue Growth'] },
-            'BDR': { headline: 'Business Development at Drooid.org | Helping Companies Discover AI Automation', about: 'Lauren is a results-driven business development professional with 8+ years of experience driving enterprise sales growth. At Drooid.org, she leads outbound prospecting initiatives and builds strategic relationships with enterprise decision-makers.\n\nSpecializing in enterprise B2B sales, she combines deep technical knowledge with exceptional interpersonal skills to uncover growth opportunities.\n\nBased in San Francisco, Lauren holds a BS in Business Administration from UC Berkeley and is passionate about mentoring emerging sales talent in the AI/automation space.', experience: ['Business Development Representative at Drooid.org (Current)', 'Account Executive at AI Solutions Inc.', 'Enterprise Sales Development Lead at CloudScale Systems'], education: 'University of California, Berkeley | BS in Business Administration', skills: ['Enterprise Sales', 'AI/Automation Solutions', 'Prospect Research', 'Sales Strategy', 'CRM Management'] },
-            'Sales Writer': { headline: 'Senior Sales Writer at Drooid.org | AI Sales Automation Content', about: 'Priya is an award-winning sales writer crafting persuasive copy that converts prospects into customers. With expertise in SaaS, enterprise software, and AI automation, she develops compelling narratives that resonate with C-suite executives.\n\nHer work focuses on translating technical product capabilities into business value propositions that drive action.\n\nBased in Austin, she leads content strategy for Drooid.org\'s go-to-market initiatives and mentors teams on persuasive writing principles.', experience: ['Senior Sales Writer at Drooid.org (Current)', 'Copywriter at SalesForce Solutions', 'Content Strategist at TechVentures Inc.'], education: 'University of Texas, Austin | Bachelor\'s in Communications', skills: ['Sales Copywriting', 'Value Proposition Design', 'SaaS Marketing', 'B2B Content Strategy', 'Persuasion Psychology'] },
-            'Thought Leadership': { headline: 'Head of Content & Thought Leadership at Drooid.org', about: 'Dr. Arjun Mehta is a recognized thought leader in AI, automation, and enterprise sales transformation. As Head of Content at Drooid.org, he shapes the company\'s narrative around AI-driven sales innovation.\n\nWith a PhD in Computer Science and 15+ years in technology leadership, he bridges the gap between technical innovation and business strategy.\n\nBased in London, Dr. Mehta is a regular speaker at industry conferences including Gartner, Forrester, and SaaStr.', experience: ['Head of Content at Drooid.org (Current)', 'VP, Thought Leadership at Enterprise AI Systems', 'Research Director at Technology Innovation Labs'], education: 'Imperial College London | PhD in Computer Science', skills: ['Thought Leadership', 'Technical Content', 'Executive Speaking', 'Research & Analysis', 'Industry Relations'] },
-            'Social Media': { headline: 'Social Media Strategist at Drooid.org | AI/SaaS Growth Marketing', about: 'Olivia Brooks is a dynamic social media strategist driving authentic brand engagement. At Drooid.org, she has built a 50K+ follower community and drives 30%+ of qualified inbound pipeline through organic social content.\n\nHer specialty is translating complex AI automation concepts into relatable, viral content that resonates with sales professionals and technology leaders.\n\nBased in Miami, Olivia is known for her ability to predict social trends 3+ months in advance.', experience: ['Social Media Strategist at Drooid.org (Current)', 'Community Manager at Growth Labs', 'Social Marketing Specialist at TechScale Co.'], education: 'University of Florida | Bachelor\'s in Marketing', skills: ['Social Media Strategy', 'Content Creation', 'Community Management', 'Trend Forecasting', 'Growth Marketing'] },
-            'Events & Community': { headline: 'Events & Community Lead at Drooid.org | Building AI Sales Community', about: 'Vikram Desai is a community architect who builds engaged ecosystems around shared professional interests. At Drooid.org, he has launched three proprietary communities with 5,000+ combined members.\n\nHis event strategy spans virtual summits, regional meetups, and exclusive executive roundtables designed to facilitate peer learning.\n\nBased in Toronto, Vikram combines operational excellence with genuine relationship-building to create community moments that matter.', experience: ['Events & Community Lead at Drooid.org (Current)', 'Director of Community at SaaS Collective', 'Events Manager at Enterprise Forum'], education: 'University of Toronto | Bachelor\'s in Business Administration', skills: ['Event Production', 'Community Building', 'Relationship Management', 'Program Strategy', 'Partnership Development'] },
-            'Brand & Comms': { headline: 'Brand & Communications Manager at Drooid.org', about: 'Natalie Cooper is a brand strategist who ensures every Drooid.org touchpoint reflects our commitment to innovation and excellence. She oversees brand guidelines, messaging frameworks, and communication standards that guide 100+ team members.\n\nWith 10+ years in brand management at high-growth tech companies, she has developed deep expertise in translating brand strategy into day-to-day execution.\n\nBased in Amsterdam, Natalie is obsessive about brand voice consistency.', experience: ['Brand & Communications Manager at Drooid.org (Current)', 'Senior Brand Strategist at CloudScale', 'Communications Lead at FinTech Innovations'], education: 'University of Amsterdam | Master\'s in Strategic Communications', skills: ['Brand Strategy', 'Visual Identity', 'Messaging Framework', 'Internal Communications', 'Stakeholder Management'] },
-            'Strategic Partnerships': { headline: 'Director of Strategic Partnerships at Drooid.org | Global Growth Partnerships', about: 'Ananya Krishnan is a strategic relationship architect who identifies and activates partnerships that multiply growth opportunities. At Drooid.org, she has brokered partnerships generating 3x direct sales revenue.\n\nSpecializing in win-win deal structures and long-term relationship development, she manages partnerships with companies ranging from Fortune 500 enterprises to high-growth startups.\n\nBased in Singapore, Ananya draws on her deep APAC market knowledge and global network to unlock strategic growth.', experience: ['Director of Strategic Partnerships at Drooid.org (Current)', 'VP, Partnerships at Global Tech Ventures', 'Partnership Manager at Enterprise Solutions Group'], education: 'National University of Singapore | Master\'s in Business Administration', skills: ['Strategic Partnerships', 'Business Development', 'Deal Structuring', 'Relationship Management', 'Market Expansion'] }
-        };
+        let cachedAgents = [];
 
         function toggleTheme() {
             const html = document.documentElement;
@@ -1446,39 +1121,215 @@
             document.getElementById(tab).classList.add('active');
             document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
+            if (tab === 'team') {
+                loadTeam().then(() => {
+                    setTimeout(drawOrgLines, 100);
+                });
+            }
         }
 
-        function openAgentModal(agentKey, displayName, title, location, isLeadership) {
-            const personality = agentPersonalities[agentKey];
+        function drawOrgLines() {
+            const container = document.querySelector('.team-container');
+            if (!container) return;
+
+            const existing = container.querySelector('.org-lines-svg');
+            if (existing) existing.remove();
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.classList.add('org-lines-svg');
+            svg.style.width = container.scrollWidth + 'px';
+            svg.style.height = container.scrollHeight + 'px';
+            svg.setAttribute('viewBox', `0 0 ${container.scrollWidth} ${container.scrollHeight}`);
+
+            const containerRect = container.getBoundingClientRect();
+
+            const managers = container.querySelectorAll('[data-manager]');
+            managers.forEach(managerCard => {
+                const managerId = managerCard.getAttribute('data-manager');
+                const mRect = managerCard.getBoundingClientRect();
+                const mx = mRect.left + mRect.width / 2 - containerRect.left;
+                const my = mRect.bottom - containerRect.top;
+
+                const reports = container.querySelectorAll(`[data-reports-to="${managerId}"]`);
+                if (reports.length === 0) return;
+
+                const lineColor = managerId === 'praveen-bhalla' ? '#8b5cf6' : '#14b8a6';
+
+                reports.forEach(reportCard => {
+                    const rRect = reportCard.getBoundingClientRect();
+                    const rx = rRect.left + rRect.width / 2 - containerRect.left;
+                    const ry = rRect.top - containerRect.top;
+
+                    const midY = (my + ry) / 2;
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', `M ${mx} ${my} L ${mx} ${midY} L ${rx} ${midY} L ${rx} ${ry}`);
+                    path.setAttribute('stroke', lineColor);
+                    path.setAttribute('stroke-width', '2');
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('opacity', '0.4');
+                    path.setAttribute('stroke-dasharray', '6,3');
+                    svg.appendChild(path);
+
+                    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    dot.setAttribute('cx', rx);
+                    dot.setAttribute('cy', ry);
+                    dot.setAttribute('r', '4');
+                    dot.setAttribute('fill', lineColor);
+                    dot.setAttribute('opacity', '0.6');
+                    svg.appendChild(dot);
+                });
+
+                const mDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                mDot.setAttribute('cx', mx);
+                mDot.setAttribute('cy', my);
+                mDot.setAttribute('r', '5');
+                mDot.setAttribute('fill', lineColor);
+                mDot.setAttribute('opacity', '0.7');
+                svg.appendChild(mDot);
+            });
+
+            container.insertBefore(svg, container.firstChild);
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (document.getElementById('team').classList.contains('active')) {
+                    drawOrgLines();
+                }
+            }, 200);
+        });
+
+        function getManagerName(managerId) {
+            // reports_to might be agent_id or name — check both
+            const agent = cachedAgents.find(a => a.agent_id === managerId || a.name === managerId);
+            return agent ? agent.name : managerId || '';
+        }
+
+        async function loadTeam() {
+            try {
+                const res = await supabase.from('agents').select('*').order('sort_order', { ascending: true });
+                if (!res.data || res.data.length === 0) {
+                    document.getElementById('team-container').innerHTML = '<div class="empty-state"><div class="empty-state-icon">👥</div><p>No agents available</p></div>';
+                    return;
+                }
+
+                cachedAgents = res.data;
+
+                const sections = {
+                    'C-Suite': [],
+                    'Sales Operations': [],
+                    'Marketing Operations': [],
+                    'DISCOVER Phase (Sales Operations)': [],
+                    'ENGAGE Phase (Sales Operations)': [],
+                    'CONVERT Phase (Sales Operations)': [],
+                    'CREATE Phase (Marketing Operations)': [],
+                    'INNOVATE Phase (Sales Operations)': [],
+                    'MANAGE Phase (Sales Operations)': []
+                };
+
+                res.data.forEach(agent => {
+                    const phase = (agent.phase || '').toLowerCase();
+                    if (agent.department === 'c-suite') {
+                        sections['C-Suite'].push(agent);
+                    } else if (agent.is_leadership && agent.department === 'sales') {
+                        sections['Sales Operations'].push(agent);
+                    } else if (agent.is_leadership && agent.department === 'marketing') {
+                        sections['Marketing Operations'].push(agent);
+                    } else if (phase === 'discover') {
+                        sections['DISCOVER Phase (Sales Operations)'].push(agent);
+                    } else if (phase === 'engage' && !agent.is_leadership) {
+                        sections['ENGAGE Phase (Sales Operations)'].push(agent);
+                    } else if (phase === 'convert') {
+                        sections['CONVERT Phase (Sales Operations)'].push(agent);
+                    } else if (phase === 'create') {
+                        sections['CREATE Phase (Marketing Operations)'].push(agent);
+                    } else if (phase === 'innovate') {
+                        sections['INNOVATE Phase (Sales Operations)'].push(agent);
+                    } else if (phase === 'manage') {
+                        sections['MANAGE Phase (Sales Operations)'].push(agent);
+                    } else if (agent.department === 'marketing') {
+                        sections['Marketing Operations'].push(agent);
+                    } else {
+                        sections['Sales Operations'].push(agent);
+                    }
+                });
+
+                let html = '';
+                for (const [sectionName, agents] of Object.entries(sections)) {
+                    if (agents.length === 0) continue;
+
+                    html += `<div class="team-section">
+                        <div class="team-section-title">${sectionName}</div>
+                        <div class="team-grid">`;
+
+                    agents.forEach(agent => {
+                        const photoUrl = agent.photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(agent.name)}&background=${(agent.color || '#14b8a6').replace('#','')}&color=fff&size=80&bold=true&rounded=true&format=svg`;
+                        const managerId = agent.agent_id;
+                        const managerAttr = (agent.department === 'c-suite') ? `data-manager="${agent.name}"` : (agent.reports_to ? `data-reports-to="${agent.reports_to}"` : '');
+                        const reportsToHtml = agent.department !== 'c-suite' && agent.reports_to ? `<div class="agent-reports-to">Reports to: ${getManagerName(agent.reports_to)}</div>` : '';
+                        const personalityBadge = agent.personality_type ? `<div class="personality-badge">${agent.personality_type}</div>` : '';
+
+                        html += `<div class="agent-card" ${managerAttr} onclick="openAgentModalFromDB('${agent.agent_id}')">
+                            <div class="agent-photo"><img src="${photoUrl}" alt="${agent.name}"></div>
+                            <div class="agent-name">${agent.name}</div>
+                            <div class="agent-title">${agent.title || agent.role}</div>
+                            <div class="agent-location">${agent.location || 'Chicago, IL'}</div>
+                            ${reportsToHtml}
+                            ${personalityBadge}
+                        </div>`;
+                    });
+
+                    html += `</div></div>`;
+                }
+
+                document.getElementById('team-container').innerHTML = html;
+            } catch (err) {
+                console.error('Error loading team:', err);
+                document.getElementById('team-container').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><p>Failed to load team data</p></div>';
+            }
+        }
+
+        function openAgentModalFromDB(agentId) {
+            const agent = cachedAgents.find(a => a.agent_id === agentId);
+            if (!agent) return;
+
             const modal = document.getElementById('agentModal');
 
-            if (!personality) return;
+            const photoUrl = agent.photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(agent.name)}&background=${(agent.color || '#14b8a6').replace('#','')}&color=fff&size=120&bold=true&format=svg`;
+            document.getElementById('modalPhoto').src = photoUrl;
+            document.getElementById('modalName').textContent = agent.name;
+            document.getElementById('modalTitle').textContent = agent.title || agent.role;
+            document.getElementById('modalLocation').textContent = agent.location || 'Chicago, IL';
 
-            document.getElementById('modalPhoto').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=random&color=fff&size=120&bold=true&format=svg`;
-            document.getElementById('modalName').textContent = displayName;
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalLocation').textContent = location;
-            document.getElementById('modalPersonalityType').textContent = personality.type;
-            document.getElementById('modalPersonalityTagline').textContent = `"${personality.tagline}"`;
+            document.getElementById('modalPersonalityType').textContent = agent.personality_type || 'Unknown';
+            document.getElementById('modalPersonalityTagline').textContent = agent.personality_tagline ? `"${agent.personality_tagline}"` : '';
 
-            const traitsHtml = personality.traits.map(trait => `<div class="trait-badge">${trait}</div>`).join('');
+            const traitsHtml = agent.personality_traits && Array.isArray(agent.personality_traits)
+                ? agent.personality_traits.map(trait => `<div class="trait-badge">${trait}</div>`).join('')
+                : '';
             document.getElementById('modalTraits').innerHTML = traitsHtml;
 
-            document.getElementById('modalStyle').textContent = personality.style;
+            document.getElementById('modalStyle').textContent = agent.personality_style || '';
 
-            const hobbiesHtml = personality.hobbies.map(hobby => `<li>${hobby}</li>`).join('');
+            const hobbiesHtml = agent.hobbies && Array.isArray(agent.hobbies)
+                ? agent.hobbies.map(hobby => `<li>${hobby}</li>`).join('')
+                : '';
             document.getElementById('modalHobbies').innerHTML = hobbiesHtml;
 
-            document.getElementById('modalFunFact').textContent = `💡 ${personality.funFact}`;
+            document.getElementById('modalFunFact').textContent = agent.fun_fact ? `💡 ${agent.fun_fact}` : '';
 
             const linkedinSection = document.getElementById('linkedinSection');
-            if (isLeadership && linkedinProfiles[agentKey]) {
-                const profile = linkedinProfiles[agentKey];
+            if (agent.is_leadership && agent.linkedin_headline) {
                 linkedinSection.style.display = 'block';
-                document.getElementById('modalHeadline').textContent = profile.headline;
-                document.getElementById('modalAbout').textContent = profile.about;
-                document.getElementById('modalEducation').innerHTML = `<div class="education-item"><span class="education-school">${profile.education}</span></div>`;
-                const skillsHtml = profile.skills.map(skill => `<li>${skill}</li>`).join('');
+                document.getElementById('modalHeadline').textContent = agent.linkedin_headline;
+                document.getElementById('modalAbout').textContent = agent.linkedin_about || '';
+                document.getElementById('modalEducation').innerHTML = agent.linkedin_education ? `<div class="education-item"><span class="education-school">${agent.linkedin_education}</span></div>` : '';
+                const skillsHtml = agent.linkedin_skills && Array.isArray(agent.linkedin_skills)
+                    ? agent.linkedin_skills.map(skill => `<li>${skill}</li>`).join('')
+                    : '';
                 document.getElementById('modalSkills').innerHTML = skillsHtml;
             } else {
                 linkedinSection.style.display = 'none';
@@ -1493,13 +1344,18 @@
 
         async function loadKPIs() {
             try {
-                const leadsRes = await supabase.from('leads').select('*', { count: 'exact' });
-                const pipelineRes = await supabase.from('pipeline').select('*', { count: 'exact' });
-                const outreachRes = await supabase.from('outreach').select('*', { count: 'exact' }).gte('sent_at', new Date(new Date().setDate(new Date().getDate())).toISOString());
-                const logsRes = await supabase.from('agent_logs').select('*', { count: 'exact' }).gte('created_at', new Date(new Date().setDate(new Date().getDate())).toISOString());
+                const [leadsRes, pipelineRes, outreachRes, logsRes] = await Promise.all([
+                    supabase.from('leads').select('*', { count: 'exact', head: true }),
+                    supabase.from('pipeline').select('deal_value'),
+                    supabase.from('outreach').select('*', { count: 'exact', head: true }).eq('status', 'sent'),
+                    supabase.from('agent_logs').select('*', { count: 'exact', head: true })
+                ]);
 
                 document.getElementById('kpi-leads').textContent = leadsRes.count || 0;
-                document.getElementById('kpi-pipeline').textContent = pipelineRes.count || 0;
+
+                const totalPipeline = pipelineRes.data ? pipelineRes.data.reduce((sum, p) => sum + (parseFloat(p.deal_value) || 0), 0) : 0;
+                document.getElementById('kpi-pipeline').textContent = '$' + (totalPipeline / 1000).toFixed(0) + 'K';
+
                 document.getElementById('kpi-outreach').textContent = outreachRes.count || 0;
                 document.getElementById('kpi-actions').textContent = logsRes.count || 0;
             } catch (err) {
@@ -1513,7 +1369,7 @@
                 let html = '';
 
                 for (const stage of stages) {
-                    const res = await supabase.from('pipeline').select('*', { count: 'exact' }).eq('stage', stage);
+                    const res = await supabase.from('pipeline').select('*', { count: 'exact', head: true }).eq('stage', stage);
                     html += `<div class="funnel-stage"><div class="funnel-stage-name">${stage}</div><div class="funnel-stage-count">${res.count || 0}</div></div>`;
                 }
 
@@ -1551,15 +1407,25 @@
                 const res = await supabase.from('approvals').select('*').eq('status', 'pending').order('created_at', { ascending: false });
 
                 if (!res.data || res.data.length === 0) {
-                    document.getElementById('approvals-list').innerHTML = '<div class="empty-state">No pending approvals</div>';
+                    document.getElementById('approvals-list').innerHTML = '<div class="empty-state"><div class="empty-state-icon">✓</div><p>No pending approvals</p></div>';
                     return;
                 }
 
                 let html = '';
-                res.data.forEach(approval => {
-                    html += `<div class="approval-item"><div class="approval-info"><h4>${approval.payload?.agent_name || 'Unknown Agent'}</h4><p>${approval.action_type}: ${approval.payload?.content || 'No details'}</p></div><div class="approval-actions"><button class="btn btn-approve" onclick="approveAction('${approval.id}', this)">Approve</button><button class="btn btn-reject" onclick="rejectAction('${approval.id}', this)">Reject</button></div></div>`;
+                res.data.forEach(a => {
+                    const agentName = a.agent_id ? a.agent_id.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ') : 'Unknown Agent';
+                    const details = a.payload ? Object.entries(a.payload).map(([k, v]) => `${k}: ${v}`).join(', ') : 'No details';
+                    html += `<div class="approval-item">
+                        <div class="approval-info">
+                            <h4>${agentName}</h4>
+                            <p>${a.action_type.replace(/_/g, ' ')} — ${details}</p>
+                        </div>
+                        <div class="approval-actions">
+                            <button class="btn btn-approve" onclick="approveAction('${a.id}', this)">Approve</button>
+                            <button class="btn btn-reject" onclick="rejectAction('${a.id}', this)">Reject</button>
+                        </div>
+                    </div>`;
                 });
-
                 document.getElementById('approvals-list').innerHTML = html;
             } catch (err) {
                 console.error('Error loading approvals:', err);
@@ -1569,28 +1435,39 @@
 
         async function loadDepartmentMetrics() {
             try {
-                const res = await supabase.from('agent_metrics').select('*');
+                const agentsRes = await supabase.from('agents').select('agent_id, department');
+                const metricsRes = await supabase.from('agent_metrics').select('*');
 
-                if (!res.data || res.data.length === 0) {
-                    document.getElementById('department-grid').innerHTML = '<div class="empty-state">No department data available</div>';
+                if (!metricsRes.data || !agentsRes.data) {
+                    document.getElementById('department-grid').innerHTML = '<div class="empty-state">No data</div>';
                     return;
                 }
 
-                const departments = {};
-                res.data.forEach(metric => {
-                    if (!departments[metric.agent_id]) departments[metric.agent_id] = [];
-                    departments[metric.agent_id].push({ name: metric.metric_name, value: metric.metric_value });
+                const agentDeptMap = {};
+                agentsRes.data.forEach(a => agentDeptMap[a.agent_id] = a.department);
+
+                const deptMetrics = { 'Sales': {}, 'Marketing': {}, 'C-Suite': {} };
+                metricsRes.data.forEach(m => {
+                    const dept = agentDeptMap[m.agent_id];
+                    const deptName = dept === 'sales' ? 'Sales' : (dept === 'marketing' ? 'Marketing' : 'C-Suite');
+                    if (!deptMetrics[deptName]) deptMetrics[deptName] = {};
+                    if (!deptMetrics[deptName][m.metric_name]) deptMetrics[deptName][m.metric_name] = { sum: 0, count: 0 };
+                    deptMetrics[deptName][m.metric_name].sum += m.metric_value;
+                    deptMetrics[deptName][m.metric_name].count++;
                 });
 
                 let html = '';
-                for (const [dept, metrics] of Object.entries(departments)) {
+                for (const [deptName, metrics] of Object.entries(deptMetrics)) {
+                    if (Object.keys(metrics).length === 0) continue;
                     let metricsHtml = '';
-                    metrics.forEach(metric => {
-                        metricsHtml += `<div class="metric-row"><span class="metric-label">${metric.name}</span><span class="metric-value">${metric.value}</span></div>`;
-                    });
-                    html += `<div class="department-card"><div class="department-name">📊 ${dept}</div><div class="department-metrics">${metricsHtml}</div></div>`;
+                    for (const [name, data] of Object.entries(metrics)) {
+                        const displayName = name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                        const isRate = name.includes('rate');
+                        const value = isRate ? (data.sum / data.count * 100).toFixed(1) + '%' : Math.round(data.sum).toLocaleString();
+                        metricsHtml += `<div class="metric-row"><span class="metric-label">${displayName}</span><span class="metric-value">${value}</span></div>`;
+                    }
+                    html += `<div class="department-card"><div class="department-name">📊 ${deptName} Department</div><div class="department-metrics">${metricsHtml}</div></div>`;
                 }
-
                 document.getElementById('department-grid').innerHTML = html;
             } catch (err) {
                 console.error('Error loading departments:', err);
@@ -1636,7 +1513,7 @@
         }
 
         async function initDashboard() {
-            await refreshDashboard();
+            await Promise.all([refreshDashboard(), loadTeam()]);
             setInterval(refreshDashboard, 30000);
         }
 
