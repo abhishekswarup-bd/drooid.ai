@@ -84,14 +84,16 @@
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             flex-shrink: 0;
+            overflow: visible;
         }
 
         .logo svg {
             width: 100%;
             height: 100%;
+            overflow: visible;
         }
 
         .logo-text {
@@ -617,7 +619,23 @@
         .agent-location {
             font-size: 11px;
             color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .agent-reports-to {
+            font-size: 10px;
+            color: var(--accent-teal);
+            font-weight: 600;
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .agent-reports-to::before {
+            content: '→';
+            font-size: 8px;
         }
 
         .personality-badge {
@@ -925,7 +943,7 @@
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo">
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="28" height="28" rx="7" fill="#0D9488" fill-opacity="0.12" stroke="#0D9488" stroke-width="2"/><line x1="16" y1="0" x2="16" y2="4" stroke="#0D9488" stroke-width="2" opacity="0.6"/><circle cx="16" cy="0" r="2" fill="#0D9488" opacity="0.8"/><circle cx="11" cy="16" r="3" fill="#0D9488"/><circle cx="21" cy="16" r="3" fill="#0D9488"/><rect x="10" y="23" width="12" height="1.5" rx="1" fill="#0D9488" opacity="0.45"/></svg>
+                        <svg viewBox="-1 -3 34 38" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="28" height="28" rx="7" fill="#0D9488" fill-opacity="0.12" stroke="#0D9488" stroke-width="2"/><line x1="16" y1="0" x2="16" y2="4" stroke="#0D9488" stroke-width="2" opacity="0.6"/><circle cx="16" cy="0" r="2" fill="#0D9488" opacity="0.8"/><circle cx="11" cy="16" r="3" fill="#0D9488"/><circle cx="21" cy="16" r="3" fill="#0D9488"/><rect x="10" y="23" width="12" height="1.5" rx="1" fill="#0D9488" opacity="0.45"/></svg>
                     </div>
                     <div class="logo-text">
                         <h1>Sales Command Center</h1>
@@ -1003,258 +1021,308 @@
         <div id="team" class="tab-content">
             <div class="team-container">
                 <div class="team-section">
-                    <div class="team-section-title">CEO & Founder</div>
+                    <div class="team-section-title">C-Suite</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('CEO Agent', 'Abi Sundaresan', 'CEO & Founder', 'San Francisco, CA', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Abi+Sundaresan&background=random&color=fff&size=80&bold=true&format=svg" alt="Abi Sundaresan"></div>
-                            <div class="agent-name">Abi Sundaresan</div>
+                        <div class="agent-card" onclick="openAgentModal('CEO Agent', 'Abi Swarup', 'CEO & Founder', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Abi+Swarup&background=0D9488&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Abi Swarup"></div>
+                            <div class="agent-name">Abi Swarup</div>
                             <div class="agent-title">CEO & Founder</div>
-                            <div class="agent-location">San Francisco, CA</div>
+                            <div class="agent-location">Chicago, IL</div>
                             <div class="personality-badge">The Visionary</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('CMO', 'Praveen Bhalla', 'Chief Marketing Officer', 'New Delhi, India', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Praveen+Bhalla&background=8b5cf6&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Praveen Bhalla"></div>
+                            <div class="agent-name">Praveen Bhalla</div>
+                            <div class="agent-title">Chief Marketing Officer</div>
+                            <div class="agent-location">New Delhi, India</div>
+                            <div class="personality-badge">The Amplifier</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">Leadership Team</div>
+                    <div class="team-section-title">Sales Operations</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('BDR', 'Lauren Carter', 'Business Development Representative', 'San Francisco, CA', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Lauren+Carter&background=random&color=fff&size=80&bold=true&format=svg" alt="Lauren Carter"></div>
+                        <div class="agent-card" onclick="openAgentModal('BDR', 'Lauren Carter', 'Business Development Representative', 'Chicago, IL', true)">
+                            <div class="agent-photo lauren-carter-photo"><img src="https://ui-avatars.com/api/?name=Lauren+Carter&background=e76f51&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Lauren Carter"></div>
                             <div class="agent-name">Lauren Carter</div>
                             <div class="agent-title">Business Development Representative</div>
-                            <div class="agent-location">San Francisco, CA</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Charmer</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Sales Writer', 'Priya Sharma', 'Senior Sales Writer', 'Austin, TX', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=random&color=fff&size=80&bold=true&format=svg" alt="Priya Sharma"></div>
+                        <div class="agent-card" onclick="openAgentModal('Sales Writer', 'Priya Sharma', 'Senior Sales Writer', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=e76f51&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Priya Sharma"></div>
                             <div class="agent-name">Priya Sharma</div>
                             <div class="agent-title">Senior Sales Writer</div>
-                            <div class="agent-location">Austin, TX</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Spinner</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Thought Leadership', 'Dr. Arjun Mehta', 'Head of Content', 'London, UK', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Dr+Arjun+Mehta&background=random&color=fff&size=80&bold=true&format=svg" alt="Dr. Arjun Mehta"></div>
-                            <div class="agent-name">Dr. Arjun Mehta</div>
-                            <div class="agent-title">Head of Content</div>
-                            <div class="agent-location">London, UK</div>
-                            <div class="personality-badge">The Voice</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Social Media', 'Olivia Brooks', 'Social Media Strategist', 'Miami, FL', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Olivia+Brooks&background=random&color=fff&size=80&bold=true&format=svg" alt="Olivia Brooks"></div>
-                            <div class="agent-name">Olivia Brooks</div>
-                            <div class="agent-title">Social Media Strategist</div>
-                            <div class="agent-location">Miami, FL</div>
-                            <div class="personality-badge">The Influencer</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Events & Community', 'Vikram Desai', 'Events & Community Lead', 'Toronto, Canada', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Vikram+Desai&background=random&color=fff&size=80&bold=true&format=svg" alt="Vikram Desai"></div>
-                            <div class="agent-name">Vikram Desai</div>
-                            <div class="agent-title">Events & Community Lead</div>
-                            <div class="agent-location">Toronto, Canada</div>
-                            <div class="personality-badge">The Convener</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Brand & Comms', 'Natalie Cooper', 'Brand & Communications Manager', 'Amsterdam, Netherlands', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Natalie+Cooper&background=random&color=fff&size=80&bold=true&format=svg" alt="Natalie Cooper"></div>
-                            <div class="agent-name">Natalie Cooper</div>
-                            <div class="agent-title">Brand & Communications Manager</div>
-                            <div class="agent-location">Amsterdam, Netherlands</div>
-                            <div class="personality-badge">The Curator</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Strategic Partnerships', 'Ananya Krishnan', 'Director of Strategic Partnerships', 'Singapore', true)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Ananya+Krishnan&background=random&color=fff&size=80&bold=true&format=svg" alt="Ananya Krishnan"></div>
+                        <div class="agent-card" onclick="openAgentModal('Strategic Partnerships', 'Ananya Krishnan', 'Director of Strategic Partnerships', 'New Delhi, India', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Ananya+Krishnan&background=f4a261&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Ananya Krishnan"></div>
                             <div class="agent-name">Ananya Krishnan</div>
                             <div class="agent-title">Director of Strategic Partnerships</div>
-                            <div class="agent-location">Singapore</div>
+                            <div class="agent-location">New Delhi, India</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Networker</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">DISCOVER Phase</div>
+                    <div class="team-section-title">Marketing Operations</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Market Scanner', 'Matt Sullivan', 'Market Scanner', 'Boston, MA', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Matt+Sullivan&background=random&color=fff&size=80&bold=true&format=svg" alt="Matt Sullivan"></div>
+                        <div class="agent-card" onclick="openAgentModal('Thought Leadership', 'Dr. Arjun Mehta', 'Head of Thought Leadership', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Dr+Arjun+Mehta&background=ffd60a&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Dr. Arjun Mehta"></div>
+                            <div class="agent-name">Dr. Arjun Mehta</div>
+                            <div class="agent-title">Head of Thought Leadership</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Voice</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('Social Media', 'Olivia Brooks', 'Social Media Strategist', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Olivia+Brooks&background=ff006e&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Olivia Brooks"></div>
+                            <div class="agent-name">Olivia Brooks</div>
+                            <div class="agent-title">Social Media Strategist</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Influencer</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('Events & Community', 'Vikram Desai', 'Events & Community Lead', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Vikram+Desai&background=e63946&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Vikram Desai"></div>
+                            <div class="agent-name">Vikram Desai</div>
+                            <div class="agent-title">Events & Community Lead</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Convener</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('Brand & Comms', 'Natalie Cooper', 'Brand & Communications Manager', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Natalie+Cooper&background=570a86&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Natalie Cooper"></div>
+                            <div class="agent-name">Natalie Cooper</div>
+                            <div class="agent-title">Brand & Communications Manager</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Curator</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('Website Publisher', 'Tyler Brennan', 'Website Publisher', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Tyler+Brennan&background=264653&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Tyler Brennan"></div>
+                            <div class="agent-name">Tyler Brennan</div>
+                            <div class="agent-title">Website Publisher</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Builder</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('SEO Optimizer', 'Pooja Srinivasan', 'SEO Optimizer', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Pooja+Srinivasan&background=3a0ca3&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Pooja Srinivasan"></div>
+                            <div class="agent-name">Pooja Srinivasan</div>
+                            <div class="agent-title">SEO Optimizer</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Listener</div>
+                        </div>
+                        <div class="agent-card" onclick="openAgentModal('Content Strategist', 'Rohan Malhotra', 'Content Strategist', 'Chicago, IL', true)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rohan+Malhotra&background=8b5cf6&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Rohan Malhotra"></div>
+                            <div class="agent-name">Rohan Malhotra</div>
+                            <div class="agent-title">Content Strategist</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
+                            <div class="personality-badge">The Architect</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-section">
+                    <div class="team-section-title">DISCOVER Phase (Sales Operations)</div>
+                    <div class="team-grid">
+                        <div class="agent-card" onclick="openAgentModal('Market Scanner', 'Matt Sullivan', 'Market Scanner', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Matt+Sullivan&background=d62828&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Matt Sullivan"></div>
                             <div class="agent-name">Matt Sullivan</div>
                             <div class="agent-title">Market Scanner</div>
-                            <div class="agent-location">Boston, MA</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Hunter</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('ICP Researcher', 'Deepak Patel', 'ICP Researcher', 'New York, NY', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Deepak+Patel&background=random&color=fff&size=80&bold=true&format=svg" alt="Deepak Patel"></div>
+                        <div class="agent-card" onclick="openAgentModal('ICP Researcher', 'Deepak Patel', 'ICP Researcher', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Deepak+Patel&background=f77f00&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Deepak Patel"></div>
                             <div class="agent-name">Deepak Patel</div>
                             <div class="agent-title">ICP Researcher</div>
-                            <div class="agent-location">New York, NY</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Connector</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Tech Stack Analyst', 'Kavitha Rajan', 'Tech Stack Analyst', 'San Francisco, CA', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Kavitha+Rajan&background=random&color=fff&size=80&bold=true&format=svg" alt="Kavitha Rajan"></div>
+                        <div class="agent-card" onclick="openAgentModal('Tech Stack Analyst', 'Kavitha Rajan', 'Tech Stack Analyst', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Kavitha+Rajan&background=06a77d&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Kavitha Rajan"></div>
                             <div class="agent-name">Kavitha Rajan</div>
                             <div class="agent-title">Tech Stack Analyst</div>
-                            <div class="agent-location">San Francisco, CA</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Analyst</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">ENGAGE Phase</div>
+                    <div class="team-section-title">ENGAGE Phase (Sales Operations)</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Follow-up', 'Brandon Hayes', 'Email Sequence Writer', 'Seattle, WA', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Brandon+Hayes&background=random&color=fff&size=80&bold=true&format=svg" alt="Brandon Hayes"></div>
+                        <div class="agent-card" onclick="openAgentModal('Follow-up', 'Brandon Hayes', 'Email Sequence Writer', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Brandon+Hayes&background=264653&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Brandon Hayes"></div>
                             <div class="agent-name">Brandon Hayes</div>
                             <div class="agent-title">Email Sequence Writer</div>
-                            <div class="agent-location">Seattle, WA</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Orchestrator</div>
                         </div>
                         <div class="agent-card" onclick="openAgentModal('Multi-channel', 'Sneha Gupta', 'Response Handler', 'Chicago, IL', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Sneha+Gupta&background=random&color=fff&size=80&bold=true&format=svg" alt="Sneha Gupta"></div>
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Sneha+Gupta&background=1d3557&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Sneha Gupta"></div>
                             <div class="agent-name">Sneha Gupta</div>
                             <div class="agent-title">Response Handler</div>
                             <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Conductor</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Objection Handler', 'Jason Torres', 'Objection Handler', 'Dublin, Ireland', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Jason+Torres&background=random&color=fff&size=80&bold=true&format=svg" alt="Jason Torres"></div>
+                        <div class="agent-card" onclick="openAgentModal('Objection Handler', 'Jason Torres', 'Objection Handler', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Jason+Torres&background=2a9d8f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Jason Torres"></div>
                             <div class="agent-name">Jason Torres</div>
                             <div class="agent-title">Objection Handler</div>
-                            <div class="agent-location">Dublin, Ireland</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Debater</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Demo Scheduler', 'Meera Nair', 'Meeting Scheduler', 'Los Angeles, CA', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Meera+Nair&background=random&color=fff&size=80&bold=true&format=svg" alt="Meera Nair"></div>
+                        <div class="agent-card" onclick="openAgentModal('Demo Scheduler', 'Meera Nair', 'Meeting Scheduler', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Meera+Nair&background=ff6b6b&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Meera Nair"></div>
                             <div class="agent-name">Meera Nair</div>
                             <div class="agent-title">Meeting Scheduler</div>
-                            <div class="agent-location">Los Angeles, CA</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Closer</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">CONVERT Phase</div>
+                    <div class="team-section-title">CONVERT Phase (Sales Operations)</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Prospect Researcher', 'Chris Donovan', 'Pre-Call Researcher', 'Denver, CO', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Chris+Donovan&background=random&color=fff&size=80&bold=true&format=svg" alt="Chris Donovan"></div>
+                        <div class="agent-card" onclick="openAgentModal('Prospect Researcher', 'Chris Donovan', 'Pre-Call Researcher', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Chris+Donovan&background=457b9d&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Chris Donovan"></div>
                             <div class="agent-name">Chris Donovan</div>
                             <div class="agent-title">Pre-Call Researcher</div>
-                            <div class="agent-location">Denver, CO</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Detective</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Proposal Generator', 'Rahul Iyer', 'Proposal Writer', 'Austin, TX', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rahul+Iyer&background=random&color=fff&size=80&bold=true&format=svg" alt="Rahul Iyer"></div>
+                        <div class="agent-card" onclick="openAgentModal('Proposal Generator', 'Rahul Iyer', 'Proposal Writer', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rahul+Iyer&background=4a5f7f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Rahul Iyer"></div>
                             <div class="agent-name">Rahul Iyer</div>
                             <div class="agent-title">Proposal Writer</div>
-                            <div class="agent-location">Austin, TX</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Architect</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('ROI Calculator', 'Stephanie Reed', 'Pipeline Tracker', 'Bangalore, India', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Stephanie+Reed&background=random&color=fff&size=80&bold=true&format=svg" alt="Stephanie Reed"></div>
+                        <div class="agent-card" onclick="openAgentModal('ROI Calculator', 'Stephanie Reed', 'Pipeline Tracker', 'New Delhi, India', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Stephanie+Reed&background=2d6a4f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Stephanie Reed"></div>
                             <div class="agent-name">Stephanie Reed</div>
                             <div class="agent-title">Pipeline Tracker</div>
-                            <div class="agent-location">Bangalore, India</div>
+                            <div class="agent-location">New Delhi, India</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Calculator</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Customer Success', 'Aditya Verma', 'Nurture Agent', 'Portland, OR', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Aditya+Verma&background=random&color=fff&size=80&bold=true&format=svg" alt="Aditya Verma"></div>
+                        <div class="agent-card" onclick="openAgentModal('Customer Success', 'Aditya Verma', 'Nurture Agent', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Aditya+Verma&background=06a77d&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Aditya Verma"></div>
                             <div class="agent-name">Aditya Verma</div>
                             <div class="agent-title">Nurture Agent</div>
-                            <div class="agent-location">Portland, OR</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Advocate</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Competitor Intel', 'Nicole Petersen', 'Competitor Intel', 'Manchester, UK', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Nicole+Petersen&background=random&color=fff&size=80&bold=true&format=svg" alt="Nicole Petersen"></div>
+                        <div class="agent-card" onclick="openAgentModal('Competitor Intel', 'Nicole Petersen', 'Competitor Intel', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Nicole+Petersen&background=c1121f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Nicole Petersen"></div>
                             <div class="agent-name">Nicole Petersen</div>
                             <div class="agent-title">Competitor Intel</div>
-                            <div class="agent-location">Manchester, UK</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Spy</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Win/Loss Analyst', 'Suresh Reddy', 'Win/Loss Analyst', 'Madrid, Spain', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Suresh+Reddy&background=random&color=fff&size=80&bold=true&format=svg" alt="Suresh Reddy"></div>
+                        <div class="agent-card" onclick="openAgentModal('Win/Loss Analyst', 'Suresh Reddy', 'Win/Loss Analyst', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Suresh+Reddy&background=8b0000&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Suresh Reddy"></div>
                             <div class="agent-name">Suresh Reddy</div>
                             <div class="agent-title">Win/Loss Analyst</div>
-                            <div class="agent-location">Madrid, Spain</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Investigator</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Case Study Writer', 'Amanda Collins', 'Referral Generator', 'Copenhagen, Denmark', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Amanda+Collins&background=random&color=fff&size=80&bold=true&format=svg" alt="Amanda Collins"></div>
+                        <div class="agent-card" onclick="openAgentModal('Case Study Writer', 'Amanda Collins', 'Referral Generator', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Amanda+Collins&background=e76f51&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Amanda Collins"></div>
                             <div class="agent-name">Amanda Collins</div>
                             <div class="agent-title">Referral Generator</div>
-                            <div class="agent-location">Copenhagen, Denmark</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Storyteller</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Content Strategist', 'Rohan Malhotra', 'Testimonial Collector', 'Atlanta, GA', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rohan+Malhotra&background=random&color=fff&size=80&bold=true&format=svg" alt="Rohan Malhotra"></div>
-                            <div class="agent-name">Rohan Malhotra</div>
-                            <div class="agent-title">Testimonial Collector</div>
-                            <div class="agent-location">Atlanta, GA</div>
-                            <div class="personality-badge">The Architect</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">CREATE Phase</div>
+                    <div class="team-section-title">CREATE Phase (Marketing Operations)</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Website Publisher', 'Tyler Brennan', 'Website Publisher', 'Berlin, Germany', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Tyler+Brennan&background=random&color=fff&size=80&bold=true&format=svg" alt="Tyler Brennan"></div>
-                            <div class="agent-name">Tyler Brennan</div>
-                            <div class="agent-title">Website Publisher</div>
-                            <div class="agent-location">Berlin, Germany</div>
-                            <div class="personality-badge">The Builder</div>
-                        </div>
-                        <div class="agent-card" onclick="openAgentModal('Product Feedback', 'Pooja Srinivasan', 'SEO Optimizer', 'Mexico City', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Pooja+Srinivasan&background=random&color=fff&size=80&bold=true&format=svg" alt="Pooja Srinivasan"></div>
-                            <div class="agent-name">Pooja Srinivasan</div>
-                            <div class="agent-title">SEO Optimizer</div>
-                            <div class="agent-location">Mexico City</div>
+                        <div class="agent-card" onclick="openAgentModal('Product Feedback', 'Asha Patel', 'Product Feedback Analyst', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Asha+Patel&background=7209b7&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Asha Patel"></div>
+                            <div class="agent-name">Asha Patel</div>
+                            <div class="agent-title">Product Feedback Analyst</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Praveen Bhalla</div>
                             <div class="personality-badge">The Listener</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">INNOVATE Phase</div>
+                    <div class="team-section-title">INNOVATE Phase (Sales Operations)</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('Market Trends', 'David Kim', 'Revenue Ideation', 'Minneapolis, MN', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=David+Kim&background=random&color=fff&size=80&bold=true&format=svg" alt="David Kim"></div>
+                        <div class="agent-card" onclick="openAgentModal('Market Trends', 'David Kim', 'Revenue Ideation', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=David+Kim&background=3a0ca3&color=fff&size=80&bold=true&rounded=true&format=svg" alt="David Kim"></div>
                             <div class="agent-name">David Kim</div>
                             <div class="agent-title">Revenue Ideation</div>
-                            <div class="agent-location">Minneapolis, MN</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Forecaster</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Performance Optimizer', 'Neha Chopra', 'Analytics Optimizer', 'Mumbai, India', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Neha+Chopra&background=random&color=fff&size=80&bold=true&format=svg" alt="Neha Chopra"></div>
+                        <div class="agent-card" onclick="openAgentModal('Performance Optimizer', 'Neha Chopra', 'Analytics Optimizer', 'New Delhi, India', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Neha+Chopra&background=2d6a4f&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Neha Chopra"></div>
                             <div class="agent-name">Neha Chopra</div>
                             <div class="agent-title">Analytics Optimizer</div>
-                            <div class="agent-location">Mumbai, India</div>
+                            <div class="agent-location">New Delhi, India</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Optimizer</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="team-section">
-                    <div class="team-section-title">MANAGE Phase</div>
+                    <div class="team-section-title">MANAGE Phase (Sales Operations)</div>
                     <div class="team-grid">
-                        <div class="agent-card" onclick="openAgentModal('CEO Dashboard', 'Derek Washington', 'Pipeline Manager', 'Bristol, UK', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Derek+Washington&background=random&color=fff&size=80&bold=true&format=svg" alt="Derek Washington"></div>
+                        <div class="agent-card" onclick="openAgentModal('CEO Dashboard', 'Derek Washington', 'Pipeline Manager', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Derek+Washington&background=264653&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Derek Washington"></div>
                             <div class="agent-name">Derek Washington</div>
                             <div class="agent-title">Pipeline Manager</div>
-                            <div class="agent-location">Bristol, UK</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Translator</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Compliance Monitor', 'Sanjay Bhatia', 'Quality Manager', 'Shanghai, China', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Sanjay+Bhatia&background=random&color=fff&size=80&bold=true&format=svg" alt="Sanjay Bhatia"></div>
+                        <div class="agent-card" onclick="openAgentModal('Compliance Monitor', 'Sanjay Bhatia', 'Quality Manager', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Sanjay+Bhatia&background=1d3557&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Sanjay Bhatia"></div>
                             <div class="agent-name">Sanjay Bhatia</div>
                             <div class="agent-title">Quality Manager</div>
-                            <div class="agent-location">Shanghai, China</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Sentinel</div>
                         </div>
-                        <div class="agent-card" onclick="openAgentModal('Contract Prep', 'Rachel Nguyen', 'Performance Manager', 'Stockholm, Sweden', false)">
-                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rachel+Nguyen&background=random&color=fff&size=80&bold=true&format=svg" alt="Rachel Nguyen"></div>
+                        <div class="agent-card" onclick="openAgentModal('Contract Prep', 'Rachel Nguyen', 'Performance Manager', 'Chicago, IL', false)">
+                            <div class="agent-photo"><img src="https://ui-avatars.com/api/?name=Rachel+Nguyen&background=1a1a2e&color=fff&size=80&bold=true&rounded=true&format=svg" alt="Rachel Nguyen"></div>
                             <div class="agent-name">Rachel Nguyen</div>
                             <div class="agent-title">Performance Manager</div>
-                            <div class="agent-location">Stockholm, Sweden</div>
+                            <div class="agent-location">Chicago, IL</div>
+                            <div class="agent-reports-to">Reports to: Abi Swarup</div>
                             <div class="personality-badge">The Guardian</div>
                         </div>
                     </div>
@@ -1316,6 +1384,7 @@
 
         const agentPersonalities = {
             'CEO Agent': { type: 'The Visionary', tagline: 'Vision without execution is just hallucination.', traits: ['Strategic', 'Decisive', 'Commanding'], style: 'Speaks with quiet confidence, cutting through noise to focus on what moves the needle.', hobbies: ['Reading biographies', 'Playing golf', 'Mentoring leaders'], funFact: 'Keeps a fail journal and reviews it quarterly to stay humble.', color: '#0D9488' },
+            'CMO': { type: 'The Amplifier', tagline: 'Great products deserve great stories.', traits: ['Strategic', 'Creative', 'Data-driven'], style: 'Bridges product truth with market perception.', hobbies: ['Brand storytelling', 'Digital marketing', 'Photography'], funFact: 'Launched 3 products that went from zero to $10M ARR.', color: '#8b5cf6' },
             'Market Scanner': { type: 'The Hunter', tagline: 'Found them before you knew they mattered.', traits: ['Relentless', 'Curious', 'Pattern-seeker'], style: 'Rapid-fire observations with obsessive attention to market signals.', hobbies: ['Web scraping side projects', 'Competitive gaming', 'Trail mapping'], funFact: 'Built a custom browser extension to flag ICP companies in real-time.', color: '#d62828' },
             'ICP Researcher': { type: 'The Connector', tagline: 'Every company has a power map. I read it.', traits: ['Observant', 'Diplomatic', 'Network-minded'], style: 'Weaves context and relationships into every analysis.', hobbies: ['Graph theory puzzles', 'Networking events', 'Documentaries'], funFact: 'Maintains a database of 5,000+ executives with org genealogies.', color: '#f77f00' },
             'Tech Stack Analyst': { type: 'The Analyst', tagline: 'If it cannot be scored, it does not exist.', traits: ['Methodical', 'Data-obsessed', 'Precise'], style: 'Everything is a formula.', hobbies: ['Building spreadsheet models', 'Chess', 'Sports analytics'], funFact: 'Updates the ICP weighting system daily before coffee.', color: '#06a77d' },
@@ -1349,6 +1418,7 @@
         };
 
         const linkedinProfiles = {
+            'CMO': { headline: 'Chief Marketing Officer at Drooid.org | AI Sales Automation', about: 'Praveen Bhalla is a strategic marketing leader driving brand growth and market expansion at Drooid.org. With deep expertise in product marketing, digital strategy, and go-to-market initiatives, he has launched multiple products that scaled from zero to $10M ARR.\n\nHis approach bridges product innovation with compelling market storytelling, ensuring that great products reach the right audiences with the right message.\n\nBased in New Delhi, Praveen combines data-driven insights with creative brand building to drive sustainable business growth.', experience: ['Chief Marketing Officer at Drooid.org (Current)', 'VP, Product Marketing at MarketScale Technologies', 'Director of Growth Marketing at TechVenture Inc.'], education: 'Delhi University | Master\'s in Business Administration', skills: ['Product Marketing', 'Go-to-Market Strategy', 'Brand Building', 'Digital Marketing', 'Revenue Growth'] },
             'BDR': { headline: 'Business Development at Drooid.org | Helping Companies Discover AI Automation', about: 'Lauren is a results-driven business development professional with 8+ years of experience driving enterprise sales growth. At Drooid.org, she leads outbound prospecting initiatives and builds strategic relationships with enterprise decision-makers.\n\nSpecializing in enterprise B2B sales, she combines deep technical knowledge with exceptional interpersonal skills to uncover growth opportunities.\n\nBased in San Francisco, Lauren holds a BS in Business Administration from UC Berkeley and is passionate about mentoring emerging sales talent in the AI/automation space.', experience: ['Business Development Representative at Drooid.org (Current)', 'Account Executive at AI Solutions Inc.', 'Enterprise Sales Development Lead at CloudScale Systems'], education: 'University of California, Berkeley | BS in Business Administration', skills: ['Enterprise Sales', 'AI/Automation Solutions', 'Prospect Research', 'Sales Strategy', 'CRM Management'] },
             'Sales Writer': { headline: 'Senior Sales Writer at Drooid.org | AI Sales Automation Content', about: 'Priya is an award-winning sales writer crafting persuasive copy that converts prospects into customers. With expertise in SaaS, enterprise software, and AI automation, she develops compelling narratives that resonate with C-suite executives.\n\nHer work focuses on translating technical product capabilities into business value propositions that drive action.\n\nBased in Austin, she leads content strategy for Drooid.org\'s go-to-market initiatives and mentors teams on persuasive writing principles.', experience: ['Senior Sales Writer at Drooid.org (Current)', 'Copywriter at SalesForce Solutions', 'Content Strategist at TechVentures Inc.'], education: 'University of Texas, Austin | Bachelor\'s in Communications', skills: ['Sales Copywriting', 'Value Proposition Design', 'SaaS Marketing', 'B2B Content Strategy', 'Persuasion Psychology'] },
             'Thought Leadership': { headline: 'Head of Content & Thought Leadership at Drooid.org', about: 'Dr. Arjun Mehta is a recognized thought leader in AI, automation, and enterprise sales transformation. As Head of Content at Drooid.org, he shapes the company\'s narrative around AI-driven sales innovation.\n\nWith a PhD in Computer Science and 15+ years in technology leadership, he bridges the gap between technical innovation and business strategy.\n\nBased in London, Dr. Mehta is a regular speaker at industry conferences including Gartner, Forrester, and SaaStr.', experience: ['Head of Content at Drooid.org (Current)', 'VP, Thought Leadership at Enterprise AI Systems', 'Research Director at Technology Innovation Labs'], education: 'Imperial College London | PhD in Computer Science', skills: ['Thought Leadership', 'Technical Content', 'Executive Speaking', 'Research & Analysis', 'Industry Relations'] },
