@@ -1047,21 +1047,24 @@
         .oc-reports-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
         .oc-report-pill { font-size: 9px; padding: 2px 7px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
 
-        /* ── Light Theme Overrides for Org Chart ── */
-        html[data-theme="light"] .oc-node-name { color: #e2e8f0; }
-        html[data-theme="light"] .oc-node-role { color: #94a3b8; }
-        html[data-theme="light"] .oc-node-status { color: #94a3b8; }
-        html[data-theme="light"] .oc-ns-label { color: #cbd5e1; }
-        html[data-theme="light"] .oc-ns-val { color: #94a3b8; }
-        html[data-theme="light"] .oc-node-phase { opacity: 1; }
-        html[data-theme="light"] .oc-avatar { border-color: rgba(255,255,255,0.25); }
-        html[data-theme="light"] .oc-status-dot { border-color: #1a2847; }
-        html[data-theme="light"] .oc-tree ul::before { border-left-color: #94a3b8; }
+        /* Light Theme Overrides for Org Chart */
+        html[data-theme="light"] .oc-node.oc-dept-csuite { background: linear-gradient(145deg, #e6faf8, #f0fdfa) !important; border-color: rgba(20,184,166,0.35) !important; }
+        html[data-theme="light"] .oc-node.oc-dept-sales { background: linear-gradient(145deg, #e8f0fe, #eff6ff) !important; border-color: rgba(59,130,246,0.3) !important; }
+        html[data-theme="light"] .oc-node.oc-dept-marketing { background: linear-gradient(145deg, #ede8fe, #f5f3ff) !important; border-color: rgba(139,92,246,0.3) !important; }
+        html[data-theme="light"] .oc-node.oc-dept-innovate { background: linear-gradient(145deg, #fef9e7, #fffbeb) !important; border-color: rgba(234,179,8,0.3) !important; }
+        html[data-theme="light"] .oc-node.oc-dept-manage { background: linear-gradient(145deg, #e6faf0, #f0fdf4) !important; border-color: rgba(34,197,94,0.3) !important; }
+        html[data-theme="light"] .oc-node-name { color: #1e293b; }
+        html[data-theme="light"] .oc-node-role { color: #475569; }
+        html[data-theme="light"] .oc-node-status { color: #64748b; }
+        html[data-theme="light"] .oc-ns-label { color: #334155; }
+        html[data-theme="light"] .oc-ns-val { color: #64748b; }
+        html[data-theme="light"] .oc-avatar { border-color: rgba(0,0,0,0.1); }
+        html[data-theme="light"] .oc-status-dot { border-color: #fff; }
+        html[data-theme="light"] .oc-node:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        html[data-theme="light"] .oc-tree ul::before { border-left-color: #cbd5e1; }
         html[data-theme="light"] .oc-tree li::before,
-        html[data-theme="light"] .oc-tree li::after { border-top-color: #94a3b8; }
-        html[data-theme="light"] .oc-tree li > .oc-node::before { border-left-color: #94a3b8; }
-        html[data-theme="light"] .oc-d-name { color: #0f172a; }
-        html[data-theme="light"] .oc-d-text strong { color: #0f172a; }
+        html[data-theme="light"] .oc-tree li::after { border-top-color: #cbd5e1; }
+        html[data-theme="light"] .oc-tree li > .oc-node::before { border-left-color: #cbd5e1; }
         .oc-report-pill:hover { transform: scale(1.05); }
         .oc-rp-sales { background: rgba(59,130,246,0.12); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
         .oc-rp-marketing { background: rgba(139,92,246,0.12); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.2); }
