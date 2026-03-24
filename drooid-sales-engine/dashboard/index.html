@@ -1735,7 +1735,7 @@
             const bg = a.color || '#3b82f6';
             return `<div class="oc-node oc-dept-${ocDeptCls(a.department)}" data-oc-id="${a.agent_id}" onclick="ocSelect('${a.agent_id}')">
                 <div class="oc-avatar" style="background:${bg}">${ocInitials(a.name)}<span class="oc-status-dot ${st}"></span></div>
-                <div class="oc-node-name">${a.name}</div>
+                <div class="oc-node-name">${a.emoji ? a.emoji + ' ' : ''}${a.name}</div>
                 <div class="oc-node-role">${a.role}</div>
                 <span class="oc-node-phase oc-ph-${ocPhaseCls(a.phase)}">${a.phase || ''}</span>
                 ${ocNodeStatus(a)}
@@ -1770,7 +1770,7 @@
             document.getElementById('oc-detail-panel').innerHTML = `
                 <div class="oc-detail-title">Agent Details</div>
                 <div class="oc-d-avatar" style="background:${a.color||'#3b82f6'};border-color:${a.color||'var(--accent-teal)'}">${ocInitials(a.name)}</div>
-                <div class="oc-d-name">${a.name}</div>
+                <div class="oc-d-name">${a.emoji ? a.emoji + ' ' : ''}${a.name}</div>
                 <div class="oc-d-role">${a.role}${a.title && a.title !== a.role ? ' · ' + a.title : ''}</div>
                 <div class="oc-d-badges">
                     <span class="oc-d-badge oc-badge-${dc}">${a.department||''}</span>
