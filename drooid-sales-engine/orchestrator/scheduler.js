@@ -96,7 +96,7 @@ const AGENT_SCHEDULES = {
   'agent-26': '0 8 * * 3', // Strategic Partnerships - Wednesday at 8am
 
   // MANAGE phase (continuous/daily)
-  'agent-27': '*/15 * * * *', // CEO Dashboard Agent - every 15 minutes
+  'agent-27': '0 * * * *', // Pipeline Manager - every hour (top of hour)
   'agent-28': '0 */6 * * *', // Performance Optimizer - every 6 hours
   'agent-29': '0 0 * * *', // Compliance Monitor - daily at midnight
 };

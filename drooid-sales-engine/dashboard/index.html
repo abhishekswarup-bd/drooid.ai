@@ -960,6 +960,106 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-indigo);
         }
+
+        /* ── Org Chart Tab ── */
+        .oc-layout { display: flex; gap: 24px; }
+        .oc-chart-panel { flex: 1; overflow-x: auto; overflow-y: visible; padding: 10px 0 30px; }
+        .oc-sidebar { width: 330px; flex-shrink: 0; position: sticky; top: 90px; align-self: flex-start; max-height: calc(100vh - 110px); overflow-y: auto; }
+
+        .oc-tree { overflow: visible; text-align: center; }
+        .oc-tree > ul { display: inline-flex; list-style: none; padding-top: 0; position: relative; }
+        .oc-tree ul { display: flex; list-style: none; padding-top: 28px; position: relative; }
+        .oc-tree ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #2d3a56; height: 28px; }
+        .oc-tree li { display: flex; flex-direction: column; align-items: center; position: relative; padding: 28px 5px 0; }
+        .oc-tree li::before, .oc-tree li::after { content: ''; position: absolute; top: 0; border-top: 2px solid #2d3a56; width: 50%; }
+        .oc-tree li::before { right: 50%; }
+        .oc-tree li::after { left: 50%; }
+        .oc-tree li:first-child::before { display: none; }
+        .oc-tree li:last-child::after { display: none; }
+        .oc-tree li:only-child::before, .oc-tree li:only-child::after { display: none; }
+        .oc-tree li > .oc-node::before { content: ''; position: absolute; top: -28px; left: 50%; border-left: 2px solid #2d3a56; height: 28px; }
+
+        .oc-node { position: relative; cursor: pointer; width: 155px; padding: 11px 8px 9px; border-radius: 10px; text-align: center; transition: all 0.25s ease; border: 1px solid transparent; }
+        .oc-node:hover { transform: translateY(-3px); }
+        .oc-node.oc-selected { transform: translateY(-3px); }
+        .oc-node.oc-dept-csuite { background: linear-gradient(145deg, #0d2d2a, #0a1a1f); border-color: rgba(20,184,166,0.4); }
+        .oc-node.oc-dept-csuite:hover, .oc-node.oc-dept-csuite.oc-selected { box-shadow: 0 0 20px rgba(20,184,166,0.3); border-color: var(--accent-teal); }
+        .oc-node.oc-dept-sales { background: linear-gradient(145deg, #0d1b3a, #0a1228); border-color: rgba(59,130,246,0.3); }
+        .oc-node.oc-dept-sales:hover, .oc-node.oc-dept-sales.oc-selected { box-shadow: 0 0 20px rgba(59,130,246,0.25); border-color: #3b82f6; }
+        .oc-node.oc-dept-marketing { background: linear-gradient(145deg, #1a0d3a, #120828); border-color: rgba(139,92,246,0.3); }
+        .oc-node.oc-dept-marketing:hover, .oc-node.oc-dept-marketing.oc-selected { box-shadow: 0 0 20px rgba(139,92,246,0.25); border-color: #8b5cf6; }
+
+        .oc-avatar { width: 46px; height: 46px; border-radius: 50%; margin: 0 auto 5px; position: relative; border: 2px solid #334155; overflow: hidden; background: var(--bg-tertiary); }
+        .oc-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .oc-status-dot { position: absolute; top: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--bg-primary); }
+        .oc-status-dot.oc-online { background: #22c55e; animation: ocPulse 2s ease-in-out infinite; }
+        .oc-status-dot.oc-offline { background: #334155; }
+        .oc-status-dot.oc-scheduled { background: #f77f00; }
+        @keyframes ocPulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.6);}50%{opacity:0.7;box-shadow:0 0 0 5px rgba(34,197,94,0);} }
+
+        .oc-node-name { font-size: 11px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+        .oc-node-role { font-size: 9px; color: var(--text-muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .oc-node-phase { display: inline-block; font-size: 8px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .oc-ph-csuite { background: rgba(20,184,166,0.15); color: var(--accent-teal); }
+        .oc-ph-discover { background: rgba(214,40,40,0.15); color: #d62828; }
+        .oc-ph-engage { background: rgba(247,127,0,0.15); color: #f77f00; }
+        .oc-ph-convert { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        .oc-ph-marketing { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+        .oc-ph-innovate { background: rgba(255,214,10,0.15); color: #ffd60a; }
+        .oc-ph-manage { background: rgba(34,197,94,0.15); color: #22c55e; }
+
+        .oc-detail-card { background: linear-gradient(145deg, var(--bg-tertiary), var(--bg-secondary)); border: 1px solid rgba(20,184,166,0.1); border-radius: 12px; padding: 18px; margin-bottom: 14px; }
+        .oc-detail-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-teal); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(20,184,166,0.15); }
+        .oc-detail-empty { color: var(--text-muted); font-size: 13px; text-align: center; padding: 28px 0; }
+
+        .oc-d-avatar { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 8px; overflow: hidden; border: 3px solid var(--accent-teal); }
+        .oc-d-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .oc-d-name { font-size: 17px; font-weight: 800; text-align: center; }
+        .oc-d-role { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 2px; }
+        .oc-d-badges { display: flex; gap: 5px; justify-content: center; margin: 8px 0; flex-wrap: wrap; }
+        .oc-d-badge { font-size: 9px; font-weight: 600; padding: 2px 9px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .oc-badge-csuite { background: rgba(20,184,166,0.15); color: var(--accent-teal); border: 1px solid rgba(20,184,166,0.3); }
+        .oc-badge-sales { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
+        .oc-badge-marketing { background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.3); }
+
+        .oc-d-tagline { font-size: 12px; font-style: italic; color: var(--text-muted); text-align: center; margin: 6px 0; padding: 0 6px; border-left: 2px solid var(--accent-teal); }
+        .oc-d-section { margin-top: 14px; }
+        .oc-d-section-title { font-size: 9px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .oc-d-text { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+        .oc-d-text strong { color: var(--text-primary); }
+        .oc-trait-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
+        .oc-trait-tag { font-size: 9px; padding: 2px 7px; border-radius: 4px; background: rgba(99,102,241,0.12); color: var(--accent-indigo); border: 1px solid rgba(99,102,241,0.2); }
+        .oc-hobby-list { list-style: none; }
+        .oc-hobby-list li { font-size: 10px; color: var(--text-muted); padding: 1px 0; }
+        .oc-hobby-list li::before { content: '•'; color: var(--accent-teal); margin-right: 5px; }
+        .oc-status-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin-top: 3px; }
+        .oc-si { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+        .oc-si.oc-online { background: #22c55e; animation: ocPulse 2s infinite; }
+        .oc-si.oc-offline { background: #334155; }
+        .oc-si.oc-scheduled { background: #f77f00; }
+        .oc-fun-fact { margin-top: 8px; padding: 6px 8px; border-radius: 5px; background: rgba(255,214,10,0.06); border: 1px solid rgba(255,214,10,0.15); font-size: 10px; color: #ffd60a; }
+        .oc-fun-fact::before { content: '\1F4A1 '; }
+        .oc-reports-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+        .oc-report-pill { font-size: 9px; padding: 2px 7px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+        .oc-report-pill:hover { transform: scale(1.05); }
+        .oc-rp-sales { background: rgba(59,130,246,0.12); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+        .oc-rp-marketing { background: rgba(139,92,246,0.12); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.2); }
+        .oc-rp-csuite { background: rgba(20,184,166,0.12); color: var(--accent-teal); border: 1px solid rgba(20,184,166,0.2); }
+
+        .oc-legend-row { display: flex; align-items: center; gap: 7px; padding: 3px 0; font-size: 10px; color: var(--text-muted); }
+        .oc-legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+        .oc-dot-online { background: #22c55e; animation: ocPulse 2s infinite; }
+        .oc-dot-scheduled { background: #f77f00; }
+        .oc-dot-offline { background: #334155; }
+        .oc-legend-swatch { width: 22px; height: 9px; border-radius: 3px; flex-shrink: 0; }
+        .oc-sw-csuite { background: linear-gradient(135deg, #0d2d2a, #0a1a1f); border: 1px solid rgba(20,184,166,0.4); }
+        .oc-sw-sales { background: linear-gradient(135deg, #0d1b3a, #0a1228); border: 1px solid rgba(59,130,246,0.3); }
+        .oc-sw-marketing { background: linear-gradient(135deg, #1a0d3a, #120828); border: 1px solid rgba(139,92,246,0.3); }
+
+        @media (max-width: 1100px) {
+            .oc-layout { flex-direction: column; }
+            .oc-sidebar { width: 100%; position: static; max-height: none; }
+        }
     </style>
 </head>
 <body>
@@ -978,6 +1078,7 @@
                 <div class="nav-tabs">
                     <button class="active" onclick="switchTab('dashboard')">Dashboard</button>
                     <button onclick="switchTab('team')">Team</button>
+                    <button onclick="switchTab('orgchart')">Org Chart</button>
                 </div>
                 <div class="header-actions">
                     <button class="btn-icon" title="Refresh" onclick="manualRefresh()">↻</button>
@@ -1046,6 +1147,30 @@
         <div id="team" class="tab-content">
             <div class="team-container" id="team-container">
                 <div class="loading">Loading team...</div>
+            </div>
+        </div>
+
+        <div id="orgchart" class="tab-content">
+            <div class="oc-layout">
+                <div class="oc-chart-panel" id="oc-chart-panel">
+                    <div class="loading">Loading org chart...</div>
+                </div>
+                <div class="oc-sidebar">
+                    <div class="oc-detail-card" id="oc-detail-panel">
+                        <div class="oc-detail-title">Agent Details</div>
+                        <div class="oc-detail-empty">Click any agent to view their persona, status, and schedule.</div>
+                    </div>
+                    <div class="oc-detail-card">
+                        <div class="oc-detail-title">Legend</div>
+                        <div class="oc-legend-row"><span class="oc-legend-swatch oc-sw-csuite"></span> C-Suite</div>
+                        <div class="oc-legend-row"><span class="oc-legend-swatch oc-sw-sales"></span> Sales Operations</div>
+                        <div class="oc-legend-row"><span class="oc-legend-swatch oc-sw-marketing"></span> Marketing Operations</div>
+                        <div style="height:8px;"></div>
+                        <div class="oc-legend-row"><span class="oc-legend-dot oc-dot-online"></span> Online (active now)</div>
+                        <div class="oc-legend-row"><span class="oc-legend-dot oc-dot-scheduled"></span> Scheduled (upcoming)</div>
+                        <div class="oc-legend-row"><span class="oc-legend-dot oc-dot-offline"></span> Offline</div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -1122,9 +1247,10 @@
             document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             if (tab === 'team') {
-                loadTeam().then(() => {
-                    setTimeout(drawOrgLines, 100);
-                });
+                loadTeam().then(() => { setTimeout(drawOrgLines, 100); });
+            }
+            if (tab === 'orgchart') {
+                loadOrgChart();
             }
         }
 
@@ -1518,6 +1644,162 @@
         }
 
         document.addEventListener('DOMContentLoaded', initDashboard);
+
+        /* ══════════════════════════════════════════
+           ORG CHART TAB — Interactive Hierarchy
+           ══════════════════════════════════════════ */
+
+        let ocAgents = [];
+        let ocSelectedId = null;
+        let ocLoaded = false;
+
+        const OC_SCHEDULES = {
+            'ceo': 'Weekdays 9:00 AM', 'cmo': 'Business hours',
+            'market-scanner': 'Daily 6 AM', 'icp-researcher': 'Daily 6 AM', 'tech-stack': 'Daily 6 AM',
+            'bdr': 'Every hour', 'sales-writer': 'Every 2 hours', 'strategic-partnerships': 'Event-driven',
+            'follow-up': '8 AM / 12 PM / 4 PM', 'multi-channel': '9 AM / 12 PM / 3 PM / 6 PM',
+            'objection-handler': 'Event-driven', 'demo-scheduler': 'Every 2 hours',
+            'prospect-researcher': 'Every 2 hours', 'proposal-generator': 'Event-driven',
+            'roi-calculator': 'Event-driven', 'customer-success': 'Daily 9 AM',
+            'competitor-intel': 'Daily 7 AM', 'win-loss': 'Monday 9 AM', 'case-study': 'Wed 5 AM',
+            'market-trends': 'Monday 8 AM', 'performance-optimizer': 'Every 6 hours',
+            'ceo-dashboard': 'Every hour', 'compliance-monitor': 'Daily midnight',
+            'contract-prep': 'Event-driven', 'thought-leadership': 'Tue/Thu 5 AM',
+            'social-media': '7 AM & 2 PM daily', 'events-community': 'Mon/Wed 5 AM',
+            'brand-comms': 'Mon/Wed 7 AM', 'website-publisher': 'Wed 5 AM',
+            'seo-optimizer': 'Fri 5 AM', 'content-strategist': 'Monday 6 AM',
+            'product-feedback': 'Friday 8 AM'
+        };
+
+        function ocGetStatus(a) {
+            const now = Date.now();
+            const la = a.last_active_at ? new Date(a.last_active_at).getTime() : 0;
+            const na = a.next_alive_at ? new Date(a.next_alive_at).getTime() : 0;
+            if (la && (now - la) < 20 * 60000) return 'oc-online';
+            if (na && na > now && (na - now) < 2 * 3600000) return 'oc-scheduled';
+            return 'oc-offline';
+        }
+        function ocTimeAgo(d) { if (!d) return 'Never'; const s = Date.now() - new Date(d).getTime(); if (s < 60000) return 'Just now'; if (s < 3600000) return Math.floor(s/60000) + 'm ago'; if (s < 86400000) return Math.floor(s/3600000) + 'h ago'; return Math.floor(s/86400000) + 'd ago'; }
+        function ocTimeUntil(d) { if (!d) return 'Not scheduled'; const s = new Date(d).getTime() - Date.now(); if (s < 0) return 'Overdue'; if (s < 60000) return 'Imminent'; if (s < 3600000) return 'In ' + Math.floor(s/60000) + 'm'; if (s < 86400000) return 'In ' + Math.floor(s/3600000) + 'h'; return 'In ' + Math.floor(s/86400000) + 'd'; }
+        function ocFmtTime(d) { if (!d) return '—'; return new Date(d).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true }); }
+
+        function ocDeptCls(dept) { return dept === 'c-suite' ? 'csuite' : dept === 'marketing' ? 'marketing' : 'sales'; }
+        function ocPhaseCls(p) { const v = (p||'').toLowerCase(); const m = { 'c-suite':'csuite','discover':'discover','engage':'engage','convert':'convert','marketing':'marketing','innovate':'innovate','manage':'manage' }; return m[v] || 'sales'; }
+
+        function ocBuildHierarchy(agents) {
+            const ceo = agents.find(a => !a.reports_to);
+            if (!ceo) return null;
+            function build(agent) {
+                const children = agents.filter(a => a.reports_to === agent.name)
+                    .sort((a, b) => {
+                        if (a.is_leadership && !b.is_leadership) return -1;
+                        if (!a.is_leadership && b.is_leadership) return 1;
+                        return (a.sort_order || 99) - (b.sort_order || 99);
+                    });
+                return { ...agent, children: children.map(c => build(c)) };
+            }
+            return build(ceo);
+        }
+
+        function ocRenderNode(a) {
+            const st = ocGetStatus(a);
+            return `<div class="oc-node oc-dept-${ocDeptCls(a.department)}" data-oc-id="${a.agent_id}" onclick="ocSelect('${a.agent_id}')">
+                <div class="oc-avatar"><img src="${a.photo_url}" alt="${a.name}" loading="lazy"><span class="oc-status-dot ${st}"></span></div>
+                <div class="oc-node-name">${a.name}</div>
+                <div class="oc-node-role">${a.role}</div>
+                <span class="oc-node-phase oc-ph-${ocPhaseCls(a.phase)}">${a.phase || ''}</span>
+            </div>`;
+        }
+
+        function ocRenderTree(node) {
+            if (!node) return '';
+            let h = '<li>' + ocRenderNode(node);
+            if (node.children && node.children.length) {
+                h += '<ul>' + node.children.map(c => ocRenderTree(c)).join('') + '</ul>';
+            }
+            return h + '</li>';
+        }
+
+        function ocSelect(agentId) {
+            document.querySelectorAll('.oc-node.oc-selected').forEach(n => n.classList.remove('oc-selected'));
+            const el = document.querySelector(`.oc-node[data-oc-id="${agentId}"]`);
+            if (el) el.classList.add('oc-selected');
+            const a = ocAgents.find(x => x.agent_id === agentId);
+            if (!a) return;
+            ocSelectedId = agentId;
+            const st = ocGetStatus(a);
+            const stLabel = st === 'oc-online' ? 'Online' : st === 'oc-scheduled' ? 'Scheduled' : 'Offline';
+            const dc = ocDeptCls(a.department);
+            const traits = Array.isArray(a.personality_traits) ? a.personality_traits : [];
+            const hobbies = Array.isArray(a.hobbies) ? a.hobbies : [];
+            const reports = ocAgents.filter(x => x.reports_to === a.name);
+            const schedule = OC_SCHEDULES[agentId] || 'Not scheduled';
+            const manager = a.reports_to ? ocAgents.find(x => x.name === a.reports_to) : null;
+
+            document.getElementById('oc-detail-panel').innerHTML = `
+                <div class="oc-detail-title">Agent Details</div>
+                <div class="oc-d-avatar" style="border-color:${a.color||'var(--accent-teal)'}"><img src="${a.photo_url}" alt="${a.name}"></div>
+                <div class="oc-d-name">${a.name}</div>
+                <div class="oc-d-role">${a.role}${a.title && a.title !== a.role ? ' · ' + a.title : ''}</div>
+                <div class="oc-d-badges">
+                    <span class="oc-d-badge oc-badge-${dc}">${a.department||''}</span>
+                    <span class="oc-d-badge" style="background:rgba(255,255,255,0.05);color:var(--text-muted);border:1px solid #334155;">${a.phase||''}</span>
+                    ${a.location ? `<span class="oc-d-badge" style="background:rgba(255,255,255,0.05);color:var(--text-muted);border:1px solid #334155;">${a.location}</span>` : ''}
+                </div>
+                ${a.personality_tagline ? `<div class="oc-d-tagline">"${a.personality_tagline}"</div>` : ''}
+                <div class="oc-d-section">
+                    <div class="oc-d-section-title">Personality</div>
+                    <div class="oc-d-text"><strong>${a.personality_type||'—'}</strong>${a.personality_style ? '<br>' + a.personality_style : ''}</div>
+                    ${traits.length ? `<div class="oc-trait-tags">${traits.map(t=>`<span class="oc-trait-tag">${t}</span>`).join('')}</div>` : ''}
+                </div>
+                <div class="oc-d-section">
+                    <div class="oc-d-section-title">Status & Schedule</div>
+                    <div class="oc-status-row"><span class="oc-si ${st}"></span><span style="color:var(--text-muted)">${stLabel}</span></div>
+                    <div style="margin-top:4px;">
+                        <div class="oc-d-text"><strong>Schedule:</strong> ${schedule}</div>
+                        <div class="oc-d-text"><strong>Last Active:</strong> ${ocFmtTime(a.last_active_at)} <span style="color:var(--text-muted);font-size:9px;">(${ocTimeAgo(a.last_active_at)})</span></div>
+                        <div class="oc-d-text"><strong>Next Alive:</strong> ${ocFmtTime(a.next_alive_at)} <span style="color:#f77f00;font-size:9px;">(${ocTimeUntil(a.next_alive_at)})</span></div>
+                    </div>
+                </div>
+                ${manager ? `<div class="oc-d-section"><div class="oc-d-section-title">Reports To</div><div class="oc-reports-list"><span class="oc-report-pill oc-rp-${ocDeptCls(manager.department)}" onclick="ocSelect('${manager.agent_id}')">${manager.name}</span></div></div>` : ''}
+                ${reports.length ? `<div class="oc-d-section"><div class="oc-d-section-title">Direct Reports (${reports.length})</div><div class="oc-reports-list">${reports.map(r=>`<span class="oc-report-pill oc-rp-${ocDeptCls(r.department)}" onclick="ocSelect('${r.agent_id}')">${r.name}</span>`).join('')}</div></div>` : ''}
+                ${hobbies.length ? `<div class="oc-d-section"><div class="oc-d-section-title">Interests</div><ul class="oc-hobby-list">${hobbies.map(h=>`<li>${h}</li>`).join('')}</ul></div>` : ''}
+                ${a.fun_fact ? `<div class="oc-fun-fact">${a.fun_fact}</div>` : ''}
+            `;
+        }
+
+        async function loadOrgChart() {
+            if (ocLoaded && ocAgents.length) { return; }
+            const { data, error } = await supabase.from('agents').select('*').order('sort_order');
+            if (error || !data) {
+                document.getElementById('oc-chart-panel').innerHTML = '<div class="loading" style="color:#d62828;">Error loading agents</div>';
+                return;
+            }
+            ocAgents = data;
+            ocLoaded = true;
+            const tree = ocBuildHierarchy(data);
+            document.getElementById('oc-chart-panel').innerHTML = `<div class="oc-tree"><ul>${ocRenderTree(tree)}</ul></div>`;
+            ocSelect('ceo');
+
+            // Auto-refresh status every 60s
+            if (!window._ocInterval) {
+                window._ocInterval = setInterval(async () => {
+                    if (!document.getElementById('orgchart').classList.contains('active')) return;
+                    const { data: fresh } = await supabase.from('agents').select('agent_id, last_active_at, next_alive_at');
+                    if (fresh) {
+                        fresh.forEach(d => {
+                            const a = ocAgents.find(x => x.agent_id === d.agent_id);
+                            if (a) { a.last_active_at = d.last_active_at; a.next_alive_at = d.next_alive_at; }
+                        });
+                        ocAgents.forEach(a => {
+                            const dot = document.querySelector(`.oc-node[data-oc-id="${a.agent_id}"] .oc-status-dot`);
+                            if (dot) dot.className = 'oc-status-dot ' + ocGetStatus(a);
+                        });
+                        if (ocSelectedId) ocSelect(ocSelectedId);
+                    }
+                }, 60000);
+            }
+        }
     </script>
 </body>
 </html>
