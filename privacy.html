@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<title>Privacy Policy — Drooid</title>
+<meta name="description" content="Drooid Privacy Policy — How we collect, use, and protect your data.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://drooid.org/privacy.html">
+<meta property="og:title" content="Privacy Policy — Drooid">
+<meta property="og:description" content="How we collect, use, and protect your data.">
+<meta property="og:url" content="https://drooid.org/privacy.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#fafbfc; --white:#fff; --card:#fff;
+  --border:#e2e4ea; --border-h:#c8cbd4;
+  --ink:#0f1117; --text:#4b5060; --muted:#888e9e;
+  --accent:#4338ca; --accent-l:#ece9fe; --accent-d:#312e81;
+  --teal:#0d9488; --teal-l:#ccfbf1;
+  --grad:linear-gradient(135deg,#4338ca,#0d9488);
+  --grad-t:linear-gradient(135deg,#4338ca,#0d9488);
+  --r:16px;
+  --nav-bg:rgba(250,251,252,.82);
+  --card-bg:rgba(255,255,255,.82);
+  --card-border:rgba(226,228,234,.6);
+}
+[data-theme="dark"] {
+  --bg:#0a0a12; --white:#13131f; --card:#13131f;
+  --border:#1e1e2e; --border-h:#2a2a3e;
+  --ink:#e2e4ea; --text:#a0a4b8; --muted:#666a7e;
+  --accent:#818cf8; --accent-l:rgba(99,102,241,.15); --accent-d:#c7d2fe;
+  --teal:#2dd4bf; --teal-l:rgba(45,212,191,.12);
+  --nav-bg:rgba(10,10,18,.85);
+  --card-bg:rgba(19,19,31,.82);
+  --card-border:rgba(30,30,46,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px}
+
+.ctr{max-width:1200px;margin:0 auto;padding:0 40px}
+
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:var(--nav-bg);border-bottom:1px solid transparent;transition:.3s}
+nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,.04)}
+.nlogo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nlogo .mark{width:38px;height:38px;border-radius:10px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(13,148,136,.15);position:relative;overflow:visible}
+.nlogo .mark .eye{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(13,148,136,.5)}
+.nlogo .mark .droid-face{display:flex;gap:8px;align-items:center;position:relative;top:-1px}
+.nlogo .mark .mouth{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:14px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
+.nlogo .mark .antenna{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:2px;height:8px;background:var(--teal);opacity:.5}
+.nlogo .mark .antenna-tip{position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.7}
+.nlogo .mark::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(67,56,202,.3),rgba(13,148,136,.3));opacity:0;animation:logoPulse 3s ease-in-out infinite;border-radius:9px}
+@keyframes logoPulse{0%,100%{opacity:0}50%{opacity:1}}
+.nlogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.nlinks{display:flex;align-items:center;gap:28px;list-style:none}
+.nlinks a{font-size:13.5px;font-weight:600;color:var(--text);text-decoration:none;transition:.25s}
+.nlinks a:hover{color:var(--ink)}
+.ncta{font-size:13.5px!important;font-weight:700!important;color:#fff!important;background:var(--grad);padding:9px 22px;border-radius:9px}
+.ncta:hover{opacity:.9}
+.theme-toggle{width:42px;height:24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;position:relative;transition:.3s;flex-shrink:0;display:flex;align-items:center;padding:0 3px}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:.3s;position:relative;display:flex;align-items:center;justify-content:center}
+.theme-toggle .knob svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+[data-theme="dark"] .theme-toggle .knob{transform:translateX(16px)}
+[data-theme="dark"] .theme-toggle{background:var(--card);border-color:var(--border)}
+
+/* ═══ PAGE HERO ═══ */
+.page-hero{padding:140px 0 72px;text-align:center;position:relative}
+.page-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 50% 40%,rgba(67,56,202,.05),transparent),radial-gradient(ellipse 40% 40% at 30% 70%,rgba(13,148,136,.04),transparent)}
+.page-hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--ink);line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
+.page-hero p{font-size:17px;color:var(--text);max-width:520px;margin:0 auto;line-height:1.7}
+.gt{background:var(--grad-t);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ═══ POLICY CONTENT ═══ */
+.policy{max-width:780px;margin:0 auto;padding:0 40px 100px}
+.policy-meta{display:flex;align-items:center;gap:18px;margin-bottom:44px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.policy-meta span{font-size:13px;color:var(--muted)}
+.policy-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--border)}
+
+.company-box{background:var(--card-bg);backdrop-filter:blur(12px);border:1.5px solid var(--card-border);border-radius:var(--r);padding:24px 28px;margin-bottom:44px}
+.company-box h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.company-box p{font-size:14px;color:var(--text);line-height:1.6}
+
+.toc{background:var(--card-bg);backdrop-filter:blur(12px);border:1.5px solid var(--card-border);border-radius:var(--r);padding:28px 32px;margin-bottom:52px}
+.toc h3{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:18px}
+.toc ol{list-style-position:inside;display:flex;flex-direction:column;gap:10px}
+.toc a{color:var(--accent);text-decoration:none;font-size:14.5px;font-weight:500;transition:.25s}
+.toc a:hover{color:var(--teal)}
+
+.psec{margin-bottom:48px}
+.psec h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:14px;scroll-margin-top:100px}
+.psec h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--accent);margin-top:22px;margin-bottom:10px}
+.psec p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:12px}
+.psec ul{margin-left:22px;margin-bottom:14px}
+.psec li{font-size:14.5px;color:var(--text);margin-bottom:8px;line-height:1.7}
+
+/* ═══ FOOTER ═══ */
+footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
+[data-theme="dark"] footer{background:var(--bg)}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px}
+.foot-brand .flogo{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.foot-brand .flogo .mark{width:34px;height:34px;border-radius:8px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible;box-shadow:0 2px 8px rgba(13,148,136,.15)}
+.foot-brand .flogo .mark .eye{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px rgba(13,148,136,.5)}
+.foot-brand .flogo .mark .droid-face{display:flex;gap:7px;align-items:center;position:relative;top:-1px}
+.foot-brand .flogo .mark .mouth{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:12px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
+.foot-brand .flogo .mark .antenna{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:1.5px;height:7px;background:var(--teal);opacity:.5}
+.foot-brand .flogo .mark .antenna-tip{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:3.5px;height:3.5px;border-radius:50%;background:var(--teal);opacity:.7}
+.foot-brand .flogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;color:var(--ink)}
+.foot-brand p{font-size:13.5px;line-height:1.7;color:var(--text);max-width:270px}
+.foot-col h4{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot-col a{font-size:13.5px;color:var(--text);text-decoration:none;transition:.25s}
+.foot-col a:hover{color:var(--ink)}
+.foot-btm{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted)}
+.foot-soc{display:flex;gap:18px}
+.foot-soc a{color:var(--muted);text-decoration:none;font-size:12.5px;transition:.25s}
+.foot-soc a:hover{color:var(--ink)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .foot-g{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:768px){
+  .ctr{padding:0 22px}
+  nav{padding:14px 22px}
+  .nlinks{display:none}
+  .policy{padding:0 22px 60px}
+  .page-hero{padding:120px 0 48px}
+  .page-hero h1{font-size:clamp(28px,7vw,40px)}
+  .foot-g{grid-template-columns:1fr;gap:28px}
+  .foot-btm{flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <a href="index.html" class="nlogo">
+    <div class="mark"><span class="antenna"></span><span class="antenna-tip"></span><span class="droid-face"><span class="eye"></span><span class="eye"></span></span><span class="mouth"></span></div>
+    <div class="wm">Drooid</div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="industries.html">Industries</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><span class="knob"><svg viewBox="0 0 24 24" class="sun-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg viewBox="0 0 24 24" class="moon-icon" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button></li>
+    <li><a href="contact.html" class="ncta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <h1>Privacy <span class="gt">Policy</span></h1>
+  <p>Your privacy is important to us. Learn how we protect and handle your data.</p>
+</section>
+
+<!-- ═══ POLICY ═══ -->
+<section class="policy">
+  <div class="policy-meta">
+    <span>Last Updated: May 2026</span>
+    <span class="dot"></span>
+    <span>AAS AI, LLC</span>
+  </div>
+
+  <div class="company-box">
+    <h4>AAS AI, LLC (d/b/a Drooid)</h4>
+    <p>Wisconsin, USA | New Delhi, India</p>
+    <p>Contact: privacy@drooid.org</p>
+  </div>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#s1">Information We Collect</a></li>
+      <li><a href="#s2">How We Use Your Information</a></li>
+      <li><a href="#s3">Data Storage &amp; Security</a></li>
+      <li><a href="#s4">Third-Party Services</a></li>
+      <li><a href="#s5">Cookies</a></li>
+      <li><a href="#s6">Your Rights</a></li>
+      <li><a href="#s7">Data Retention</a></li>
+      <li><a href="#s8">Children's Privacy</a></li>
+      <li><a href="#s9">Changes to This Policy</a></li>
+      <li><a href="#s10">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="psec" id="s1">
+    <h3>1. Information We Collect</h3>
+    <p>We collect various types of information in connection with the services we provide:</p>
+    <h4>Contact Information</h4>
+    <p>When you reach out through our website or engage with our services, we collect your name, email address, organization name, and role. For enterprise engagements, we may collect additional information about your organization and project requirements.</p>
+    <h4>Project Data</h4>
+    <p>We collect and process data related to AI proof-of-concept projects, development engagements, and consulting work. This includes project specifications, technical requirements, and deliverables created during our engagements.</p>
+    <h4>Usage Data</h4>
+    <p>We automatically collect information about your interactions with our website, including the pages you visit, features you explore, and time spent on various sections.</p>
+    <h4>Technical Data</h4>
+    <p>We collect technical information such as IP address, browser type, operating system, referring pages, and pages visited. This helps us understand how our website is used and improve our services.</p>
+  </div>
+
+  <div class="psec" id="s2">
+    <h3>2. How We Use Your Information</h3>
+    <p>We use the information we collect for the following purposes:</p>
+    <ul>
+      <li>Providing and improving our AI development services and proof-of-concept engagements</li>
+      <li>Communicating with you about project status, deliverables, and service updates</li>
+      <li>Processing payments and managing engagement agreements</li>
+      <li>Sending service-related notifications and support communications</li>
+      <li>Analyzing website usage patterns to enhance user experience</li>
+      <li>Detecting and preventing fraud and unauthorized access</li>
+      <li>Complying with legal obligations and resolving disputes</li>
+      <li>Marketing communications (with your consent)</li>
+      <li>Conducting research and analytics to improve our services</li>
+    </ul>
+  </div>
+
+  <div class="psec" id="s3">
+    <h3>3. Data Storage &amp; Security</h3>
+    <p>Your data is stored on secure servers with multiple layers of protection. We implement industry-standard security measures including:</p>
+    <ul>
+      <li>Encryption of data in transit and at rest</li>
+      <li>Regular security audits and penetration testing</li>
+      <li>Access controls and authentication mechanisms</li>
+      <li>Secure backup and disaster recovery procedures</li>
+      <li>Employee training on data privacy and security</li>
+    </ul>
+    <p>While we employ strong security measures, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security of your information.</p>
+  </div>
+
+  <div class="psec" id="s4">
+    <h3>4. Third-Party Services</h3>
+    <p>Drooid integrates with third-party services to deliver our AI-powered solutions:</p>
+    <h4>AI Providers</h4>
+    <p>We use AI services from providers like Anthropic Claude, OpenAI, Google Gemini, and others to power our development studio and proof-of-concept builds. Project data may be processed by these providers as needed to deliver high-quality results.</p>
+    <h4>Cloud Infrastructure</h4>
+    <p>We utilize cloud services from AWS, Azure, and GCP for infrastructure, hosting, and project delivery. Your data is processed in accordance with these providers' security and compliance standards.</p>
+    <h4>Analytics</h4>
+    <p>We use third-party analytics services to understand how our website is used. These services may collect information about your interaction with the site.</p>
+  </div>
+
+  <div class="psec" id="s5">
+    <h3>5. Cookies</h3>
+    <p>We use cookies and similar technologies to enhance your experience. Cookies help us:</p>
+    <ul>
+      <li>Remember your preferences (such as dark/light theme)</li>
+      <li>Understand how you use our website</li>
+      <li>Personalize content and recommendations</li>
+      <li>Track usage patterns for analytics</li>
+    </ul>
+    <p>You can control cookie preferences through your browser settings. Disabling cookies may affect some functionality of the website.</p>
+  </div>
+
+  <div class="psec" id="s6">
+    <h3>6. Your Rights</h3>
+    <p>You have the following rights regarding your personal information:</p>
+    <ul>
+      <li>Right to access: Request a copy of your data</li>
+      <li>Right to rectification: Correct inaccurate data</li>
+      <li>Right to erasure: Request deletion of your data</li>
+      <li>Right to restrict processing: Limit how we use your data</li>
+      <li>Right to data portability: Receive your data in a portable format</li>
+      <li>Right to object: Opt-out of certain uses of your data</li>
+      <li>Right to withdraw consent: Revoke consent at any time</li>
+    </ul>
+    <p>To exercise these rights, please contact us at privacy@drooid.org with your request and proof of identity.</p>
+  </div>
+
+  <div class="psec" id="s7">
+    <h3>7. Data Retention</h3>
+    <p>We retain your personal information as long as necessary to provide our services:</p>
+    <ul>
+      <li>Contact data: Retained for the duration of our engagement plus 12 months after conclusion</li>
+      <li>Project data: Retained until the engagement is complete and deliverables are handed off, unless otherwise agreed</li>
+      <li>Usage logs: Retained for up to 2 years for analytics and security purposes</li>
+      <li>Payment data: Retained as required by law for 7 years for tax and compliance purposes</li>
+    </ul>
+  </div>
+
+  <div class="psec" id="s8">
+    <h3>8. Children's Privacy</h3>
+    <p>Drooid's services are designed for businesses and professionals. We do not knowingly collect personal information from children under 13. If we become aware that we have collected information from a child under 13, we will take steps to delete such information promptly.</p>
+  </div>
+
+  <div class="psec" id="s9">
+    <h3>9. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of material changes by posting the updated policy on our website and updating the "Last Updated" date. Your continued use of Drooid's services after changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <div class="psec" id="s10">
+    <h3>10. Contact Us</h3>
+    <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+    <ul>
+      <li>Email: privacy@drooid.org</li>
+      <li>Address: AAS AI, LLC, Wisconsin, USA | New Delhi, India</li>
+      <li>Response time: We aim to respond to all inquiries within 7 business days</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ctr">
+    <div class="foot-g">
+      <div class="foot-brand">
+        <div class="flogo"><div class="mark"><span class="antenna"></span><span class="antenna-tip"></span><span class="droid-face"><span class="eye"></span><span class="eye"></span></span><span class="mouth"></span></div><div class="wm">Drooid</div></div>
+        <p>AI-powered development studio — build end-to-end with artificial intelligence.</p>
+      </div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="services.html#websites">AI Websites</a></li><li><a href="services.html#mobile">Mobile Apps</a></li><li><a href="services.html#enterprise">Web Applications</a></li><li><a href="services.html#design">Screen Design</a></li><li><a href="services.html#content">Content Generation</a></li><li><a href="services.html#agents">Agentic AI</a></li></ul></div>
+      <div class="foot-col"><h4>Industries</h4><ul><li><a href="industries.html#sales">Sales Command Center</a></li><li><a href="industries.html#capital-markets">Capital Markets</a></li><li><a href="industries.html#staffing">Staffing &amp; Agency</a></li><li><a href="industries.html#hr">Human Resources</a></li><li><a href="industries.html#legal">Legal</a></li><li><a href="industries.html#transportation">Transportation</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#client">Clients</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="foot-btm">
+      <span>&copy; 2026 Drooid. All rights reserved.</span>
+      <div class="foot-soc">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══ NAV SCROLL ═══ */
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>40));
+
+/* ═══ THEME TOGGLE ═══ */
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const html=document.documentElement;
+  const sunIcon=toggle.querySelector('.sun-icon');
+  const moonIcon=toggle.querySelector('.moon-icon');
+  function setTheme(theme){
+    html.setAttribute('data-theme',theme);
+    localStorage.setItem('drooid-theme',theme);
+    if(theme==='dark'){sunIcon.style.display='none';moonIcon.style.display='block'}
+    else{sunIcon.style.display='block';moonIcon.style.display='none'}
+  }
+  const saved=localStorage.getItem('drooid-theme')||
+    (window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  setTheme(saved);
+  toggle.addEventListener('click',()=>{
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>

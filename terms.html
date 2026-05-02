@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<title>Terms of Service — Drooid</title>
+<meta name="description" content="Drooid Terms of Service — Terms and conditions for using our platform and services.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://drooid.org/terms.html">
+<meta property="og:title" content="Terms of Service — Drooid">
+<meta property="og:description" content="Terms and conditions for using Drooid's AI-powered development services.">
+<meta property="og:url" content="https://drooid.org/terms.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#fafbfc; --white:#fff; --card:#fff;
+  --border:#e2e4ea; --border-h:#c8cbd4;
+  --ink:#0f1117; --text:#4b5060; --muted:#888e9e;
+  --accent:#4338ca; --accent-l:#ece9fe; --accent-d:#312e81;
+  --teal:#0d9488; --teal-l:#ccfbf1;
+  --grad:linear-gradient(135deg,#4338ca,#0d9488);
+  --grad-t:linear-gradient(135deg,#4338ca,#0d9488);
+  --r:16px;
+  --nav-bg:rgba(250,251,252,.82);
+  --card-bg:rgba(255,255,255,.82);
+  --card-border:rgba(226,228,234,.6);
+}
+[data-theme="dark"] {
+  --bg:#0a0a12; --white:#13131f; --card:#13131f;
+  --border:#1e1e2e; --border-h:#2a2a3e;
+  --ink:#e2e4ea; --text:#a0a4b8; --muted:#666a7e;
+  --accent:#818cf8; --accent-l:rgba(99,102,241,.15); --accent-d:#c7d2fe;
+  --teal:#2dd4bf; --teal-l:rgba(45,212,191,.12);
+  --nav-bg:rgba(10,10,18,.85);
+  --card-bg:rgba(19,19,31,.82);
+  --card-border:rgba(30,30,46,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px}
+
+.ctr{max-width:1200px;margin:0 auto;padding:0 40px}
+
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:var(--nav-bg);border-bottom:1px solid transparent;transition:.3s}
+nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,.04)}
+.nlogo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nlogo .mark{width:38px;height:38px;border-radius:10px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(13,148,136,.15);position:relative;overflow:visible}
+.nlogo .mark .eye{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(13,148,136,.5)}
+.nlogo .mark .droid-face{display:flex;gap:8px;align-items:center;position:relative;top:-1px}
+.nlogo .mark .mouth{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:14px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
+.nlogo .mark .antenna{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:2px;height:8px;background:var(--teal);opacity:.5}
+.nlogo .mark .antenna-tip{position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.7}
+.nlogo .mark::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(67,56,202,.3),rgba(13,148,136,.3));opacity:0;animation:logoPulse 3s ease-in-out infinite;border-radius:9px}
+@keyframes logoPulse{0%,100%{opacity:0}50%{opacity:1}}
+.nlogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.nlinks{display:flex;align-items:center;gap:28px;list-style:none}
+.nlinks a{font-size:13.5px;font-weight:600;color:var(--text);text-decoration:none;transition:.25s}
+.nlinks a:hover{color:var(--ink)}
+.ncta{font-size:13.5px!important;font-weight:700!important;color:#fff!important;background:var(--grad);padding:9px 22px;border-radius:9px}
+.ncta:hover{opacity:.9}
+.theme-toggle{width:42px;height:24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;position:relative;transition:.3s;flex-shrink:0;display:flex;align-items:center;padding:0 3px}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:.3s;position:relative;display:flex;align-items:center;justify-content:center}
+.theme-toggle .knob svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+[data-theme="dark"] .theme-toggle .knob{transform:translateX(16px)}
+[data-theme="dark"] .theme-toggle{background:var(--card);border-color:var(--border)}
+
+/* ═══ PAGE HERO ═══ */
+.page-hero{padding:140px 0 72px;text-align:center;position:relative}
+.page-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 50% 40%,rgba(67,56,202,.05),transparent),radial-gradient(ellipse 40% 40% at 30% 70%,rgba(13,148,136,.04),transparent)}
+.page-hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--ink);line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
+.page-hero p{font-size:17px;color:var(--text);max-width:520px;margin:0 auto;line-height:1.7}
+.gt{background:var(--grad-t);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ═══ TERMS CONTENT ═══ */
+.terms{max-width:780px;margin:0 auto;padding:0 40px 100px}
+.terms-meta{display:flex;align-items:center;gap:18px;margin-bottom:44px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.terms-meta span{font-size:13px;color:var(--muted)}
+.terms-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--border)}
+
+.tsec{margin-bottom:48px}
+.tsec h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:14px;scroll-margin-top:100px}
+.tsec h4{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--accent);margin-top:22px;margin-bottom:10px}
+.tsec p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:12px}
+.tsec ul{margin-left:22px;margin-bottom:14px}
+.tsec li{font-size:14.5px;color:var(--text);margin-bottom:8px;line-height:1.7}
+
+.highlight-box{background:var(--card-bg);backdrop-filter:blur(12px);border:1.5px solid var(--card-border);border-radius:var(--r);padding:28px 32px;margin:20px 0}
+.highlight-box p{font-size:14.5px;line-height:1.8;color:var(--text);margin-bottom:10px}
+.highlight-box ul{margin-left:22px;margin-bottom:10px}
+.highlight-box li{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.7}
+
+/* ═══ FOOTER ═══ */
+footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
+[data-theme="dark"] footer{background:var(--bg)}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px}
+.foot-brand .flogo{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.foot-brand .flogo .mark{width:34px;height:34px;border-radius:8px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible;box-shadow:0 2px 8px rgba(13,148,136,.15)}
+.foot-brand .flogo .mark .eye{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px rgba(13,148,136,.5)}
+.foot-brand .flogo .mark .droid-face{display:flex;gap:7px;align-items:center;position:relative;top:-1px}
+.foot-brand .flogo .mark .mouth{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:12px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
+.foot-brand .flogo .mark .antenna{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:1.5px;height:7px;background:var(--teal);opacity:.5}
+.foot-brand .flogo .mark .antenna-tip{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:3.5px;height:3.5px;border-radius:50%;background:var(--teal);opacity:.7}
+.foot-brand .flogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;color:var(--ink)}
+.foot-brand p{font-size:13.5px;line-height:1.7;color:var(--text);max-width:270px}
+.foot-col h4{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot-col a{font-size:13.5px;color:var(--text);text-decoration:none;transition:.25s}
+.foot-col a:hover{color:var(--ink)}
+.foot-btm{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted)}
+.foot-soc{display:flex;gap:18px}
+.foot-soc a{color:var(--muted);text-decoration:none;font-size:12.5px;transition:.25s}
+.foot-soc a:hover{color:var(--ink)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .foot-g{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:768px){
+  .ctr{padding:0 22px}
+  nav{padding:14px 22px}
+  .nlinks{display:none}
+  .terms{padding:0 22px 60px}
+  .page-hero{padding:120px 0 48px}
+  .page-hero h1{font-size:clamp(28px,7vw,40px)}
+  .foot-g{grid-template-columns:1fr;gap:28px}
+  .foot-btm{flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <a href="index.html" class="nlogo">
+    <div class="mark"><span class="antenna"></span><span class="antenna-tip"></span><span class="droid-face"><span class="eye"></span><span class="eye"></span></span><span class="mouth"></span></div>
+    <div class="wm">Drooid</div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="industries.html">Industries</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><span class="knob"><svg viewBox="0 0 24 24" class="sun-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg viewBox="0 0 24 24" class="moon-icon" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button></li>
+    <li><a href="contact.html" class="ncta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <h1>Terms of <span class="gt">Service</span></h1>
+  <p>Please read these terms carefully before using Drooid's services.</p>
+</section>
+
+<!-- ═══ TERMS ═══ -->
+<section class="terms">
+  <div class="terms-meta">
+    <span>Last Updated: May 2026</span>
+    <span class="dot"></span>
+    <span>AAS AI, LLC</span>
+  </div>
+
+  <div class="tsec">
+    <h3>1. Acceptance of Terms</h3>
+    <p>By accessing and using Drooid ("the Service"), operated by AAS AI, LLC, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by the above, please do not use this Service.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>2. Description of Service</h3>
+    <p>Drooid is an AI-powered development studio that provides proof-of-concept applications, enterprise software development, and AI engineering services. The Service includes:</p>
+    <ul>
+      <li>AI-powered website and mobile app development</li>
+      <li>Enterprise web application architecture and delivery</li>
+      <li>Agentic AI agent design and deployment</li>
+      <li>Legacy system modernization (COBOL, RPG, VB6, Fortran)</li>
+      <li>Cloud migration and infrastructure-as-code</li>
+      <li>AI consulting and proof-of-concept engagements</li>
+    </ul>
+  </div>
+
+  <div class="tsec">
+    <h3>3. Engagement Terms</h3>
+    <h4>Project Agreements</h4>
+    <p>All engagements are governed by individual Statements of Work (SOW) or Master Non-Disclosure Agreements (MNDA) executed between the parties. These agreements may contain terms that supplement or modify these general Terms of Service.</p>
+    <h4>Eligibility</h4>
+    <p>You represent that you are at least 18 years old and that you have the authority to enter into these Terms on behalf of yourself or your organization. Organizations must have authorized representatives managing engagements.</p>
+    <h4>Termination</h4>
+    <p>Either party may terminate an engagement as specified in the applicable SOW. We reserve the right to suspend or terminate services if these Terms are violated.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>4. Payment Terms</h3>
+    <h4>Pricing</h4>
+    <p>Drooid offers engagement-based pricing tailored to project scope and complexity. Custom quotes are provided for each engagement. Pricing is subject to change with 30 days notice for ongoing engagements.</p>
+    <h4>Billing</h4>
+    <p>Payments are processed securely. By providing payment information, you authorize us to charge your account per the agreed-upon schedule. You agree to maintain valid and current payment information.</p>
+    <h4>Refund Policy</h4>
+    <p>Refund terms are specified in individual SOWs. For standard engagements, refunds are available within 7 days of the engagement start if work has not been substantially delivered. Completed deliverables are non-refundable.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>5. Intellectual Property</h3>
+    <h4>Drooid Platform &amp; Tools</h4>
+    <p>All proprietary tools, frameworks, methodologies, and internal systems used by Drooid remain the intellectual property of AAS AI, LLC. These are protected by copyright, trademark, and other intellectual property laws.</p>
+    <h4>Client Deliverables</h4>
+    <p>Unless otherwise specified in the SOW, all custom code, applications, and deliverables created for a client engagement are assigned to the client upon full payment. Drooid retains the right to use general knowledge, techniques, and non-proprietary methodologies gained during the engagement.</p>
+    <h4>Open Source</h4>
+    <p>Deliverables may incorporate open-source components. Drooid will disclose all open-source licenses used and ensure compatibility with your intended use.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>6. Confidentiality</h3>
+    <p>Both parties agree to maintain the confidentiality of proprietary information shared during an engagement. This includes but is not limited to:</p>
+    <ul>
+      <li>Business strategies, processes, and methodologies</li>
+      <li>Technical architectures and source code</li>
+      <li>Customer data and business intelligence</li>
+      <li>Financial information and pricing details</li>
+      <li>Any information designated as confidential by either party</li>
+    </ul>
+    <p>Confidentiality obligations survive termination of the engagement for a period of 2 years unless otherwise specified in the MNDA.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>7. Prohibited Uses</h3>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the Service for any illegal purpose or in violation of any applicable laws</li>
+      <li>Attempt to gain unauthorized access to the Service or related systems</li>
+      <li>Use deliverables to create products that compete directly with Drooid's core offerings</li>
+      <li>Reverse engineer, decompile, or attempt to discover proprietary tool source code</li>
+      <li>Misrepresent the nature of your organization or intended use during engagements</li>
+      <li>Resell or redistribute Drooid's services without authorization</li>
+    </ul>
+  </div>
+
+  <div class="tsec">
+    <h3>8. Limitation of Liability</h3>
+    <div class="highlight-box">
+      <p><strong>TO THE FULLEST EXTENT PERMITTED BY LAW:</strong></p>
+      <p>Drooid shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages arising from your use of or inability to use the Service, including but not limited to:</p>
+      <ul>
+        <li>Loss of revenue or profits</li>
+        <li>Loss of data or business interruption</li>
+        <li>Loss of reputation or goodwill</li>
+        <li>Any other commercial losses</li>
+      </ul>
+      <p>Our total liability for any claim arising out of or relating to these Terms shall not exceed the total amount you have paid to Drooid in the 12 months preceding the claim.</p>
+    </div>
+  </div>
+
+  <div class="tsec">
+    <h3>9. Indemnification</h3>
+    <p>You agree to indemnify, defend, and hold harmless AAS AI, LLC (d/b/a Drooid) and its officers, directors, employees, and agents from any claims, damages, losses, and expenses arising from:</p>
+    <ul>
+      <li>Your use of the Service or deliverables</li>
+      <li>Your violation of these Terms</li>
+      <li>Your violation of any applicable laws or regulations</li>
+      <li>Your infringement of third-party rights</li>
+      <li>Misuse of deliverables beyond the agreed scope</li>
+    </ul>
+  </div>
+
+  <div class="tsec">
+    <h3>10. Warranties &amp; Disclaimers</h3>
+    <p>Drooid warrants that all deliverables will be created with professional care and in accordance with the agreed-upon specifications. However, the Service is provided "as is" without additional warranties of merchantability, fitness for a particular purpose, or non-infringement beyond what is explicitly stated in individual SOWs.</p>
+    <p>AI-generated outputs may require review and validation. Drooid does not guarantee that AI-generated content will be error-free or suitable for all purposes without human oversight.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>11. Governing Law</h3>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the State of Wisconsin, without regard to its conflict of law provisions. The exclusive jurisdiction and venue for all disputes arising out of or relating to these Terms shall be the courts located in the State of Wisconsin.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>12. Dispute Resolution</h3>
+    <h4>Informal Resolution</h4>
+    <p>Before pursuing formal legal action, you agree to attempt to resolve any dispute informally by contacting Drooid with a detailed description of the issue.</p>
+    <h4>Arbitration</h4>
+    <p>If informal resolution fails, you agree to resolve the dispute through binding arbitration under the rules of the American Arbitration Association (AAA) in Wisconsin with a single arbitrator mutually selected by both parties.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>13. Changes to Terms</h3>
+    <p>We reserve the right to modify these Terms at any time. Changes will be effective upon posting to the website. Your continued use of the Service constitutes your acceptance of the modified Terms. We will provide notice of material changes via email or prominent notice on the Service.</p>
+  </div>
+
+  <div class="tsec">
+    <h3>14. Contact Information</h3>
+    <p>For questions about these Terms, please contact us at:</p>
+    <ul>
+      <li>Email: contact@drooid.org</li>
+      <li>Address: AAS AI, LLC, Wisconsin, USA | New Delhi, India</li>
+      <li>Response time: We aim to respond within 5 business days</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ctr">
+    <div class="foot-g">
+      <div class="foot-brand">
+        <div class="flogo"><div class="mark"><span class="antenna"></span><span class="antenna-tip"></span><span class="droid-face"><span class="eye"></span><span class="eye"></span></span><span class="mouth"></span></div><div class="wm">Drooid</div></div>
+        <p>AI-powered development studio — build end-to-end with artificial intelligence.</p>
+      </div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="services.html#websites">AI Websites</a></li><li><a href="services.html#mobile">Mobile Apps</a></li><li><a href="services.html#enterprise">Web Applications</a></li><li><a href="services.html#design">Screen Design</a></li><li><a href="services.html#content">Content Generation</a></li><li><a href="services.html#agents">Agentic AI</a></li></ul></div>
+      <div class="foot-col"><h4>Industries</h4><ul><li><a href="industries.html#sales">Sales Command Center</a></li><li><a href="industries.html#capital-markets">Capital Markets</a></li><li><a href="industries.html#staffing">Staffing &amp; Agency</a></li><li><a href="industries.html#hr">Human Resources</a></li><li><a href="industries.html#legal">Legal</a></li><li><a href="industries.html#transportation">Transportation</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#client">Clients</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="foot-btm">
+      <span>&copy; 2026 Drooid. All rights reserved.</span>
+      <div class="foot-soc">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══ NAV SCROLL ═══ */
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>40));
+
+/* ═══ THEME TOGGLE ═══ */
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const html=document.documentElement;
+  const sunIcon=toggle.querySelector('.sun-icon');
+  const moonIcon=toggle.querySelector('.moon-icon');
+  function setTheme(theme){
+    html.setAttribute('data-theme',theme);
+    localStorage.setItem('drooid-theme',theme);
+    if(theme==='dark'){sunIcon.style.display='none';moonIcon.style.display='block'}
+    else{sunIcon.style.display='block';moonIcon.style.display='none'}
+  }
+  const saved=localStorage.getItem('drooid-theme')||
+    (window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  setTheme(saved);
+  toggle.addEventListener('click',()=>{
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
