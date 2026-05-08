@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" width="44" height="48">
+  <defs>
+    <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d9488"/>
+      <stop offset="100%" style="stop-color:#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="eg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4338ca"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- Antenna -->
+  <line x1="22" y1="2" x2="22" y2="10" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="22" cy="1" r="3" fill="url(#eg)"/>
+  <!-- Head -->
+  <rect x="2" y="10" width="40" height="33" rx="8" fill="none" stroke="url(#rg)" stroke-width="2.5"/>
+  <!-- Face panel -->
+  <rect x="6" y="14" width="32" height="25" rx="5.5" fill="currentColor" opacity="0.04"/>
+  <!-- Left eye -->
+  <circle cx="15" cy="25" r="5.5" fill="url(#eg)"/>
+  <circle cx="15" cy="25.5" r="2.8" fill="white"/>
+  <circle cx="13.8" cy="23.8" r="1.2" fill="white" opacity="0.7"/>
+  <!-- Right eye -->
+  <circle cx="29" cy="25" r="5.5" fill="url(#eg)"/>
+  <circle cx="29" cy="25.5" r="2.8" fill="white"/>
+  <circle cx="27.8" cy="23.8" r="1.2" fill="white" opacity="0.7"/>
+  <!-- Mouth -->
+  <rect x="16" y="35" width="12" height="1.5" rx="0.75" fill="#0d9488" opacity="0.5"/>
+  <!-- Ears -->
+  <rect x="0" y="21" width="3" height="9" rx="1.5" fill="#0d9488" opacity="0.3"/>
+  <rect x="41" y="21" width="3" height="9" rx="1.5" fill="#0d9488" opacity="0.3"/>
+</svg>
