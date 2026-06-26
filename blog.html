@@ -84,26 +84,23 @@ a{color:inherit;text-decoration:none}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:var(--nav-bg);border-bottom:1px solid transparent;transition:.3s}
 nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,.04)}
-.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.mark{width:32px;height:32px;border-radius:8px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible;box-shadow:0 2px 8px rgba(13,148,136,.15)}
-.eye{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px rgba(13,148,136,.5)}
-.droid-face{display:flex;gap:6px;align-items:center;position:relative;top:-1px}
-.mouth{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:11px;height:1.5px;border-radius:1px;background:var(--teal);opacity:.4}
-.antenna{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:1.5px;height:7px;background:var(--teal);opacity:.5}
-.antenna-tip{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:3.5px;height:3.5px;border-radius:50%;background:var(--teal);opacity:.7}
+.nlogo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nlogo .mark{width:38px;height:auto;display:block}
 .nlogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
-.nlinks{display:flex;align-items:center;gap:6px;list-style:none}
-.nlinks a{font-size:14px;font-weight:500;color:var(--text);padding:7px 13px;border-radius:8px;transition:.2s}
-.nlinks a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
-.ncta{background:var(--grad);color:#fff!important;font-weight:600!important;padding:8px 18px!important;border-radius:10px!important}
-.ncta:hover{opacity:.9;background:var(--grad)!important}
+.nlinks{display:flex;align-items:center;gap:28px;list-style:none}
+.nlinks a{font-size:13.5px;font-weight:600;color:var(--text);text-decoration:none;transition:.25s}
+.nlinks a:hover{color:var(--ink)}
+.ncta{font-size:13.5px!important;font-weight:700!important;color:#fff!important;background:var(--grad);padding:9px 22px;border-radius:9px;text-decoration:none!important}
+.ncta:hover{opacity:.9}
 .nav-search-btn{background:none;border:1.5px solid var(--border);border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--text);font-size:13px;font-family:inherit;transition:.2s}
 .nav-search-btn:hover{border-color:var(--accent);color:var(--ink)}
 .nav-search-btn kbd{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--muted)}
 .theme-toggle{width:42px;height:24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;position:relative;transition:.3s;flex-shrink:0;display:flex;align-items:center;padding:0 3px}
-.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:.3s;display:flex;align-items:center;justify-content:center}
-.theme-toggle .knob svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:.3s;position:relative;display:flex;align-items:center;justify-content:center}
+.theme-toggle .knob svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
 [data-theme="dark"] .theme-toggle .knob{transform:translateX(16px)}
+[data-theme="dark"] .theme-toggle{background:var(--card);border-color:var(--border)}
 
 /* ── HERO ── */
 .blog-hero{padding:140px 40px 72px;text-align:center;background:linear-gradient(180deg,var(--accent-l) 0%,transparent 100%)}
@@ -146,7 +143,7 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
 [data-theme="dark"] footer{background:var(--white);border-color:var(--border)}
 .foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px}
 .foot-brand .flogo{display:flex;align-items:center;gap:11px;margin-bottom:14px}
-.foot-brand .flogo .mark{width:34px;height:34px;border-radius:8px;border:2px solid var(--teal);background:transparent;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible}
+.foot-brand .flogo .mark{width:34px;height:auto;display:block}
 .foot-brand .flogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;color:var(--ink)}
 .foot-brand p{font-size:13.5px;line-height:1.7;color:var(--text);max-width:270px}
 .foot-col h4{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
@@ -366,9 +363,9 @@ footer{border-top:1px solid var(--border);padding:72px 0 36px;background:#fff}
         <div class="flogo"><img src="logo.svg" alt="Drooid" class="mark"><div class="wm">Drooid</div></div>
         <p>AI-powered development studio — build end-to-end with artificial intelligence.</p>
       </div>
-      <div class="foot-col"><h4>Services</h4><ul><li><a href="services.html#websites">AI Websites</a></li><li><a href="services.html#mobile">Mobile Apps</a></li><li><a href="services.html#enterprise">Web Applications</a></li><li><a href="services.html#agents">Agentic AI</a></li><li><a href="services.html#modernization">Legacy Modernization</a></li></ul></div>
-      <div class="foot-col"><h4>Industries</h4><ul><li><a href="industries.html#capital-markets">Capital Markets</a></li><li><a href="industries.html#healthcare">Healthcare</a></li><li><a href="industries.html#legal">Legal</a></li><li><a href="industries.html#staffing">Staffing</a></li><li><a href="industries.html#hr">Human Resources</a></li></ul></div>
-      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+      <div class="foot-col"><h4>Services</h4><ul><li><a href="services.html#websites">AI Websites</a></li><li><a href="services.html#mobile">Mobile Apps</a></li><li><a href="services.html#enterprise">Web Applications</a></li><li><a href="services.html#design">Screen Design</a></li><li><a href="services.html#content">Content Generation</a></li><li><a href="services.html#agents">Agentic AI</a></li></ul></div>
+      <div class="foot-col"><h4>Industries</h4><ul><li><a href="industries.html#sales">Sales Command Center</a></li><li><a href="industries.html#capital-markets">Capital Markets</a></li><li><a href="industries.html#staffing">Staffing &amp; Agency</a></li><li><a href="industries.html#hr">Human Resources</a></li><li><a href="industries.html#legal">Legal</a></li><li><a href="industries.html#transportation">Transportation</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#client">Clients</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
     </div>
     <div class="foot-btm">
       <span>&copy; 2026 Drooid. All rights reserved.</span>
