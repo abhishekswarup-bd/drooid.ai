@@ -73,57 +73,86 @@
   gtag('js', new Date());
   gtag('config', 'G-54V96C6EQH');
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; color: #1a1a2e; background: #fafbfc; line-height: 1.7; }
-    nav { background: #fff; border-bottom: 1px solid #e2e4ea; padding: 0 24px; height: 60px; display: flex; align-items: center; }
-    .nav-logo { font-weight: 800; font-size: 20px; color: #4338ca; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-    .nav-mark { width: 34px; height: auto; display: block; }
-    .nav-link { margin-left: auto; color: #4338ca; text-decoration: none; font-weight: 600; font-size: 14px; }
-    .post-wrap { max-width: 760px; margin: 60px auto; padding: 0 24px 80px; }
-    .post-section { font-size: 13px; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
-    h1.post-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #0f1117; margin-bottom: 20px; }
-    .post-meta { font-size: 13px; color: #888; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e2e4ea; }
-    p.post-intro { font-size: 1.1rem; color: #3a3a4a; margin-bottom: 28px; font-weight: 500; }
-    h2 { font-size: 1.35rem; font-weight: 700; color: #0f1117; margin: 40px 0 14px; }
-    p { color: #4b5060; margin-bottom: 18px; }
-    ul { color: #4b5060; margin: 0 0 18px 24px; }
-    ul li { margin-bottom: 8px; }
-    .cta-box { background: linear-gradient(135deg, #4338ca, #0d9488); border-radius: 16px; padding: 36px; margin-top: 56px; text-align: center; color: #fff; }
-    .cta-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
-    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: 20px; }
-    .cta-btn { display: inline-block; background: #fff; color: #4338ca; font-weight: 700; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px; }
+:root{--bg:#fafbfc;--white:#fff;--card:#fff;--border:#e2e4ea;--border-h:#c8cbd4;--ink:#0f1117;--text:#4b5060;--muted:#888e9e;--accent:#4338ca;--accent-l:#ece9fe;--accent-d:#312e81;--teal:#0d9488;--teal-l:#ccfbf1;--grad:linear-gradient(135deg,#4338ca,#0d9488);--grad-t:linear-gradient(135deg,#4338ca,#0d9488);--r:16px;--nav-bg:rgba(250,251,252,.82)}
+[data-theme="dark"]{--bg:#0a0a12;--white:#13131f;--card:#13131f;--border:#1e1e2e;--border-h:#2a2a3e;--ink:#e2e4ea;--text:#a0a4b8;--muted:#666a7e;--accent:#818cf8;--accent-l:rgba(99,102,241,.15);--accent-d:#c7d2fe;--teal:#2dd4bf;--teal-l:rgba(45,212,191,.12);--nav-bg:rgba(10,10,18,.85)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Instrument Sans',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
 
-    /* ═══ FOOTER ═══ */
-    .site-footer{border-top:1px solid #e2e4ea;padding:72px 0 36px;background:#fff;margin-top:0}
-    .foot-ctr{max-width:1200px;margin:0 auto;padding:0 40px}
-    .foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px}
-    .foot-brand p{font-size:13.5px;line-height:1.7;color:#4b5060;max-width:270px}
-    .foot-brand .flogo{display:flex;align-items:center;gap:11px;margin-bottom:14px}
-    .foot-brand .fmark{width:34px;height:auto;display:block}
-    .foot-brand .feye{width:6px;height:6px;border-radius:50%;background:#0d9488;box-shadow:0 0 6px rgba(13,148,136,.5)}
-    .foot-brand .fdroid-face{display:flex;gap:7px;align-items:center;position:relative;top:-1px}
-    .foot-brand .fmouth{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:12px;height:1.5px;border-radius:1px;background:#0d9488;opacity:.4}
-    .foot-brand .fantenna{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:1.5px;height:7px;background:#0d9488;opacity:.5}
-    .foot-brand .fantenna-tip{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:3.5px;height:3.5px;border-radius:50%;background:#0d9488;opacity:.7}
-    .foot-brand .fwm{font-family:system-ui,-apple-system,sans-serif;font-size:19px;font-weight:800;color:#0f1117}
-    .foot-col h4{font-size:12px;font-weight:700;color:#0f1117;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
-    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-    .foot-col a{font-size:13.5px;color:#4b5060;text-decoration:none;transition:.25s}
-    .foot-col a:hover{color:#0f1117}
-    .foot-btm{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid #e2e4ea;font-size:12.5px;color:#888e9e}
-    .foot-soc{display:flex;gap:18px}
-    .foot-soc a{color:#888e9e;text-decoration:none;font-size:12.5px;transition:.25s}
-    .foot-soc a:hover{color:#0f1117}
-    @media(max-width:1024px){.foot-g{grid-template-columns:1fr 1fr;gap:36px}}
-    @media(max-width:768px){.foot-ctr{padding:0 22px}.foot-g{grid-template-columns:1fr;gap:28px}.foot-btm{flex-direction:column;gap:12px;text-align:center}}
-  </style>
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:var(--nav-bg);border-bottom:1px solid transparent;transition:.3s}
+nav.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 10px rgba(0,0,0,.04)}
+.nlogo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nlogo .mark{width:38px;height:auto;display:block}
+.nlogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.nlinks{display:flex;align-items:center;gap:28px;list-style:none}
+.nlinks a{font-size:13.5px;font-weight:600;color:var(--text);text-decoration:none;transition:.25s}
+.nlinks a:hover{color:var(--ink)}
+.ncta{font-size:13.5px!important;font-weight:700!important;color:#fff!important;background:var(--grad);padding:9px 22px;border-radius:9px;text-decoration:none!important}
+.ncta:hover{opacity:.9}
+
+/* ═══ THEME TOGGLE ═══ */
+.theme-toggle{width:42px;height:24px;border-radius:24px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;position:relative;transition:.3s;flex-shrink:0;display:flex;align-items:center;padding:0 3px}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle .knob{width:18px;height:18px;border-radius:50%;background:var(--grad);transition:.3s;position:relative;display:flex;align-items:center;justify-content:center}
+.theme-toggle .knob svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+[data-theme="dark"] .theme-toggle .knob{transform:translateX(16px)}
+[data-theme="dark"] .theme-toggle{background:var(--card);border-color:var(--border)}
+
+/* ═══ ARTICLE ═══ */
+.post-wrap{max-width:760px;margin:100px auto 0;padding:0 24px 80px}
+.post-section{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+h1.post-title{font-family:'Bricolage Grotesque',sans-serif;font-size:2.2rem;font-weight:800;line-height:1.2;color:var(--ink);margin-bottom:20px}
+.post-meta{font-size:13px;color:var(--muted);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+p.post-intro{font-size:1.1rem;color:var(--text);margin-bottom:28px;font-weight:500}
+h2{font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:700;color:var(--ink);margin:40px 0 14px}
+p{color:var(--text);margin-bottom:18px}
+ul{color:var(--text);margin:0 0 18px 24px}
+ul li{margin-bottom:8px}
+a{color:var(--accent)}
+strong{color:var(--ink)}
+.cta-box{background:var(--grad);border-radius:16px;padding:36px;margin-top:56px;text-align:center;color:#fff}
+.cta-box h3{font-size:1.4rem;margin-bottom:10px;color:#fff}
+.cta-box p{color:rgba(255,255,255,.85);margin-bottom:20px}
+.cta-btn{display:inline-block;background:#fff;color:var(--accent);font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:15px}
+
+/* ═══ FOOTER ═══ */
+footer{border-top:1px solid var(--border);padding:72px 0 36px;background:var(--white)}
+.ctr{max-width:1200px;margin:0 auto;padding:0 40px}
+.foot-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:52px}
+.foot-brand .flogo{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.foot-brand .flogo .mark{width:34px;height:auto;display:block}
+.foot-brand .flogo .wm{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;color:var(--ink)}
+.foot-brand p{font-size:13.5px;line-height:1.7;color:var(--text);max-width:270px}
+.foot-col h4{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot-col a{font-size:13.5px;color:var(--text);text-decoration:none;transition:.25s}
+.foot-col a:hover{color:var(--ink)}
+.foot-btm{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){.foot-g{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:768px){.ctr{padding:0 22px}.foot-g{grid-template-columns:1fr;gap:28px}.foot-btm{flex-direction:column;gap:12px;text-align:center}nav{padding:14px 22px}.nlinks{display:none}.post-wrap{margin-top:80px}}
+</style>
 </head>
 <body>
-  <nav>
-    <a href="https://drooid.org" class="nav-logo"><img src="../logo.svg" alt="Drooid" class="nav-mark">Drooid</a>
-    <a href="https://drooid.org/blog" class="nav-link">← All Posts</a>
-  </nav>
+  <nav id="navbar">
+  <a href="../index.html" class="nlogo">
+    <img src="../logo.svg" alt="Drooid" class="mark">
+    <div class="wm">Drooid</div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="../services.html">Services</a></li>
+    <li><a href="../industries.html">Industries</a></li>
+    <li><a href="../solutions.html">Solutions</a></li>
+    <li><a href="../blog.html">Blog</a></li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><span class="knob"><svg viewBox="0 0 24 24" class="sun-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg viewBox="0 0 24 24" class="moon-icon" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span></button></li>
+    <li><a href="../contact.html" class="ncta">Let&#x27;s Talk</a></li>
+  </ul>
+</nav>
   <div class="post-wrap">
     <div class="post-section">Thought Leadership</div>
     <h1 class="post-title">The Tiger Team Trap: Why Big Consulting AI Projects Fail and Small Embedded Teams Win</h1>
@@ -160,12 +189,11 @@
     </div>
   </div>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="site-footer">
-  <div class="foot-ctr">
+<footer>
+  <div class="ctr">
     <div class="foot-g">
       <div class="foot-brand">
-        <div class="flogo"><img src="../logo.svg" alt="Drooid" class="fmark"><div class="fwm">Drooid</div></div>
+        <div class="flogo"><img src="../logo.svg" alt="Drooid" class="mark"><div class="wm">Drooid</div></div>
         <p>AI-powered development studio — build end-to-end with artificial intelligence.</p>
       </div>
       <div class="foot-col"><h4>Services</h4><ul><li><a href="../services.html#websites">AI Websites</a></li><li><a href="../services.html#mobile">Mobile Apps</a></li><li><a href="../services.html#enterprise">Web Applications</a></li><li><a href="../services.html#design">Screen Design</a></li><li><a href="../services.html#content">Content Generation</a></li><li><a href="../services.html#agents">Agentic AI</a></li></ul></div>
@@ -177,5 +205,29 @@
     </div>
   </div>
 </footer>
+<script>
+const nb=document.getElementById("navbar");
+window.addEventListener("scroll",()=>nb.classList.toggle("scrolled",scrollY>40));
+
+/* ═══ THEME TOGGLE ═══ */
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const html=document.documentElement;
+  const sunIcon=toggle.querySelector('.sun-icon');
+  const moonIcon=toggle.querySelector('.moon-icon');
+  function setTheme(theme){
+    html.setAttribute('data-theme',theme);
+    localStorage.setItem('drooid-theme',theme);
+    if(theme==='dark'){sunIcon.style.display='none';moonIcon.style.display='block'}
+    else{sunIcon.style.display='block';moonIcon.style.display='none'}
+  }
+  const saved=localStorage.getItem('drooid-theme')||
+    (window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  setTheme(saved);
+  toggle.addEventListener('click',()=>{
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+})();
+</script>
 </body>
 </html>
